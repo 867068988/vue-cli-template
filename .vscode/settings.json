@@ -1,0 +1,35 @@
+{
+  "files.associations": {
+    ".env": "ignore",
+    ".env.*": "ignore"
+  },
+
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "[vue]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "octref.vetur"
+  },
+
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
+
+  "path-autocomplete.pathMappings": {
+    "@": "${folder}/src",
+    "~@": "${folder}/src"
+  },
+  "path-autocomplete.extensionOnImport": true
+}
