@@ -8,11 +8,9 @@ import 'highlight.js/styles/vs2015.css'
 import hljs from 'highlight.js/lib/highlight'
 import hljs_xml from 'highlight.js/lib/languages/xml'
 import hljs_css from 'highlight.js/lib/languages/css'
-import hljs_less from 'highlight.js/lib/languages/less'
 import hljs_javascript from 'highlight.js/lib/languages/javascript'
 hljs.registerLanguage('xml', hljs_xml)
 hljs.registerLanguage('css', hljs_css)
-hljs.registerLanguage('less', hljs_less)
 hljs.registerLanguage('javascript', hljs_javascript)
 
 const README_src = require('!file-loader!../../../README.html')
@@ -55,7 +53,7 @@ export default {
   directives: {
     highlight: {
       bind(el) {
-        let blocks = el.querySelectorAll('pre >code')
+        const blocks = el.querySelectorAll('pre >code')
         blocks.forEach(block => hljs.highlightBlock(block))
       },
     },
@@ -210,7 +208,7 @@ export default {
                   v-if="!!compsRaw[`${compName}_popoverInited`]"
                   v-highlight
                 >
-                  <pre><code>{{ compsRaw[compName] }}</code></pre>
+                  <pre><code class="xml">{{ compsRaw[compName] }}</code></pre>
                 </div>
               </el-popover>
               &lt;{{ toKebabCase(compName) }}&gt;
