@@ -6,8 +6,10 @@ module.exports = {
   },
   globals: {},
 
-  extends: [
-    "eslint:recommended",
-    "plugin:prettier/recommended" // .prettierrc.js 需要重置为空 (按默认配置)
-  ]
+  extends: ["eslint:recommended"],
+
+  plugins: ["prettier"],
+  rules: {
+    "prettier/prettier": "error"
+  }
 };
