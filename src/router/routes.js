@@ -23,7 +23,9 @@ if (process.env.NODE_ENV === 'development') {
     path: '/component-examples',
     meta: { title: '开发相关文档' },
     component: () =>
-      import(/* webpackChunkName: "component-examples" */ '@/components/ComponentExamples/index.vue'),
+      import(
+        /* webpackChunkName: "component-examples" */ '@/components/ComponentExamples/index.vue'
+      ),
   })
 }
 export default routes
