@@ -2,7 +2,6 @@ import Mock from 'mockjs'
 import urlParse from 'url-parse'
 import qs from 'qs'
 import _ from 'lodash'
-
 Mock.setup({ timeout: '100-500' })
 
 /**

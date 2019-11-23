@@ -3,7 +3,6 @@ import { mock } from 'mockjs'
 export const news = function() {
   return mock({
     code: 200,
-    msg: '',
     data: {
       page: 1,
       pageSize: 10,
@@ -21,7 +20,6 @@ export const news = function() {
 export const newsDetails = function() {
   return mock({
     code: 200,
-    msg: '',
     data: {
       createDate: '@date("yyyy-MM-dd")',
       title: '@csentence(3, 5)',

@@ -1,4 +1,5 @@
 import 'normalize.css'
+import './styles/reset.less'
 import Vue from 'vue'
 import './elementui'
 import './styles/global.less'

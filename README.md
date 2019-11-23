@@ -32,9 +32,9 @@
 
 - 安装/更新依赖包：`npm install`
 - 运行：
-  - 启动为 dev 环境：`npm run serve`
-  - 打包为 test 环境：`npm run build:test` (生成到 dist 目录)
-  - 打包为 prod 环境：`npm run build:prod` (生成到 dist 目录)
+  - 启动为 dev 环境：`npm run serve` 或 `npm start`
+  - 打包为 test 环境：`npm run build:test`
+  - 打包为 prod 环境：`npm run build:prod` 或 `npm run build`
   - 运行 ESLint 检修源码：`npm run lint`
   - 运行单元测试：`npm run test:unit`
 
@@ -86,6 +86,7 @@
 - 组件间的数据流
   - 父向子传递用 props
   - 子向父传递用 vue 内置的自定义事件
+  - 父子双向传递用 <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">v-module</a> 或 <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">.sync</a>
   - 跨越传递用 vuex（慎用 EventBus）
   - 紧密耦合的祖孙间传递也可以考虑用父组件作为中间运输层
   - 紧密耦合的兄弟间传递也可以考虑用父组件作为中转运输层
@@ -170,8 +171,8 @@
 ### 【其它注意事项】
 
 - 慎用 this\.\$refs、this\.\$parent、this\.\$root、provide/inject
-  - this\.\$refs 一般用在第三方开源组件或内部公共库组件或非常稳定的组件
-- 不要在 watch 中变更数据，易造成死循环。数据变更应该交给用户交互事件或初始化的异步回调
+  - this\.\$refs 一般用在第三方开源组件或内部公共库组件或非常稳定的组件，以调用显式声明的方法
+- 尽量不要在 watch 中变更数据，易造成死循环。数据变更应该交给用户交互事件或初始化的异步回调
 - 组件中的 data 及 vuex 中的 state 应该可序列化，即不要存 undefined、function 等
 
 ### 【 <a target="_blank" href="https://cn.vuejs.org/v2/style-guide/">!!!其它则严格遵守 vue 官方风格指南</a>】
@@ -238,7 +239,7 @@
 
 - <span id="hash_Ex">扩展/包装第三方开源组件或内部公共库组件</span>
   - 使用 extends 混入 (相关命名需要加 ex\_ 前缀，防止覆盖)
-  - 使用<a target="_blank" href="https://cn.vuejs.org/v2/guide/render-function.html#函数式组件">函数式组件</a>包装
+  - 使用<a target="_blank" href="https://cn.vuejs.org/v2/guide/render-function.html">函数式组件</a>包装
 
 ---
 
@@ -488,7 +489,7 @@
 
   - 使用代理或 <a target="_blank" href="https://www.baidu.com/s?wd=cors跨域">CORS</a>
 
-- history 模式<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/history-mode.html#后端配置例子">路由处理</a>
+- history 模式<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/history-mode.html">路由处理</a>
 
   - 如果 url 匹配的不是静态资源 (不带后缀的)，则返回 /index.html 页面
 

@@ -1,8 +1,8 @@
 import Vue from 'vue'
-
 import {
   //   Pagination,
   //   Dialog,
+  //   Drawer,
   //   Autocomplete,
   //   Dropdown,
   //   DropdownMenu,
@@ -69,11 +69,11 @@ import {
   Message,
   Notification,
 } from 'element-ui'
-
 import './rewrite/index.less'
 
 // Vue.use(Pagination)
 // Vue.use(Dialog)
+// Vue.use(Drawer)
 // Vue.use(Autocomplete)
 // Vue.use(Dropdown)
 // Vue.use(DropdownMenu)
@@ -137,7 +137,6 @@ import './rewrite/index.less'
 // Vue.use(Footer)
 
 Vue.use(Loading.directive)
-
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$msgbox = MessageBox
 Vue.prototype.$alert = MessageBox.alert

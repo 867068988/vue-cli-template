@@ -13,6 +13,7 @@
       
       
       
+      
 
       <style>
       /**
@@ -296,9 +297,9 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>&#x5B89;&#x88C5;/&#x66F4;&#x65B0;&#x4F9D;&#x8D56;&#x5305;&#xFF1A;<code>npm install</code></li>
 <li>&#x8FD0;&#x884C;&#xFF1A;
 <ul>
-<li>&#x542F;&#x52A8;&#x4E3A; dev &#x73AF;&#x5883;&#xFF1A;<code>npm run serve</code></li>
-<li>&#x6253;&#x5305;&#x4E3A; test &#x73AF;&#x5883;&#xFF1A;<code>npm run build:test</code> (&#x751F;&#x6210;&#x5230; dist &#x76EE;&#x5F55;)</li>
-<li>&#x6253;&#x5305;&#x4E3A; prod &#x73AF;&#x5883;&#xFF1A;<code>npm run build:prod</code> (&#x751F;&#x6210;&#x5230; dist &#x76EE;&#x5F55;)</li>
+<li>&#x542F;&#x52A8;&#x4E3A; dev &#x73AF;&#x5883;&#xFF1A;<code>npm run serve</code> &#x6216; <code>npm start</code></li>
+<li>&#x6253;&#x5305;&#x4E3A; test &#x73AF;&#x5883;&#xFF1A;<code>npm run build:test</code></li>
+<li>&#x6253;&#x5305;&#x4E3A; prod &#x73AF;&#x5883;&#xFF1A;<code>npm run build:prod</code> &#x6216; <code>npm run build</code></li>
 <li>&#x8FD0;&#x884C; ESLint &#x68C0;&#x4FEE;&#x6E90;&#x7801;&#xFF1A;<code>npm run lint</code></li>
 <li>&#x8FD0;&#x884C;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#xFF1A;<code>npm run test:unit</code></li>
 </ul>
@@ -379,6 +380,7 @@ data/$store
 <ul>
 <li>&#x7236;&#x5411;&#x5B50;&#x4F20;&#x9012;&#x7528; props</li>
 <li>&#x5B50;&#x5411;&#x7236;&#x4F20;&#x9012;&#x7528; vue &#x5185;&#x7F6E;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;</li>
+<li>&#x7236;&#x5B50;&#x53CC;&#x5411;&#x4F20;&#x9012;&#x7528; <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">v-module</a> &#x6216; <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">.sync</a></li>
 <li>&#x8DE8;&#x8D8A;&#x4F20;&#x9012;&#x7528; vuex&#xFF08;&#x614E;&#x7528; EventBus&#xFF09;</li>
 <li>&#x7D27;&#x5BC6;&#x8026;&#x5408;&#x7684;&#x7956;&#x5B59;&#x95F4;&#x4F20;&#x9012;&#x4E5F;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x7528;&#x7236;&#x7EC4;&#x4EF6;&#x4F5C;&#x4E3A;&#x4E2D;&#x95F4;&#x8FD0;&#x8F93;&#x5C42;</li>
 <li>&#x7D27;&#x5BC6;&#x8026;&#x5408;&#x7684;&#x5144;&#x5F1F;&#x95F4;&#x4F20;&#x9012;&#x4E5F;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x7528;&#x7236;&#x7EC4;&#x4EF6;&#x4F5C;&#x4E3A;&#x4E2D;&#x8F6C;&#x8FD0;&#x8F93;&#x5C42;</li>
@@ -477,10 +479,10 @@ data/$store
 <ul>
 <li>&#x614E;&#x7528; this.$refs&#x3001;this.$parent&#x3001;this.$root&#x3001;provide/inject
 <ul>
-<li>this.$refs &#x4E00;&#x822C;&#x7528;&#x5728;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6;&#x6216;&#x975E;&#x5E38;&#x7A33;&#x5B9A;&#x7684;&#x7EC4;&#x4EF6;</li>
+<li>this.$refs &#x4E00;&#x822C;&#x7528;&#x5728;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6;&#x6216;&#x975E;&#x5E38;&#x7A33;&#x5B9A;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x4EE5;&#x8C03;&#x7528;&#x663E;&#x5F0F;&#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;</li>
 </ul>
 </li>
-<li>&#x4E0D;&#x8981;&#x5728; watch &#x4E2D;&#x53D8;&#x66F4;&#x6570;&#x636E;&#xFF0C;&#x6613;&#x9020;&#x6210;&#x6B7B;&#x5FAA;&#x73AF;&#x3002;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x5E94;&#x8BE5;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x4E8B;&#x4EF6;&#x6216;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5F02;&#x6B65;&#x56DE;&#x8C03;</li>
+<li>&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x5728; watch &#x4E2D;&#x53D8;&#x66F4;&#x6570;&#x636E;&#xFF0C;&#x6613;&#x9020;&#x6210;&#x6B7B;&#x5FAA;&#x73AF;&#x3002;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x5E94;&#x8BE5;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x4E8B;&#x4EF6;&#x6216;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5F02;&#x6B65;&#x56DE;&#x8C03;</li>
 <li>&#x7EC4;&#x4EF6;&#x4E2D;&#x7684; data &#x53CA; vuex &#x4E2D;&#x7684; state &#x5E94;&#x8BE5;&#x53EF;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x5373;&#x4E0D;&#x8981;&#x5B58; undefined&#x3001;function &#x7B49;</li>
 </ul>
 <h3 class="mume-header" id="a-target_blank-hrefhttpscnvuejsorgv2style-guide%E5%85%B6%E5%AE%83%E5%88%99%E4%B8%A5%E6%A0%BC%E9%81%B5%E5%AE%88-vue-%E5%AE%98%E6%96%B9%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97a">&#x3010; <a target="_blank" href="https://cn.vuejs.org/v2/style-guide/">!!!&#x5176;&#x5B83;&#x5219;&#x4E25;&#x683C;&#x9075;&#x5B88; vue &#x5B98;&#x65B9;&#x98CE;&#x683C;&#x6307;&#x5357;</a>&#x3011;</h3>
@@ -562,7 +564,7 @@ data/$store
 <p><span id="hash_Ex">&#x6269;&#x5C55;/&#x5305;&#x88C5;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6;</span></p>
 <ul>
 <li>&#x4F7F;&#x7528; extends &#x6DF7;&#x5165; (&#x76F8;&#x5173;&#x547D;&#x540D;&#x9700;&#x8981;&#x52A0; ex_ &#x524D;&#x7F00;&#xFF0C;&#x9632;&#x6B62;&#x8986;&#x76D6;)</li>
-<li>&#x4F7F;&#x7528;<a target="_blank" href="https://cn.vuejs.org/v2/guide/render-function.html#&#x51FD;&#x6570;&#x5F0F;&#x7EC4;&#x4EF6;">&#x51FD;&#x6570;&#x5F0F;&#x7EC4;&#x4EF6;</a>&#x5305;&#x88C5;</li>
+<li>&#x4F7F;&#x7528;<a target="_blank" href="https://cn.vuejs.org/v2/guide/render-function.html">&#x51FD;&#x6570;&#x5F0F;&#x7EC4;&#x4EF6;</a>&#x5305;&#x88C5;</li>
 </ul>
 </li>
 </ul>
@@ -821,7 +823,7 @@ data/$store
 </ul>
 </li>
 <li>
-<p>history &#x6A21;&#x5F0F;<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/history-mode.html#&#x540E;&#x7AEF;&#x914D;&#x7F6E;&#x4F8B;&#x5B50;">&#x8DEF;&#x7531;&#x5904;&#x7406;</a></p>
+<p>history &#x6A21;&#x5F0F;<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/history-mode.html">&#x8DEF;&#x7531;&#x5904;&#x7406;</a></p>
 <ul>
 <li>&#x5982;&#x679C; url &#x5339;&#x914D;&#x7684;&#x4E0D;&#x662F;&#x9759;&#x6001;&#x8D44;&#x6E90; (&#x4E0D;&#x5E26;&#x540E;&#x7F00;&#x7684;)&#xFF0C;&#x5219;&#x8FD4;&#x56DE; /index.html &#x9875;&#x9762;</li>
 </ul>

@@ -2,7 +2,7 @@ module.exports = {
   presets: ['@vue/app'],
 
   plugins: [
-    /* element-ui 按需引入，详情：https://element.eleme.cn/#/zh-CN/component/quickstart#an-xu-yin-ru */
+    /* element-ui 按需引入，详情：https://element.eleme.cn/#/zh-CN/component/quickstart */
     [
       'component',
       {

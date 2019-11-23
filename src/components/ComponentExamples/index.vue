@@ -3,7 +3,6 @@
 <script>
 import { Container, Aside, Main, Popover, Tooltip } from 'element-ui'
 import _ from 'lodash'
-
 import 'highlight.js/styles/vs2015.css'
 import hljs from 'highlight.js/lib/highlight'
 import hljs_xml from 'highlight.js/lib/languages/xml'
