@@ -17,7 +17,8 @@ export const resetRoutes = function(newRoutes) {
   router.addRoutes(newRoutes)
 }
 /**
- * @param { (meta:{title?:string, rules?:string[]}) => boolean } filterCallback
+ * @param {(meta:{title?:string,rules?:string[]})=>boolean} filterCallback
+ * @returns {Array}
  */
 export const filterMapRoutes = function(filterCallback) {
   const loop = curRoutes =>
@@ -38,7 +39,7 @@ resetRoutes(
   }),
 )
 
-/* 设置页面标题 */
+/* 页面标题处理 */
 router.afterEach(to => {
   const title = to.meta.title
   if (title) {

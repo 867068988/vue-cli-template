@@ -23,13 +23,14 @@ const responseErrHandle = err => {
 
 /**
  * @param {Objec} [instanceConfig]
- * @param {(instance) => void} [func]
+ * @param {(instance)=>void} [func]
  */
 export const createAxios = (instanceConfig, func) => {
   if (typeof instanceConfig === 'function') {
     func = instanceConfig
     instanceConfig = {}
   }
+  instanceConfig = instanceConfig || {}
   const defaults = {
     /* 默认配置 */
   }
