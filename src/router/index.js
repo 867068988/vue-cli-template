@@ -17,13 +17,13 @@ export const resetRoutes = function(newRoutes) {
   router.addRoutes(newRoutes)
 }
 /**
- * @param {(meta:{title?:string,rules?:string[]})=>boolean} filterCallback
+ * @param {(meta:Object,route:Object)=>boolean} filterCallback
  * @returns {Array}
  */
 export const filterMapRoutes = function(filterCallback) {
   const loop = curRoutes =>
     curRoutes
-      .filter(route => filterCallback(route.meta || {}))
+      .filter(route => filterCallback(route.meta || {}, route))
       .map(({ children, ...newRoute }) => {
         if (children) newRoute.children = loop(children)
         return newRoute
@@ -35,7 +35,7 @@ export default router
 /* 初始化公共路由 */
 resetRoutes(
   filterMapRoutes(meta => {
-    return meta.rules === undefined
+    return meta.rules === undefined // 如何处理路由权限因项目而异...
   }),
 )
 

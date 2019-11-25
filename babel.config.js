@@ -7,7 +7,7 @@ module.exports = {
       'component',
       {
         libraryName: 'element-ui',
-        styleLibraryName: 'theme-chalk',
+        styleLibraryName: 'theme-chalk', // 当需要使用定制的主题包时，把该行替换为 style: false
       },
     ],
 
