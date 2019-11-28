@@ -159,8 +159,8 @@ export default {
         <a
           :class="$style.link"
           target="_blank"
-          href="https://element.eleme.cn/2.12/#/zh-CN/component/table"
-          >element-ui 官网 @2.12</a
+          href="https://element.eleme.cn/2.13/#/zh-CN/component/table"
+          >element-ui 官网 @2.13</a
         >
       </div>
       <div :class="$style.linkGroup">

@@ -300,7 +300,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>&#x542F;&#x52A8;&#x4E3A; dev &#x73AF;&#x5883;&#xFF1A;<code>npm run serve</code> &#x6216; <code>npm start</code></li>
 <li>&#x6253;&#x5305;&#x4E3A; test &#x73AF;&#x5883;&#xFF1A;<code>npm run build:test</code></li>
 <li>&#x6253;&#x5305;&#x4E3A; prod &#x73AF;&#x5883;&#xFF1A;<code>npm run build:prod</code> &#x6216; <code>npm run build</code></li>
-<li>&#x8FD0;&#x884C; ESLint &#x68C0;&#x4FEE;&#x6E90;&#x7801;&#xFF1A;<code>npm run lint</code></li>
+<li>&#x68C0;&#x67E5;&#x5E76;&#x4FEE;&#x590D;&#x6E90;&#x7801;&#xFF1A;<code>npm run lint</code></li>
 <li>&#x8FD0;&#x884C;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#xFF1A;<code>npm run test:unit</code></li>
 </ul>
 </li>
@@ -593,7 +593,7 @@ data/$store
 </pre><pre data-role="codeBlock" data-info="less" class="language-less"><span class="token comment">/* style */</span>
 <span class="token variable">@import</span> <span class="token string">&apos;~@/styles/vars.less&apos;</span><span class="token punctuation">;</span>
 <span class="token selector">.xxx</span> <span class="token punctuation">{</span>
-  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url(&apos;~@/assets/logo.png&apos;)</span><span class="token punctuation">;</span> <span class="token comment">// &#x542F;&#x7528; CSS Modules &#x65F6;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x52A0; ~</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> <span class="token url">url(&apos;~@/assets/logo.png&apos;)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </pre></li>
 <li>
@@ -729,27 +729,13 @@ data/$store
 |-- .env.production_test -------- test &#x73AF;&#x5883;&#x53D8;&#x91CF;
 |-- .env.production_prod -------- prod &#x73AF;&#x5883;&#x53D8;&#x91CF;
 |-- .env.test
-|-- .gitignore
-|-- .eslintignore
-|-- .eslintrc.js
-|-- .prettierrc.js
-|-- babel.config.js
-|-- jsconfig.json
 |-- static-server.js ------------ &#x9759;&#x6001;&#x8D44;&#x6E90;&#x670D;&#x52A1;&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x9884;&#x89C8; dist &#x76EE;&#x5F55;
-|-- vue.config.js
-|-- package.json
 |-- README.html ----------------- &#x7531; README.md &#x624B;&#x52A8;&#x751F;&#x6210; (&#x4F7F;&#x7528; VSCode &#x63D2;&#x4EF6; Markdown Preview Enhanced)
-|-- README.md
 |-- .vscode --------------------- &#x7EDF;&#x4E00; VSCode &#x914D;&#x7F6E;
-|   |-- settings.json
-|   |-- launch.json
 |-- public
-|   |-- .eslintc.js
-|   |-- .prettierrc.js
 |   |-- favicon.ico
 |   |-- index.html
 |   |-- libs -------------------- &#x65E0;&#x6CD5;&#x4F7F;&#x7528; import &#x5F15;&#x7528;&#x7684;&#x7C7B;&#x5E93; (&#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x5F15;&#x7528;)
-|-- tests
 |-- src
     |-- main.js
     |-- App.vue
@@ -801,13 +787,13 @@ data/$store
     |   |-- ComponentExamples --- &#x975E;&#x5355;&#x4F8B;&#x516C;&#x5171;&#x7EC4;&#x4EF6;&#x9700;&#x8981;&#x5728;&#x8FD9;&#x91CC;&#x5199;&#x793A;&#x4F8B;
     |   |   |-- index.vue
     |   |   |-- XxxXxx.vue
-    |   |-- directives ---------- &#x5C40;&#x90E8;&#x6307;&#x4EE4;
-    |       |-- xxx.js
-    |   |-- mixins -------------- &#x5C40;&#x90E8;&#x6DF7;&#x5165;
+    |   |-- directives ---------- &#x53EF;&#x590D;&#x7528;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x6307;&#x4EE4;&#xFF08;&#x5C40;&#x90E8;&#x6CE8;&#x518C;&#xFF09;
+    |   |   |-- xxx.js
+    |   |-- mixins -------------- &#x53EF;&#x590D;&#x7528;&#x7684;&#x6DF7;&#x5165;&#xFF08;&#x5C40;&#x90E8;&#x6CE8;&#x518C;&#xFF09;
     |       |-- xxx.js
     |-- views
         |-- Xxx.vue
-        |-- Xxx ----------------- &#x9664;&#x4E86; api &#x548C; vuex&#xFF0C;&#x5176;&#x5B83;&#x4E13;&#x5C5E;&#x6A21;&#x5757;&#x8981;&#x5185;&#x805A;&#x5728;&#x540C;&#x4E00;&#x76EE;&#x5F55;&#x4E0B;
+        |-- Xxx ----------------- &#x9664;&#x4E86; api &#x548C; vuex&#xFF0C;&#x5176;&#x5B83;&#x7684;&#x4E13;&#x5C5E;&#x6A21;&#x5757;&#x8981;&#x5185;&#x805A;&#x5728;&#x540C;&#x4E00;&#x76EE;&#x5F55;&#x4E0B;
             |-- index.vue
             |-- Xxx.vue --------- &#x5B50;&#x8DEF;&#x7531;&#x7EC4;&#x4EF6;
             |-- xxx.js

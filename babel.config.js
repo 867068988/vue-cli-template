@@ -1,5 +1,5 @@
 module.exports = {
-  presets: ['@vue/app'],
+  presets: ['@vue/cli-plugin-babel/preset'],
 
   plugins: [
     /* element-ui 按需引入，详情：https://element.eleme.cn/#/zh-CN/component/quickstart */
@@ -11,7 +11,7 @@ module.exports = {
       },
     ],
 
-    /* lodash 按需引入，详情：https://github.com/lodash/babel-plugin-lodash#example */
+    /* lodash 按需引入，详情：https://github.com/lodash/babel-plugin-lodash */
     ['lodash'],
   ],
 }

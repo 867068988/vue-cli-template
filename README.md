@@ -35,7 +35,7 @@
   - 启动为 dev 环境：`npm run serve` 或 `npm start`
   - 打包为 test 环境：`npm run build:test`
   - 打包为 prod 环境：`npm run build:prod` 或 `npm run build`
-  - 运行 ESLint 检修源码：`npm run lint`
+  - 检查并修复源码：`npm run lint`
   - 运行单元测试：`npm run test:unit`
 
 # 开发本地环境变量
@@ -265,7 +265,7 @@
   /* style */
   @import '~@/styles/vars.less';
   .xxx {
-    background: url('~@/assets/logo.png'); // 启用 CSS Modules 时，不需要加 ~
+    background: url('~@/assets/logo.png');
   }
   ```
 
@@ -396,27 +396,13 @@
 |-- .env.production_test -------- test 环境变量
 |-- .env.production_prod -------- prod 环境变量
 |-- .env.test
-|-- .gitignore
-|-- .eslintignore
-|-- .eslintrc.js
-|-- .prettierrc.js
-|-- babel.config.js
-|-- jsconfig.json
 |-- static-server.js ------------ 静态资源服务，通常用于在浏览器中预览 dist 目录
-|-- vue.config.js
-|-- package.json
 |-- README.html ----------------- 由 README.md 手动生成 (使用 VSCode 插件 Markdown Preview Enhanced)
-|-- README.md
 |-- .vscode --------------------- 统一 VSCode 配置
-|   |-- settings.json
-|   |-- launch.json
 |-- public
-|   |-- .eslintc.js
-|   |-- .prettierrc.js
 |   |-- favicon.ico
 |   |-- index.html
 |   |-- libs -------------------- 无法使用 import 引用的类库 (只能通过全局变量引用)
-|-- tests
 |-- src
     |-- main.js
     |-- App.vue
@@ -468,13 +454,13 @@
     |   |-- ComponentExamples --- 非单例公共组件需要在这里写示例
     |   |   |-- index.vue
     |   |   |-- XxxXxx.vue
-    |   |-- directives ---------- 局部指令
-    |       |-- xxx.js
-    |   |-- mixins -------------- 局部混入
+    |   |-- directives ---------- 可复用的自定义指令（局部注册）
+    |   |   |-- xxx.js
+    |   |-- mixins -------------- 可复用的混入（局部注册）
     |       |-- xxx.js
     |-- views
         |-- Xxx.vue
-        |-- Xxx ----------------- 除了 api 和 vuex，其它专属模块要内聚在同一目录下
+        |-- Xxx ----------------- 除了 api 和 vuex，其它的专属模块要内聚在同一目录下
             |-- index.vue
             |-- Xxx.vue --------- 子路由组件
             |-- xxx.js
