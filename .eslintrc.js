@@ -7,6 +7,11 @@ module.exports = {
     '@vue/prettier', // 结合 .prettierrc.js
   ],
 
+  rules: {
+    'no-console': 'warn',
+    'no-debugger': 'warn',
+  },
+
   parserOptions: {
     parser: 'babel-eslint',
   },
