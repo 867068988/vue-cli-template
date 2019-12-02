@@ -10,6 +10,10 @@ module.exports = {
   rules: {
     'no-console': 'warn',
     'no-debugger': 'warn',
+    'no-unused-vars': [
+      'warn',
+      { ignoreRestSiblings: true /* 解构剩余变量时不检查 */ },
+    ],
   },
 
   parserOptions: {
