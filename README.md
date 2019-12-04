@@ -172,6 +172,7 @@
 
 - 慎用 this\.\$refs、this\.\$parent、this\.\$root、provide/inject
   - this\.\$refs 一般用在第三方开源组件或内部公共库组件或非常稳定的组件，以调用显式声明的方法
+  - 暴露给外部的方法要加 pub 前缀，如：this\.\$refs.pubFocus()
 - 尽量不要在 watch 中变更数据，易造成死循环。数据变更应该交给用户交互事件或初始化的异步回调
 - 组件中的 data 及 vuex 中的 state 应该可序列化，即不要存 undefined、function 等
 
@@ -238,7 +239,7 @@
   ```
 
 - <span id="hash_Ex">扩展/包装第三方开源组件或内部公共库组件</span>
-  - 使用 extends 混入 (相关命名需要加 ex\_ 前缀，防止覆盖)
+  - 使用 extends 混入 (相关命名需要加 ex 前缀，防止覆盖)
   - 使用<a target="_blank" href="https://cn.vuejs.org/v2/guide/render-function.html">函数式组件</a>包装
 
 ---
