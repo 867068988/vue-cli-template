@@ -5,12 +5,14 @@
 
 const express = require('express')
 const proxy = require('http-proxy-middleware')
-const opn = require('opn')
 const { join } = require('path')
+const os = require('os')
+const open = require('open')
 
 const BASE_URL = '/' // 打包时的 process.env.BASE_URL
-const projectDir = join(__dirname, './dist')
+const port = 8181
 const isHistoryMode = false
+const projectDir = join(__dirname, './dist')
 const app = express()
 
 /* 代理，更详细的配置规则：https://github.com/chimurai/http-proxy-middleware#options */
@@ -61,8 +63,25 @@ app.use(BASE_URL, function(req, res) {
 })
 app.use((req, res) => res.status(404).send(404))
 
-app.listen(8181, function() {
-  const url = `http://localhost:8181${BASE_URL}`
+/* 启动 */
+app.listen(port, function() {
+  const ip = (() => {
+    const interfaces = os.networkInterfaces()
+    for (let devName in interfaces) {
+      const iface = interfaces[devName]
+      for (let i = 0; i < iface.length; i++) {
+        const alias = iface[i]
+        if (
+          alias.family === 'IPv4' &&
+          alias.address !== '127.0.0.1' &&
+          !alias.internal
+        ) {
+          return alias.address
+        }
+      }
+    }
+  })()
+  const url = `http://${ip || 'localhost'}:${port}${BASE_URL}`
   global.console.log(`\n Page: ${url} \n`)
-  opn(url)
+  open(url)
 })
