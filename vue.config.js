@@ -31,13 +31,13 @@ module.exports = Object.assign({
   css: {
     sourceMap: isDev
       ? env.DEV_CSS_SOURCEMAP === 'true'
-      : env.VUE_APP_ENV === 'test',
+      : env.VUE_APP_ENV === 'stage',
     loaderOptions: {
       postcss: { ...(!isCssAutoprefixer && { autoprefixer: null }) },
     },
   },
 
-  productionSourceMap: env.VUE_APP_ENV === 'test',
+  productionSourceMap: env.VUE_APP_ENV === 'stage',
 
   configureWebpack: config => {
     if (isDev) config.devtool = 'source-map'
@@ -56,7 +56,7 @@ module.exports = Object.assign({
 if (env.NODE_ENV) {
   if (
     !/^(development|production|test)$/.test(env.NODE_ENV) ||
-    !/^(dev|test|prod)$/.test(env.VUE_APP_ENV) ||
+    !/^(dev|stage|prod)$/.test(env.VUE_APP_ENV) ||
     (env.NODE_ENV === 'development' && env.VUE_APP_ENV !== 'dev') ||
     (env.NODE_ENV === 'production' && env.VUE_APP_ENV === 'dev') ||
     (env.NODE_ENV === 'production' && env.VUE_APP_MOCK === undefined)

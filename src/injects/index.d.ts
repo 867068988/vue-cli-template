@@ -4,7 +4,7 @@ declare module 'vue/types/vue' {
   interface Vue {
     $env: {
       readonly NODE_ENV: 'development' | 'production' | 'test'
-      readonly VUE_APP_ENV: 'dev' | 'test' | 'prod'
+      readonly VUE_APP_ENV: 'dev' | 'stage' | 'prod'
 
       readonly BASE_URL: string
       readonly VUE_APP_BASEURL_XXX: string

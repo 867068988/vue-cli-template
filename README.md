@@ -33,7 +33,7 @@
 - 安装/更新依赖包：`npm install`
 - 运行：
   - 启动为 dev 环境：`npm run serve` 或 `npm start`
-  - 打包为 test 环境：`npm run build:test`
+  - 打包为 stage 环境：`npm run build:stage`
   - 打包为 prod 环境：`npm run build:prod` 或 `npm run build`
   - 检查并修复源码：`npm run lint`
   - 运行单元测试：`npm run test:unit`
@@ -394,7 +394,7 @@
 ```
 |-- .env.development ------------ dev 环境变量
 |-- .env.development.local ------ dev 本地环境变量 (被 git 忽略，需手动新建，用来重写部分环境变量)
-|-- .env.production_test -------- test 环境变量
+|-- .env.production_stage -------- stage 环境变量
 |-- .env.production_prod -------- prod 环境变量
 |-- .env.test
 |-- static-server.js ------------ 静态资源服务，通常用于在浏览器中预览 dist 目录

@@ -211,12 +211,19 @@ export default {
                 </div>
               </el-popover>
               &lt;{{ toKebabCase(compName) }}&gt;
-              <el-tooltip
-                content="可通过 vue-devtools 中的 Open in editor 快速定位至源文件"
-                effect="light"
-                placement="right"
-              >
+              <el-tooltip effect="light" placement="right">
                 <i class="el-icon-aim" style="font-size:20px;color:#ccc" />
+                <template slot="content">
+                  可通过 vue-devtools 中的 Open in editor 快速定位至源文件
+                  <div :style="{ marginTop: '10px', opacity: 0.5 }">
+                    mac 设置参考：
+                    <a
+                      target="_blank"
+                      href="https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line"
+                      >https://code.visualstudio.com/docs/setup/mac</a
+                    >
+                  </div>
+                </template>
               </el-tooltip>
             </h2>
             <div style="padding-left:30px">

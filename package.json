@@ -6,7 +6,7 @@
     "start": "npm run serve",
     "build": "npm run build:prod",
     "serve": "vue-cli-service serve --open",
-    "build:test": "vue-cli-service build --mode=production_test --modern",
+    "build:stage": "vue-cli-service build --mode=production_stage --modern",
     "build:prod": "vue-cli-service build --mode=production_prod --modern",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"

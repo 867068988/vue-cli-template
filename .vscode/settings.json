@@ -31,5 +31,8 @@
     "@": "${folder}/src",
     "~@": "${folder}/src"
   },
-  "path-autocomplete.extensionOnImport": true
+  "path-autocomplete.extensionOnImport": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }
