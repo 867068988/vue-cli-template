@@ -17,22 +17,25 @@
     "editor.defaultFormatter": "octref.vetur"
   },
 
-  "eslint.autoFixOnSave": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    {
-      "language": "vue",
-      "autoFix": true
-    }
-  ],
+  /* VSCode 1.41.0+ 配置 */
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+
+  /* VSCode 1.41.0- 配置 */
+  // "eslint.autoFixOnSave": true,
+  // "eslint.validate": [
+  //   "javascript",
+  //   "javascriptreact",
+  //   {
+  //     "language": "vue",
+  //     "autoFix": true
+  //   }
+  // ],
 
   "path-autocomplete.pathMappings": {
     "@": "${folder}/src",
     "~@": "${folder}/src"
   },
-  "path-autocomplete.extensionOnImport": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+  "path-autocomplete.extensionOnImport": true
 }
