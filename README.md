@@ -394,7 +394,7 @@
 ```
 |-- .env.development ------------ dev 环境变量
 |-- .env.development.local ------ dev 本地环境变量 (被 git 忽略，需手动新建，用来重写部分环境变量)
-|-- .env.production_stage -------- stage 环境变量
+|-- .env.production_stage ------- stage 环境变量
 |-- .env.production_prod -------- prod 环境变量
 |-- .env.test
 |-- static-server.js ------------ 静态资源服务，通常用于在浏览器中预览 dist 目录
