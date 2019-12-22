@@ -1,6 +1,8 @@
+const { join } = require('path')
 const env = process.env
 const isDev = env.NODE_ENV === 'development'
 const isCssAutoprefixer = isDev ? env.DEV_CSS_AUTOPREFIXER === 'true' : true
+const svgSpriteIconsDir = join(__dirname, './src/components/SvgIcon/icons/')
 
 /* 当代理的前缀为空时 */
 if (isDev) {
@@ -41,9 +43,21 @@ module.exports = Object.assign({
 
   configureWebpack: config => {
     if (isDev) config.devtool = 'source-map'
+    config.module.rules.push({
+      test: /\.svg$/,
+      include: svgSpriteIconsDir,
+      use: [
+        {
+          loader: 'svg-sprite-loader',
+          options: { symbolId: '$svgSpriteIcon_[name]' },
+        },
+        'svgo-loader',
+      ],
+    })
   },
 
   chainWebpack: config => {
+    config.module.rule('svg').exclude.add(svgSpriteIconsDir)
     if (config.plugins.has('copy')) {
       config.plugin('copy').tap(args => {
         args[0][0].ignore.push('.eslintrc.js', '.prettierrc.js')

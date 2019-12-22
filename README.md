@@ -455,6 +455,9 @@
     |   |-- ComponentExamples --- 非单例公共组件需要在这里写示例
     |   |   |-- index.vue
     |   |   |-- XxxXxx.vue
+    |   |-- SvgIcon ------------- svg-sprite 图标组件
+    |   |   |-- index.vue
+    |   |   |-- icons
     |   |-- directives ---------- 可复用的自定义指令（局部注册）
     |   |   |-- xxx.js
     |   |-- mixins -------------- 可复用的混入（局部注册）
