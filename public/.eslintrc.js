@@ -9,7 +9,6 @@ module.exports = {
   extends: ["eslint:recommended"],
   plugins: ["prettier"],
   rules: {
-    "no-undef": "warn",
     "no-console": "warn",
     "no-unused-vars": "warn",
     "prettier/prettier": "warn"
