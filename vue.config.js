@@ -43,6 +43,7 @@ module.exports = Object.assign({
 
   configureWebpack: config => {
     if (isDev) config.devtool = 'source-map'
+    config.optimization.splitChunks.cacheGroups.vendors.test = /[\\/]node_modules[\\/]|[\\/]src[\\/]libs[\\/]/
     config.module.rules.push({
       test: /\.svg$/,
       include: svgSpriteIconsDir,
