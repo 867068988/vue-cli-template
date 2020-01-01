@@ -5,5 +5,5 @@ import * as news from './news'
 const myMock = createMock(process.env.VUE_APP_BASEURL_XXX)
 
 /* 统一在这里注册 */
-myMock('reg:/news\\?.+', news.news)
-myMock('reg:/news/details/.+', news.newsDetails)
+myMock('reg:/news/getList\\?.+', news.getList)
+myMock('reg:/news/getDetails/.+', news.getDetails)

@@ -4,7 +4,7 @@
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
 import PrivateComponent from './components/PrivateComponent.vue'
-import { getNews, getNewsDetails } from '@/api/news'
+import { getNewsList, getNewsDetails } from '@/api/news'
 import style from './style.module.less'
 
 export default {
@@ -13,13 +13,13 @@ export default {
   data() {
     return {
       style,
-      news: {},
+      newsList: {},
       newsDetails: {},
     }
   },
   created() {
-    getNews({ keyword: 'test' }).then(res => (this.news = res.data))
-    getNewsDetails('idxxx').then(res => (this.newsDetails = res.data))
+    getNewsList({ keyword: 'xxx' }).then(res => (this.newsList = res.data))
+    getNewsDetails('xxx').then(res => (this.newsDetails = res.data))
   },
 }
 </script>
@@ -27,9 +27,9 @@ export default {
 <template>
   <div :class="[style.bg, $style.box]">
     <div>
-      <b>getNews：</b>
+      <b>getNewsList：</b>
       <br />
-      {{ news }}
+      {{ newsList }}
     </div>
     <br />
     <div>

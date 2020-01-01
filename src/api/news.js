@@ -8,17 +8,17 @@ import http from '@/scripts/http'
  * @param {string} [query.pageNum] 当前是第几页
  * @param {string} [query.pageSize] 每页多少条记录
  */
-export const getNews = query => {
+export const getNewsList = query => {
   const params = {
     pageNum: 1,
     pageSize: 10,
     ...query,
   }
-  return http.get('/news', { params })
+  return http.get('/news/getList', { params })
 }
 
 /**
  * 获取新闻详情
  * @param {string} id 新闻 id
  */
-export const getNewsDetails = id => http.get(`/news/details/${id}`)
+export const getNewsDetails = id => http.get(`/news/getDetails/${id}`)
