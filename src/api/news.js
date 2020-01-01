@@ -5,12 +5,12 @@ import http from '@/scripts/http'
  * @param {Object} [query]
  * @param {string} [query.type] 分类
  * @param {string} [query.keyword] 关键词
- * @param {string} [query.page] 当前是第几页
+ * @param {string} [query.pageNum] 当前是第几页
  * @param {string} [query.pageSize] 每页多少条记录
  */
 export const getNews = query => {
   const params = {
-    page: 1,
+    pageNum: 1,
     pageSize: 10,
     ...query,
   }

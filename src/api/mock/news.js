@@ -1,11 +1,12 @@
 import { mock } from 'mockjs'
 
-export const news = function() {
+export const news = function(opts, query) {
+  const { pageNum = 1, pageSize = 10 } = query
   return mock({
     code: 200,
     data: {
-      page: 1,
-      pageSize: 10,
+      pageNum,
+      pageSize,
       total: 2,
       'list|2': [
         {
