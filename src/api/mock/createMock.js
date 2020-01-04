@@ -20,7 +20,7 @@ export const createMock = (baseURL, isCollapsed = true) =>
       type = 'get'
     }
     const fullUrl = url.startsWith('reg:')
-      ? new RegExp(`^${baseURL.replace(/\./g, '\\.')}${url.slice(4)}`)
+      ? new RegExp(`^${_.escapeRegExp(baseURL)}${url.slice(4)}`)
       : baseURL + url
 
     Mock.mock(fullUrl, type, function(opts) {
