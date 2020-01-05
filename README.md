@@ -86,7 +86,7 @@
 - 组件间的数据流
   - 父向子传递用 props
   - 子向父传递用 vue 内置的自定义事件
-  - 父子双向传递用 <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">v-module</a> 或 <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">.sync</a>
+  - 父子双向传递用 <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">v-model</a> 或 <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">.sync</a>
   - 跨越传递用 vuex（慎用 EventBus）
   - 紧密耦合的祖孙间传递也可以考虑用父组件作为中间运输层
   - 紧密耦合的兄弟间传递也可以考虑用父组件作为中转运输层
