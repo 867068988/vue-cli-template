@@ -1,4 +1,4 @@
-/* 动态 path 匹配规则：https://github.com/vuejs/vue-router/blob/dev/examples/route-matching/app.js */
+/* 动态 path 匹配例子：https://github.com/vuejs/vue-router/blob/dev/examples/route-matching/app.js */
 
 import Home from '@/views/Home/index.vue'
 

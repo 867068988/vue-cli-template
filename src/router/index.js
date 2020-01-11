@@ -3,20 +3,34 @@ import Router from 'vue-router'
 import routes from './routes'
 Vue.use(Router)
 
-const mode = 'hash' // hash | history
+const mode = 'hash'
 const createRouter = function() {
-  return new Router({
-    mode,
-    base: mode === 'hash' ? '/' : process.env.BASE_URL,
-  })
+  const base = mode === 'hash' ? '/' : process.env.BASE_URL
+  return new Router({ mode, base })
 }
 
-export const router = createRouter()
-export const resetRoutes = function(newRoutes) {
-  router.matcher = createRouter().matcher
-  router.addRoutes(newRoutes)
-}
 /**
+ * 全局唯一 Router 实例
+ */
+export const router = createRouter()
+
+/**
+ * 路由重置
+ * @param {Array} newRoutes
+ */
+export const resetRoutes = function(newRoutes) {
+  const tempPath = `/_${Date.now()}`
+  const currentPath = router.currentRoute.fullPath
+  router.matcher = createRouter().matcher
+  router.addRoutes(router.app ? [{ path: tempPath }, ...newRoutes] : newRoutes)
+  if (router.app) {
+    router.replace(tempPath)
+    router.replace(currentPath)
+  }
+}
+
+/**
+ * 路由过滤（过滤出有权限的路由）
  * @param {(meta:Object,route:Object)=>boolean} filterCallback
  * @returns {Array}
  */
@@ -30,7 +44,6 @@ export const filterMapRoutes = function(filterCallback) {
       })
   return loop(routes)
 }
-export default router
 
 /* 初始化公共路由 */
 resetRoutes(
@@ -46,3 +59,5 @@ router.afterEach(to => {
     document.title = title
   }
 })
+
+export default router
