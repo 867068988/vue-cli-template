@@ -21,6 +21,7 @@ export const routes = [
 if (process.env.NODE_ENV === 'development') {
   routes.unshift({
     path: '/component-examples',
+    name: 'component-examples',
     meta: { title: '开发相关文档' },
     component: () =>
       import(

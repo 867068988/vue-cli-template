@@ -42,8 +42,8 @@
 
 - 新建 .env.development.local 来重写部分环境变量，如：
   - 模拟数据：`VUE_APP_MOCK = true`
-  - 接口前缀：`VUE_APP_BASEURL_XXX =`
-  - 接口地址：`DEV_PROXY_TARGET_XXX = http://localhost:8081`
+  - 接口前缀：`VUE_APP_BASEURL_API = /api`
+  - 接口地址：`DEV_PROXY_TARGET_API = http://10.25.73.159:8081`
   - ...
 
 # 开发相关插件/工具
@@ -186,7 +186,7 @@
 
   `如：/project-list?type=1&search=keyword#position`
 
-- 路由的 name 值 (命名路由) 使用驼峰命名法
+- 路由的 name 值 (命名路由) 使用 kebab-case 命名法
 
 - 视图跳转尽量使用声明式
 

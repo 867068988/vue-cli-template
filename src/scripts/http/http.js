@@ -22,7 +22,7 @@ const responseErrHandle = err => {
 
 export const http = createAxios(
   {
-    baseURL: process.env.VUE_APP_BASEURL_XXX,
+    baseURL: process.env.VUE_APP_BASEURL_API,
   },
   instance => {
     instance.interceptors.request.use(requestHandle, requestErrHandle)

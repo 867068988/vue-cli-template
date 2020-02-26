@@ -67,8 +67,8 @@ export default {
   },
   computed: {
     currLinkName() {
-      const hash = this.$route.hash.slice(1)
-      return this.compNames.find(compName => compName === hash) || 'README'
+      const hashVal = this.$route.hash.slice(1)
+      return this.compNames.find(compName => compName === hashVal) || 'README'
     },
     currLinkIsComp() {
       return !!this.compNames.find(compName => compName === this.currLinkName)
@@ -76,7 +76,7 @@ export default {
   },
   created() {
     if (this.$route.hash.slice(1) !== this.currLinkName) {
-      this.$router.replace({ ...this.$route, hash: this.currLinkName })
+      this.$router.replace({ ...this.$route, hash: `#${this.currLinkName}` })
     }
   },
   mounted() {
@@ -138,7 +138,7 @@ export default {
       clearTimeout(this.mouseEnterCompTimer)
       this.mouseEnterCompTimer = setTimeout(() => {
         this.isRouteChangeFromMouseEnter = true
-        this.$router.replace({ ...this.$route, hash: compName })
+        this.$router.replace({ ...this.$route, hash: `#${compName}` })
         this.isRouteChangeFromMouseEnter = false
       }, 300)
     },
@@ -164,7 +164,7 @@ export default {
         >
       </div>
       <div :class="$style.linkGroup">
-        <router-link :class="$style.link" :to="{ ...$route, hash: 'README' }"
+        <router-link :class="$style.link" :to="{ ...$route, hash: '#README' }"
           >README</router-link
         >
       </div>
@@ -173,7 +173,7 @@ export default {
           v-for="compName in compNames"
           :key="compName"
           :class="$style.link"
-          :to="{ ...$route, hash: compName }"
+          :to="{ ...$route, hash: `#${compName}` }"
           >&lt;{{ toKebabCase(compName) }}&gt;</router-link
         >
       </div>

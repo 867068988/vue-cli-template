@@ -4,7 +4,7 @@
  */
 
 const express = require('express')
-const proxy = require('http-proxy-middleware')
+const { createProxyMiddleware } = require('http-proxy-middleware')
 const { join } = require('path')
 const os = require('os')
 const open = require('open')
@@ -17,16 +17,9 @@ const app = express()
 
 /* 代理，更详细的配置规则：https://github.com/chimurai/http-proxy-middleware#options */
 app.use(
-  '/baseUrlXxx',
-  proxy({
+  '/api',
+  createProxyMiddleware({
     target: 'http://10.25.73.159:8081',
-    changeOrigin: true,
-  }),
-)
-app.use(
-  '/baseUrlYyy',
-  proxy({
-    target: 'http://10.25.73.159:8082',
     changeOrigin: true,
   }),
 )

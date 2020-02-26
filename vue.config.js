@@ -7,22 +7,16 @@ const svgSpriteIconsDir = join(__dirname, './src/components/SvgIcon/icons/')
 /* 当代理的前缀为空时 */
 if (isDev) {
   const isEmpty = prefix => prefix === '' || prefix === '/'
-  if (isEmpty(env.VUE_APP_BASEURL_XXX)) env.VUE_APP_BASEURL_XXX = '/@XXX'
-  if (isEmpty(env.VUE_APP_BASEURL_YYY)) env.VUE_APP_BASEURL_YYY = '/@YYY'
+  if (isEmpty(env.VUE_APP_BASEURL_API)) env.VUE_APP_BASEURL_API = '/@API'
 }
 
 module.exports = Object.assign({
   devServer: {
     /* 更详细的配置规则：https://webpack.docschina.org/configuration/dev-server/#devserver-proxy */
     proxy: {
-      [env.VUE_APP_BASEURL_XXX]: {
-        pathRewrite: { '^/@XXX': '' },
-        target: env.DEV_PROXY_TARGET_XXX,
-        changeOrigin: true,
-      },
-      [env.VUE_APP_BASEURL_YYY]: {
-        pathRewrite: { '^/@YYY': '' },
-        target: env.DEV_PROXY_TARGET_YYY,
+      [env.VUE_APP_BASEURL_API]: {
+        pathRewrite: { '^/@API': '' },
+        target: env.DEV_PROXY_TARGET_API,
         changeOrigin: true,
       },
     },

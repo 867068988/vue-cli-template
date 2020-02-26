@@ -4,6 +4,7 @@ module.exports = {
 
   extends: [
     'plugin:vue/strongly-recommended', // 使用严谨模式
+    'eslint:recommended',
     '@vue/prettier', // 结合 .prettierrc.js
   ],
 
