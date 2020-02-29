@@ -22,6 +22,7 @@ module.exports = Object.assign({
     },
   },
 
+  assetsDir: 'static-hash',
   publicPath: env.BASE_URL || '/',
 
   css: {

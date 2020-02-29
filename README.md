@@ -508,7 +508,7 @@
       Cache-Control: no-store
       ```
 
-    - 强缓存 `/css/* /js/* /img/* /fonts/*`
+    - 强缓存 `/static-hash/**/*`
 
       ```
       Cache-Control: public,max-age=31536000
