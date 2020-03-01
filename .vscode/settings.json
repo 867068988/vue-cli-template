@@ -23,15 +23,15 @@
   },
 
   /* VSCode 1.41.0- 配置 */
-  // "eslint.autoFixOnSave": true,
-  // "eslint.validate": [
-  //   "javascript",
-  //   "javascriptreact",
-  //   {
-  //     "language": "vue",
-  //     "autoFix": true
-  //   }
-  // ],
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "vue",
+      "autoFix": true
+    }
+  ],
 
   "path-autocomplete.pathMappings": {
     "@": "${folder}/src",

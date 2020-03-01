@@ -1,3 +1,6 @@
+/**
+ * 只能添加 NODE_ENV、BASE_URL、VUE_APP_*
+ */
 declare namespace NodeJS {
   interface ProcessEnv {
     readonly NODE_ENV: 'development' | 'production' | 'test'
