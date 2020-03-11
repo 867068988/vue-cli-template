@@ -21,7 +21,7 @@ export { names }
 export default {
   name: 'SvgIcon',
   props: {
-    iconName: {
+    icon: {
       type: String,
       required: true,
     },
@@ -30,8 +30,8 @@ export default {
 </script>
 
 <template>
-  <svg :class="['svg-icon', `svg-icon-${iconName}`]">
-    <use :xlink:href="`#$svgSpriteIcon_${iconName}`" />
+  <svg :class="['svg-icon', `svg-icon-${icon}`]">
+    <use :xlink:href="`#$svgSpriteIcon_${icon}`" />
   </svg>
 </template>
 

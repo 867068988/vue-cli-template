@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routes'
+import registerInterceptor from './registerInterceptor'
 Vue.use(Router)
 
 const mode = 'hash'
@@ -19,7 +20,7 @@ export const router = createRouter()
  * @param {Array} newRoutes
  */
 export const resetRoutes = function(newRoutes) {
-  const tempPath = `/_${Date.now()}`
+  const tempPath = `/__temp-path-${Date.now()}`
   const currentPath = router.currentRoute.fullPath
   router.matcher = createRouter().matcher
   router.addRoutes(router.app ? [{ path: tempPath }, ...newRoutes] : newRoutes)
@@ -45,19 +46,13 @@ export const filterMapRoutes = function(filterCallback) {
   return loop(routes)
 }
 
+/* 注册路由拦截器 */
+registerInterceptor(router)
 /* 初始化公共路由 */
 resetRoutes(
   filterMapRoutes(meta => {
-    return meta.rules === undefined // 如何处理路由权限因项目而异...
+    return meta.roles === undefined // 如何处理路由权限因项目而异...
   }),
 )
-
-/* 页面标题处理 */
-router.afterEach(to => {
-  const title = to.meta.title
-  if (title) {
-    document.title = title
-  }
-})
 
 export default router

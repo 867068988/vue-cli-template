@@ -30,7 +30,7 @@ app.use(BASE_URL, function(req, res) {
   let cacheControl = 'no-cache'
   const isStatic = /\.\w+$/.test(req.path)
   const isHomePageStatic = /^\/index\.html/.test(req.path)
-  const isHashCache = /^\/(css|js|img|fonts)\//.test(req.path)
+  const isHashCache = /^\/static-hash\//.test(req.path)
   if (isStatic) {
     if (isHomePageStatic) {
       cacheControl = 'no-store'
@@ -74,7 +74,9 @@ app.listen(port, function() {
       }
     }
   })()
-  const url = `http://${ip || 'localhost'}:${port}${BASE_URL}`
-  global.console.log(`\n Page: ${url} \n`)
-  open(url)
+  const local = `http://localhost:${port}${BASE_URL}`
+  const network = `http://${ip}:${port}${BASE_URL}`
+  global.console.log(`\nLocal:   ${local}`)
+  global.console.log(`Network: ${network}\n`)
+  open(network)
 })

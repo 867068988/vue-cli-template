@@ -1,7 +1,8 @@
 <!-- 非单例公共组件需要在 ComponentExamples 目录中写示例 -->
 
 <script>
-import { Container, Aside, Main, Popover, Tooltip } from 'element-ui'
+import Vue from 'vue'
+import ElementUI from 'element-ui'
 import _ from 'lodash'
 import 'highlight.js/styles/vs2015.css'
 import hljs from 'highlight.js/lib/highlight'
@@ -11,6 +12,7 @@ import hljs_javascript from 'highlight.js/lib/languages/javascript'
 hljs.registerLanguage('xml', hljs_xml)
 hljs.registerLanguage('css', hljs_css)
 hljs.registerLanguage('javascript', hljs_javascript)
+Vue.use(ElementUI)
 
 const README_src = require('!file-loader!../../../README.html')
 const requireCtx = require.context(
@@ -41,14 +43,7 @@ const compsRaw = getModules(requireCtxRaw)
 
 export default {
   name: 'ComponentExamples',
-  components: {
-    ...comps,
-    ElContainer: Container,
-    ElAside: Aside,
-    ElMain: Main,
-    ElPopover: Popover,
-    ElTooltip: Tooltip,
-  },
+  components: { ...comps },
   directives: {
     highlight: {
       bind(el) {
@@ -154,13 +149,25 @@ export default {
           :class="$style.link"
           target="_blank"
           href="https://cn.vuejs.org/v2/api/"
-          >vue 官网 api</a
+          >vue 官网</a
         >
         <a
           :class="$style.link"
           target="_blank"
-          href="https://element.eleme.cn/2.13/#/zh-CN/component/table"
-          >element-ui 官网 @2.13</a
+          href="https://vuex.vuejs.org/zh/api/"
+          >vuex 官网</a
+        >
+        <a
+          :class="$style.link"
+          target="_blank"
+          href="https://router.vuejs.org/zh/api/"
+          >vue-router 官网</a
+        >
+        <a
+          :class="$style.link"
+          target="_blank"
+          href="https://element.eleme.cn/#/zh-CN/component/table"
+          >element-ui 官网</a
         >
       </div>
       <div :class="$style.linkGroup">
@@ -242,6 +249,7 @@ export default {
 
 <style lang="less" module>
 :global(body.ComponentExamples) {
+  height: 0 !important;
   overflow: hidden !important;
 }
 .box {
@@ -260,7 +268,7 @@ export default {
   position: relative;
 }
 .linkGroup {
-  margin: 10px 0;
+  margin: 12px 0;
 }
 .link {
   display: block;

@@ -1,3 +1,5 @@
+/* 后期优化：手动把不需要用到的组件注释掉 */
+
 import Vue from 'vue'
 import {
   Pagination,

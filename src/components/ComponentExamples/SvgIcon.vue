@@ -1,27 +1,34 @@
 <script>
-import { Tooltip } from 'element-ui'
 import { names } from '@/components/SvgIcon/index.vue'
 
 export default {
-  components: { ElTooltip: Tooltip },
   data: () => ({ names }),
 }
 </script>
 
 <template>
-  <div :class="$style.box">
-    <el-tooltip v-for="name in names" :key="name" effect="light">
-      <div :class="$style.item">
-        <svg-icon :class="$style.svg" :icon-name="name" />
-        <div :class="$style.name">{{ name }}</div>
-      </div>
-      <div slot="content">{{ `&lt;svg-icon icon-name="${name}" /&gt;` }}</div>
-    </el-tooltip>
+  <div>
+    <div :class="$style.title">
+      图标集中放置在 @/components/SvgIcon/icons/ 目录里，颜色与大小的控制同
+      iconfont
+    </div>
+    <div :class="$style.itemsBox">
+      <el-tooltip v-for="name in names" :key="name" effect="light">
+        <div :class="$style.item">
+          <svg-icon :class="$style.svg" :icon="name" />
+          <div :class="$style.name">{{ name }}</div>
+        </div>
+        <div slot="content">{{ `&lt;svg-icon icon="${name}" /&gt;` }}</div>
+      </el-tooltip>
+    </div>
   </div>
 </template>
 
 <style lang="less" module>
-.box {
+.title {
+  margin-bottom: 0.6em;
+}
+.itemsBox {
   display: flex;
   flex-flow: wrap;
   text-align: center;

@@ -332,6 +332,7 @@ pre[data-line] .line-highlight[data-end]:after {
 </li>
 <li>&#x63A8;&#x8350;&#x63D2;&#x4EF6;
 <ul>
+<li><code>vscode-element-helper</code></li>
 <li><code>Debugger for Chrome</code></li>
 <li><code>GitLens -- Git supercharged</code></li>
 </ul>
@@ -755,18 +756,18 @@ data/$store
     |-- libs -------------------- &#x65E0;&#x6CD5;&#x901A;&#x8FC7; npm &#x5B89;&#x88C5;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; import &#x5F15;&#x7528;&#x7684;&#x7C7B;&#x5E93;
     |-- assets
     |-- styles
-    |   |-- vars.less ----------- less &#x5168;&#x5C40;&#x53D8;&#x91CF;
     |   |-- global.less
     |   |-- reset.less
+    |   |-- vars.less ----------- less &#x5168;&#x5C40;&#x53D8;&#x91CF;
     |   |-- xxx.less
     |-- scripts
-    |   |-- constants.js -------- &#x5E38;&#x91CF; (&#x591A;&#x4F7F;&#x7528; Object.freeze)
     |   |-- utils --------------- &#x901A;&#x7528;&#x65B9;&#x6CD5;
+    |   |-- constants ----------- &#x5E38;&#x91CF; (&#x591A;&#x4F7F;&#x7528; Object.freeze)
     |   |-- xxx.js
     |   |-- http ---------------- axios &#x5B9E;&#x4F8B;
     |       |-- index.js
-    |       |-- createAxios.js
     |       |-- http.js
+    |       |-- createAxios.js
     |       |-- xxx.js
     |-- injects ----------------- vue &#x5168;&#x5C40;&#x6CE8;&#x518C; (&#x614E;&#x7528;)
     |   |-- index.js
@@ -782,6 +783,7 @@ data/$store
     |-- router
     |   |-- index.js
     |   |-- routes.js
+    |   |-- registerInterceptor.js
     |-- store
     |   |-- index.js
     |   |-- root.js
@@ -794,8 +796,8 @@ data/$store
     |       |-- xxx.js
     |-- components
     |   |-- BaseXxx.vue --------- &#x975E;&#x4E1A;&#x52A1;&#x901A;&#x7528;&#x7EC4;&#x4EF6;
-    |   |-- ExXxx.vue ----------- &#x6269;&#x5C55;/&#x5305;&#x88C5;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6;
     |   |-- TheXxx.vue ---------- &#x5355;&#x4F8B;&#x7EC4;&#x4EF6;
+    |   |-- ExXxx.vue ----------- &#x6269;&#x5C55;/&#x5305;&#x88C5;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6;
     |   |-- XxxXxx.vue
     |   |-- ComponentExamples --- &#x975E;&#x5355;&#x4F8B;&#x516C;&#x5171;&#x7EC4;&#x4EF6;&#x9700;&#x8981;&#x5728;&#x8FD9;&#x91CC;&#x5199;&#x793A;&#x4F8B;
     |   |   |-- index.vue

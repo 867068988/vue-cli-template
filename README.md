@@ -55,6 +55,7 @@
     - `Prettier - Code formatter`
     - `path Autocomplete`
   - 推荐插件
+    - `vscode-element-helper`
     - `Debugger for Chrome`
     - `GitLens -- Git supercharged`
 - Chrome 相关插件
@@ -424,18 +425,18 @@
     |-- libs -------------------- 无法通过 npm 安装，但是可以使用 import 引用的类库
     |-- assets
     |-- styles
-    |   |-- vars.less ----------- less 全局变量
     |   |-- global.less
     |   |-- reset.less
+    |   |-- vars.less ----------- less 全局变量
     |   |-- xxx.less
     |-- scripts
-    |   |-- constants.js -------- 常量 (多使用 Object.freeze)
     |   |-- utils --------------- 通用方法
+    |   |-- constants ----------- 常量 (多使用 Object.freeze)
     |   |-- xxx.js
     |   |-- http ---------------- axios 实例
     |       |-- index.js
-    |       |-- createAxios.js
     |       |-- http.js
+    |       |-- createAxios.js
     |       |-- xxx.js
     |-- injects ----------------- vue 全局注册 (慎用)
     |   |-- index.js
@@ -451,6 +452,7 @@
     |-- router
     |   |-- index.js
     |   |-- routes.js
+    |   |-- registerInterceptor.js
     |-- store
     |   |-- index.js
     |   |-- root.js
@@ -463,8 +465,8 @@
     |       |-- xxx.js
     |-- components
     |   |-- BaseXxx.vue --------- 非业务通用组件
-    |   |-- ExXxx.vue ----------- 扩展/包装第三方开源组件或内部公共库组件
     |   |-- TheXxx.vue ---------- 单例组件
+    |   |-- ExXxx.vue ----------- 扩展/包装第三方开源组件或内部公共库组件
     |   |-- XxxXxx.vue
     |   |-- ComponentExamples --- 非单例公共组件需要在这里写示例
     |   |   |-- index.vue
