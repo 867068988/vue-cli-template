@@ -1,8 +1,6 @@
 <!-- 非单例公共组件需要在 ComponentExamples 目录中写示例 -->
 
 <script>
-import Vue from 'vue'
-import ElementUI from 'element-ui'
 import _ from 'lodash'
 import 'highlight.js/styles/vs2015.css'
 import hljs from 'highlight.js/lib/highlight'
@@ -12,7 +10,6 @@ import hljs_javascript from 'highlight.js/lib/languages/javascript'
 hljs.registerLanguage('xml', hljs_xml)
 hljs.registerLanguage('css', hljs_css)
 hljs.registerLanguage('javascript', hljs_javascript)
-Vue.use(ElementUI)
 
 const README_src = require('!file-loader!../../../README.html')
 const requireCtx = require.context(
