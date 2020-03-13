@@ -56,16 +56,10 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions",
     "since 2016",
     "edge > 11",
     "ie > 10"
   ],
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
   "jest": {
     "preset": "@vue/cli-plugin-unit-jest"
   },

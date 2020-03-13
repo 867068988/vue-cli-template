@@ -1,3 +1,4 @@
+const autoprefixer = require('autoprefixer')
 const { join } = require('path')
 const env = process.env
 const isDev = env.NODE_ENV === 'development'
@@ -30,7 +31,18 @@ module.exports = Object.assign({
       ? env.DEV_CSS_SOURCEMAP === 'true'
       : env.VUE_APP_ENV === 'stage',
     loaderOptions: {
-      postcss: { ...(!isCssAutoprefixer && { autoprefixer: null }) },
+      postcss: {
+        plugins: ({ resourcePath: path }) => {
+          if (
+            !isCssAutoprefixer ||
+            /[\\/]node_modules[\\/].+\.css$/.test(path) ||
+            /[\\/]src[\\/]libs[\\/].+\.css$/.test(path) // 跳过 autoprefixer
+          ) {
+            return []
+          }
+          return [autoprefixer]
+        },
+      },
     },
   },
 
@@ -38,7 +50,7 @@ module.exports = Object.assign({
 
   configureWebpack: config => {
     if (isDev) config.devtool = 'source-map'
-    config.optimization.splitChunks.cacheGroups.vendors.test = /[\\/]node_modules[\\/]|[\\/]src[\\/]libs[\\/]/
+    config.optimization.splitChunks.cacheGroups.vendors.test = /[\\/]node_modules[\\/]|[\\/]src[\\/]libs[\\/]/ // 合在一起的同步包
     config.module.rules.push({
       test: /\.svg$/,
       include: svgSpriteIconsDir,
@@ -53,6 +65,7 @@ module.exports = Object.assign({
   },
 
   chainWebpack: config => {
+    config.module.rule('js').exclude.add(/[\\/]src[\\/]libs[\\/].+\.js$/) // 跳过 babel-loader
     config.module.rule('svg').exclude.add(svgSpriteIconsDir)
     if (config.plugins.has('copy')) {
       config.plugin('copy').tap(args => {
