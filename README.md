@@ -444,8 +444,14 @@
     |   |-- v-xxx.js
     |   |-- mixin_xxx.js
     |   |-- xxx.js
-    |-- elementui
+    |-- element-ui
     |   |-- index.js
+    |   |-- rewrite ------------- 主题样式复写
+    |       |-- index.less
+    |       |-- xxx.less
+    |-- vant
+    |   |-- index.js
+    |   |-- vars.less ----------- 内置变量复写
     |   |-- rewrite ------------- 主题样式复写
     |       |-- index.less
     |       |-- xxx.less
@@ -538,4 +544,5 @@
 
 ## 给 UI 的建议
 
-- 对于中后台项目，在画 UI 界面时，建议参考前端已选型的第三方开源组件库，并推荐使用开源组件库<a target="_blank" href="http://element-cn.eleme.io/#/zh-CN/resource">提供给 Sketch 的元件/模板</a>
+- 对于中后台项目，在画 UI 界面时，建议参考前端已选型的开源组件库，并推荐使用开源组件库提供的制图元件/模板，如：<a target="_blank" href="http://element-cn.eleme.io/#/zh-CN/resource">element-ui</a>
+- 对于 H5 项目，如：<a target="_blank" href="https://youzan.github.io/vant/#/zh-CN/design">vant</a>

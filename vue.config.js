@@ -1,4 +1,5 @@
 const autoprefixer = require('autoprefixer')
+const postcssPxtorem = require('postcss-pxtorem') // @H5 将 px 转成 rem
 const { join } = require('path')
 const env = process.env
 const isDev = env.NODE_ENV === 'development'
@@ -30,16 +31,24 @@ module.exports = Object.assign({
       ? env.DEV_CSS_SOURCEMAP === 'true'
       : env.VUE_APP_ENV === 'stage',
     loaderOptions: {
+      /* @H5 */
+      less: {
+        modifyVars: {
+          hack: `true; @import '${join(__dirname, './src/vant/vars.less')}'`,
+        },
+      },
+
       postcss: {
         plugins: ({ resourcePath: path }) => {
+          const pxtorem = postcssPxtorem({ propList: ['*'] }) // @H5 将 px 转成 rem
           if (
             !isCssAutoprefixer ||
             /[\\/]node_modules[\\/].+\.css$/.test(path) ||
             /[\\/]src[\\/]libs[\\/].+\.css$/.test(path) // 跳过 autoprefixer
           ) {
-            return []
+            return [pxtorem]
           }
-          return [autoprefixer]
+          return [autoprefixer, pxtorem]
         },
       },
     },

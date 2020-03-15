@@ -2,6 +2,7 @@
 
 import Vue from 'vue'
 import {
+  Loading,
   Pagination,
   Dialog,
   Autocomplete,
@@ -45,7 +46,6 @@ import {
   Alert,
   Notification,
   Slider,
-  Loading,
   Icon,
   Row,
   Col,
