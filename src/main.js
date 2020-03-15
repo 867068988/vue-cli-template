@@ -13,6 +13,8 @@ if (process.env.VUE_APP_MOCK === 'true') {
   require('./api/mock')
 }
 
+Vue.config.devtools =
+  process.env.NODE_ENV === 'development' || process.env.VUE_APP_ENV === 'stage'
 Vue.config.productionTip = false
 
 new Vue({

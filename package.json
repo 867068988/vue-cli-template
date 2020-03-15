@@ -4,10 +4,9 @@
   "private": true,
   "scripts": {
     "start": "npm run serve",
-    "build": "npm run build:prod",
     "serve": "vue-cli-service serve --open",
-    "build:stage": "vue-cli-service build --mode=production_stage --modern",
-    "build:prod": "vue-cli-service build --mode=production_prod --modern",
+    "build:stage": "vue-cli-service build --mode=production-stage --modern",
+    "build": "vue-cli-service build --modern",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },

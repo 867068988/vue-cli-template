@@ -1,6 +1,6 @@
 /**
  * 静态资源服务 (node 运行)
- * 通常用于在浏览器中预览 dist 目录
+ * 通常用于预览/检查打包结果
  */
 
 const express = require('express')
@@ -20,7 +20,6 @@ app.use(
   '/api',
   createProxyMiddleware({
     target: 'http://10.25.73.159:8081',
-    changeOrigin: true,
   }),
 )
 
@@ -29,12 +28,12 @@ app.use(BASE_URL, function(req, res) {
   let sendfilePath = req.path
   let cacheControl = 'no-cache'
   const isStatic = /\.\w+$/.test(req.path)
-  const isHomePageStatic = /^\/index\.html/.test(req.path)
-  const isHashCache = /^\/static-hash\//.test(req.path)
+  const isStaticHtmlEntry = isStatic && /^\/index\.html/.test(req.path)
+  const isStaticHashCache = isStatic && /^\/static-hash\//.test(req.path)
   if (isStatic) {
-    if (isHomePageStatic) {
+    if (isStaticHtmlEntry) {
       cacheControl = 'no-store'
-    } else if (isHashCache) {
+    } else if (isStaticHashCache) {
       cacheControl = 'public,max-age=31536000'
     }
   } else {

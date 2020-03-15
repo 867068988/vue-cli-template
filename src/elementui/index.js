@@ -175,3 +175,13 @@ Vue.prototype.$confirm = MessageBox.confirm
 Vue.prototype.$prompt = MessageBox.prompt
 Vue.prototype.$notify = Notification
 Vue.prototype.$message = Message
+
+/* 在 @/components/ComponentExamples/index.vue 中用到 */
+Object.defineProperty(window, '__$mainComponentLibrary', {
+  get: () => 'element-ui',
+  set() {
+    window.console.error(
+      '如果 element-ui 只是作为辅助的组件库（非核心组件库），请把这里的定义去掉',
+    )
+  },
+})

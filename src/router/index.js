@@ -20,13 +20,13 @@ export const router = createRouter()
  * @param {Array} newRoutes
  */
 export const resetRoutes = function(newRoutes) {
-  const tempPath = `/__temp-path-${Date.now()}`
-  const currentPath = router.currentRoute.fullPath
   router.matcher = createRouter().matcher
-  router.addRoutes(router.app ? [{ path: tempPath }, ...newRoutes] : newRoutes)
+  router.addRoutes(newRoutes)
   if (router.app) {
-    router.replace(tempPath)
-    router.replace(currentPath)
+    const { path, query, hash } = router.currentRoute
+    router
+      .replace({ path, query: { ...query, [Date.now()]: null }, hash })
+      .then(() => router.replace({ path, query, hash }))
   }
 }
 

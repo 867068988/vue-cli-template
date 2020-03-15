@@ -18,7 +18,6 @@ module.exports = Object.assign({
       [env.VUE_APP_BASEURL_API]: {
         pathRewrite: { '^/@API': '' },
         target: env.DEV_PROXY_TARGET_API,
-        changeOrigin: true,
       },
     },
   },
@@ -50,7 +49,7 @@ module.exports = Object.assign({
 
   configureWebpack: config => {
     if (isDev) config.devtool = 'source-map'
-    config.optimization.splitChunks.cacheGroups.vendors.test = /[\\/]node_modules[\\/]|[\\/]src[\\/]libs[\\/]/ // 合在一起的同步包
+    config.optimization.splitChunks.cacheGroups.vendors.test = /[\\/]node_modules[\\/]|[\\/]src[\\/]libs[\\/]/ // 合在一起的 vendors 同步包
     config.module.rules.push({
       test: /\.svg$/,
       include: svgSpriteIconsDir,
@@ -65,7 +64,9 @@ module.exports = Object.assign({
   },
 
   chainWebpack: config => {
-    config.module.rule('js').exclude.add(/[\\/]src[\\/]libs[\\/].+\.js$/) // 跳过 babel-loader
+    config.module.rule('js').exclude.add(filePath => {
+      return /[\\/]src[\\/]libs[\\/].+\.js$/.test(filePath) // 跳过 babel-loader
+    })
     config.module.rule('svg').exclude.add(svgSpriteIconsDir)
     if (config.plugins.has('copy')) {
       config.plugin('copy').tap(args => {
