@@ -166,14 +166,14 @@ export default {
           href="https://router.vuejs.org/zh/api/"
           >vue-router 官网</a
         >
-        <!-- @PC -->
+        <!-- @PC.element-ui -->
         <a
           :class="$style.link"
           target="_blank"
           href="https://element.eleme.cn/#/zh-CN/component/table"
           >element-ui 官网</a
         >
-        <!-- @H5 -->
+        <!-- @H5.vant -->
         <a
           :class="$style.link"
           target="_blank"

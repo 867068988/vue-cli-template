@@ -31,7 +31,7 @@ module.exports = Object.assign({
       ? env.DEV_CSS_SOURCEMAP === 'true'
       : env.VUE_APP_ENV === 'stage',
     loaderOptions: {
-      /* @H5 */
+      /* @H5.vant */
       less: {
         modifyVars: {
           hack: `true; @import '${join(__dirname, './src/vant/vars.less')}'`,

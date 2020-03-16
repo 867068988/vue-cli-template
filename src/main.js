@@ -1,8 +1,8 @@
 import 'normalize.css'
 import './styles/reset.less'
 import Vue from 'vue'
-import './element-ui' // @PC
-import './vant' // @H5
+import './element-ui' // @PC.element-ui
+import './vant' // @H5.vant
 import './styles/global.less'
 import App from './App.vue'
 import router from './router'

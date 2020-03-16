@@ -10,7 +10,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
-  "//dependencies说明": "@H5：postcss-pxtorem、vant",
+  "//dependencies说明": "@H5: postcss-pxtorem; @H5.vant: vant",
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.4",

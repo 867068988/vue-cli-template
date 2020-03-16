@@ -2,7 +2,7 @@ module.exports = {
   presets: ['@vue/cli-plugin-babel/preset'],
 
   plugins: [
-    /* @PC */
+    /* @PC.element-ui */
     /* element-ui 按需引入，详情：https://github.com/ElementUI/babel-plugin-component */
     [
       'component',
@@ -13,7 +13,7 @@ module.exports = {
       'element-ui',
     ],
 
-    /* @H5 */
+    /* @H5.vant */
     /* vant 按需引入，详情：https://github.com/ElementUI/babel-plugin-component */
     [
       'component',
