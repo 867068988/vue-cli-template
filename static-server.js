@@ -4,6 +4,7 @@
  */
 
 const express = require('express')
+const compression = require('compression')
 const { createProxyMiddleware } = require('http-proxy-middleware')
 const { join } = require('path')
 const os = require('os')
@@ -24,6 +25,7 @@ app.use(
 )
 
 /* 静态资源 */
+app.use(compression())
 app.use(BASE_URL, function(req, res) {
   let sendfilePath = req.path
   let cacheControl = 'no-cache'

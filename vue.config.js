@@ -48,7 +48,7 @@ module.exports = Object.assign({
           ) {
             return [pxtorem]
           }
-          return [autoprefixer, pxtorem]
+          return [pxtorem, autoprefixer]
         },
       },
     },
