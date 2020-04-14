@@ -77,26 +77,6 @@ module.exports = Object /* 防止 GUI 改写配置 */.assign({
       .use('svgo-loader')
       .loader('svgo-loader')
 
-    if (config.plugins.has('copy')) {
-      config.plugin('copy').tap(args => {
-        args[0][0].ignore.push('.eslintrc.js', '.prettierrc.js')
-        args[0][0].transform = function(content, path) {
-          if (
-            /* 让 public 中的其它文件也支持 EJS 语法（传入运行时可用的环境变量） */
-            /\.(html|htm|css|js|json)$/.test(path) &&
-            /[\\/]public[\\/]libs[\\/]/.test(path) === false
-          ) {
-            const ejsData = _.pickBy(env, (val, key) =>
-              /^(NODE_ENV|BASE_URL|VUE_APP_.*)$/.test(key),
-            )
-            content = _.template(`${content}`, { sourceURL: path })(ejsData)
-          }
-          return content
-        }
-        return args
-      })
-    }
-
     /* @H5.vant */
     const vant = config.module
       .rule('less')
@@ -119,6 +99,26 @@ module.exports = Object /* 防止 GUI 改写配置 */.assign({
           .loader(loader)
           .options(ops)
       })
+
+    if (config.plugins.has('copy')) {
+      config.plugin('copy').tap(args => {
+        args[0][0].ignore.push('.eslintrc.js', '.prettierrc.js')
+        args[0][0].transform = function(content, path) {
+          if (
+            /* 让 public 中的其它文件也支持 EJS 语法（传入运行时可用的环境变量） */
+            /\.(html|htm|css|js|json)$/.test(path) &&
+            /[\\/]public[\\/]libs[\\/]/.test(path) === false
+          ) {
+            const ejsData = _.pickBy(env, (val, key) =>
+              /^(NODE_ENV|BASE_URL|VUE_APP_.*)$/.test(key),
+            )
+            content = _.template(`${content}`, { sourceURL: path })(ejsData)
+          }
+          return content
+        }
+        return args
+      })
+    }
   },
 })
 

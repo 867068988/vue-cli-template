@@ -1,4 +1,6 @@
 {
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
   "files.associations": {
     ".env": "ignore",
     ".env.*": "ignore"
@@ -21,7 +23,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-
   /* VSCode v1.41.0- 配置 */
   "eslint.autoFixOnSave": true,
   "eslint.validate": [

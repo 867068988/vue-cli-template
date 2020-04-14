@@ -15,7 +15,6 @@ module.exports = {
       'warn',
       { ignoreRestSiblings: true /* 解构剩余变量时不检查 */ },
     ],
-    'vue/no-unused-components': 'warn',
     'no-empty': 'off',
   },
 

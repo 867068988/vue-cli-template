@@ -8,7 +8,7 @@
 - [开发相关插件/工具](#开发相关插件工具)
 - [开发规范](#开发规范)
   - [vue](#vue)
-    - [【保持单向数据流】](#保持单向数据流)
+    - [【数据流向】](#数据流向)
     - [【慎用全局注册】](#慎用全局注册)
     - [【组件名称】](#组件名称)
     - [【组件中的 CSS】](#组件中的-css)
@@ -43,7 +43,6 @@
 
 - 新建 .env.development.local 来重写部分环境变量，如：
   - 模拟数据：`VUE_APP_MOCK = true`
-  - 接口前缀：`VUE_APP_BASEURL_API = /api`
   - 接口地址：`DEV_PROXY_TARGET_API = http://10.25.73.159:8081`
   - ...
 
@@ -65,29 +64,29 @@
   - 推荐插件
     - `json-formatter`
 - 其它工具
-  - 推荐：`Postman`
+  - 推荐：`Postman` 或 `Postwoman`
 
 # 开发规范
 
 ## vue
 
-### 【保持单向数据流】
+### 【数据流向】
 
 - 单个组件的数据流
 
   ```
-  props、data/$store、computed (由前面派生)
+  props、data/$store/$route、computed (由前面派生)
     ↓
   template/render
     ↓
   用户交互事件、初始化的异步回调
     ↓
-  data/$store
+  data/$store/$route
   ```
 
 - 组件间的数据流
   - 父向子传递用 props
-  - 子向父传递用 vue 内置的自定义事件
+  - 子向父传递用 vue 内置的自定义事件，即 this.\$emit
   - 父子双向传递用 <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">v-model</a> 或 <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">.sync</a>
   - 跨越传递用 vuex（慎用 EventBus）
   - 紧密耦合的祖孙间传递也可以考虑用父组件作为中间运输层
@@ -123,7 +122,7 @@
 
 - 使用前缀
   - 非业务通用组件使用 Base 前缀
-  - <a href="#hash_Ex">扩展/包装第三方开源组件或内部公共库组件</a>使用 Ex 前缀
+  - <a href="#hash_Ex">扩展/包装第三方开源组件或内部公共库组件 (不建议使用高阶组件)</a> 使用 Ex 前缀
   - 单例组件使用 The 前缀
 
 ### 【组件中的 CSS】
@@ -174,7 +173,7 @@
 
 - 慎用 this\.\$refs、this\.\$parent、this\.\$root、provide/inject
   - this\.\$refs 一般用在第三方开源组件或内部公共库组件或非常稳定的组件，以调用显式声明的方法
-  - 暴露给外部的方法要加 pub 前缀，如：this\.\$refs.pubFocus()
+  - 在万不得已的情况下需要暴露方法给外部调用时需要加 pub 前缀，如：this\.\$refs.pubFocus()
 - 尽量不要在 watch 中变更数据，易造成死循环。数据变更应该交给用户交互事件或初始化的异步回调
 - 组件中的 data 及 vuex 中的 state 应该可序列化，即不要存 undefined、function 等
 
@@ -240,7 +239,7 @@
   }
   ```
 
-- <span id="hash_Ex">扩展/包装第三方开源组件或内部公共库组件</span>
+- <span id="hash_Ex">扩展/包装第三方开源组件或内部公共库组件 (不建议使用高阶组件)</span>
   - 使用 extends 混入 (相关命名需要加 ex 前缀，防止覆盖)
   - 使用<a target="_blank" href="https://cn.vuejs.org/v2/guide/render-function.html">函数式组件</a>包装
 
@@ -266,7 +265,7 @@
   ```
 
 - 导入模块时不要省略后缀（js 除外），利于 IDE 感知
-- 当导入父层及以上目录中的模块时，建议使用'@'别名
+- 导入当前目录以外的模块时，建议使用'@'别名
 
   ```js
   // js
@@ -415,7 +414,7 @@
 |-- .env.test
 |-- static-server.js ------------ 静态资源服务 (node 运行)，通常用于预览/检查打包结果
 |-- README.html ----------------- 由 README.md 手动生成 (使用 VSCode 插件 Markdown Preview Enhanced)
-|-- .vscode --------------------- 统一 VSCode 配置
+|-- .vscode --------------------- 统一 VSCode 插件及配置
 |-- public
 |   |-- favicon.ico
 |   |-- index.html

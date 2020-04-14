@@ -271,7 +271,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <ul>
 <li><a href="#vue">vue</a>
 <ul>
-<li><a href="#%E4%BF%9D%E6%8C%81%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81">&#x3010;&#x4FDD;&#x6301;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#x3011;</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91">&#x3010;&#x6570;&#x636E;&#x6D41;&#x5411;&#x3011;</a></li>
 <li><a href="#%E6%85%8E%E7%94%A8%E5%85%A8%E5%B1%80%E6%B3%A8%E5%86%8C">&#x3010;&#x614E;&#x7528;&#x5168;&#x5C40;&#x6CE8;&#x518C;&#x3011;</a></li>
 <li><a href="#%E7%BB%84%E4%BB%B6%E5%90%8D%E7%A7%B0">&#x3010;&#x7EC4;&#x4EF6;&#x540D;&#x79F0;&#x3011;</a></li>
 <li><a href="#%E7%BB%84%E4%BB%B6%E4%B8%AD%E7%9A%84-css">&#x3010;&#x7EC4;&#x4EF6;&#x4E2D;&#x7684; CSS&#x3011;</a></li>
@@ -312,7 +312,6 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>&#x65B0;&#x5EFA; .env.development.local &#x6765;&#x91CD;&#x5199;&#x90E8;&#x5206;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#xFF1A;
 <ul>
 <li>&#x6A21;&#x62DF;&#x6570;&#x636E;&#xFF1A;<code>VUE_APP_MOCK = true</code></li>
-<li>&#x63A5;&#x53E3;&#x524D;&#x7F00;&#xFF1A;<code>VUE_APP_BASEURL_API = /api</code></li>
 <li>&#x63A5;&#x53E3;&#x5730;&#x5740;&#xFF1A;<code>DEV_PROXY_TARGET_API = http://10.25.73.159:8081</code></li>
 <li>...</li>
 </ul>
@@ -356,7 +355,7 @@ pre[data-line] .line-highlight[data-end]:after {
 </li>
 <li>&#x5176;&#x5B83;&#x5DE5;&#x5177;
 <ul>
-<li>&#x63A8;&#x8350;&#xFF1A;<code>Postman</code></li>
+<li>&#x63A8;&#x8350;&#xFF1A;<code>Postman</code> &#x6216; <code>Postwoman</code></li>
 </ul>
 </li>
 </ul>
@@ -364,24 +363,24 @@ pre[data-line] .line-highlight[data-end]:after {
 
 <h2 class="mume-header" id="vue">vue</h2>
 
-<h3 class="mume-header" id="%E4%BF%9D%E6%8C%81%E5%8D%95%E5%90%91%E6%95%B0%E6%8D%AE%E6%B5%81">&#x3010;&#x4FDD;&#x6301;&#x5355;&#x5411;&#x6570;&#x636E;&#x6D41;&#x3011;</h3>
+<h3 class="mume-header" id="%E6%95%B0%E6%8D%AE%E6%B5%81%E5%90%91">&#x3010;&#x6570;&#x636E;&#x6D41;&#x5411;&#x3011;</h3>
 
 <ul>
 <li>
 <p>&#x5355;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x6570;&#x636E;&#x6D41;</p>
-<pre data-role="codeBlock" data-info class="language-"><code>props&#x3001;data/$store&#x3001;computed (&#x7531;&#x524D;&#x9762;&#x6D3E;&#x751F;)
+<pre data-role="codeBlock" data-info class="language-"><code>props&#x3001;data/$store/$route&#x3001;computed (&#x7531;&#x524D;&#x9762;&#x6D3E;&#x751F;)
   &#x2193;
 template/render
   &#x2193;
 &#x7528;&#x6237;&#x4EA4;&#x4E92;&#x4E8B;&#x4EF6;&#x3001;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5F02;&#x6B65;&#x56DE;&#x8C03;
   &#x2193;
-data/$store
+data/$store/$route
 </code></pre></li>
 <li>
 <p>&#x7EC4;&#x4EF6;&#x95F4;&#x7684;&#x6570;&#x636E;&#x6D41;</p>
 <ul>
 <li>&#x7236;&#x5411;&#x5B50;&#x4F20;&#x9012;&#x7528; props</li>
-<li>&#x5B50;&#x5411;&#x7236;&#x4F20;&#x9012;&#x7528; vue &#x5185;&#x7F6E;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;</li>
+<li>&#x5B50;&#x5411;&#x7236;&#x4F20;&#x9012;&#x7528; vue &#x5185;&#x7F6E;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x4E8B;&#x4EF6;&#xFF0C;&#x5373; this.$emit</li>
 <li>&#x7236;&#x5B50;&#x53CC;&#x5411;&#x4F20;&#x9012;&#x7528; <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">v-model</a> &#x6216; <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">.sync</a></li>
 <li>&#x8DE8;&#x8D8A;&#x4F20;&#x9012;&#x7528; vuex&#xFF08;&#x614E;&#x7528; EventBus&#xFF09;</li>
 <li>&#x7D27;&#x5BC6;&#x8026;&#x5408;&#x7684;&#x7956;&#x5B59;&#x95F4;&#x4F20;&#x9012;&#x4E5F;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x7528;&#x7236;&#x7EC4;&#x4EF6;&#x4F5C;&#x4E3A;&#x4E2D;&#x95F4;&#x8FD0;&#x8F93;&#x5C42;</li>
@@ -422,7 +421,7 @@ data/$store
 <p>&#x4F7F;&#x7528;&#x524D;&#x7F00;</p>
 <ul>
 <li>&#x975E;&#x4E1A;&#x52A1;&#x901A;&#x7528;&#x7EC4;&#x4EF6;&#x4F7F;&#x7528; Base &#x524D;&#x7F00;</li>
-<li><a href="#hash_Ex">&#x6269;&#x5C55;/&#x5305;&#x88C5;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6;</a>&#x4F7F;&#x7528; Ex &#x524D;&#x7F00;</li>
+<li><a href="#hash_Ex">&#x6269;&#x5C55;/&#x5305;&#x88C5;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6; (&#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;)</a> &#x4F7F;&#x7528; Ex &#x524D;&#x7F00;</li>
 <li>&#x5355;&#x4F8B;&#x7EC4;&#x4EF6;&#x4F7F;&#x7528; The &#x524D;&#x7F00;</li>
 </ul>
 </li>
@@ -482,7 +481,7 @@ data/$store
 <li>&#x614E;&#x7528; this.$refs&#x3001;this.$parent&#x3001;this.$root&#x3001;provide/inject
 <ul>
 <li>this.$refs &#x4E00;&#x822C;&#x7528;&#x5728;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6;&#x6216;&#x975E;&#x5E38;&#x7A33;&#x5B9A;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x4EE5;&#x8C03;&#x7528;&#x663E;&#x5F0F;&#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;</li>
-<li>&#x66B4;&#x9732;&#x7ED9;&#x5916;&#x90E8;&#x7684;&#x65B9;&#x6CD5;&#x8981;&#x52A0; pub &#x524D;&#x7F00;&#xFF0C;&#x5982;&#xFF1A;this.$refs.pubFocus()</li>
+<li>&#x5728;&#x4E07;&#x4E0D;&#x5F97;&#x5DF2;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x9700;&#x8981;&#x66B4;&#x9732;&#x65B9;&#x6CD5;&#x7ED9;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x65F6;&#x9700;&#x8981;&#x52A0; pub &#x524D;&#x7F00;&#xFF0C;&#x5982;&#xFF1A;this.$refs.pubFocus()</li>
 </ul>
 </li>
 <li>&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x5728; watch &#x4E2D;&#x53D8;&#x66F4;&#x6570;&#x636E;&#xFF0C;&#x6613;&#x9020;&#x6210;&#x6B7B;&#x5FAA;&#x73AF;&#x3002;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x5E94;&#x8BE5;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x4E8B;&#x4EF6;&#x6216;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5F02;&#x6B65;&#x56DE;&#x8C03;</li>
@@ -564,7 +563,7 @@ data/$store
 <span class="token punctuation">}</span>
 </pre></li>
 <li>
-<p><span id="hash_Ex">&#x6269;&#x5C55;/&#x5305;&#x88C5;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6;</span></p>
+<p><span id="hash_Ex">&#x6269;&#x5C55;/&#x5305;&#x88C5;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6; (&#x4E0D;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x9AD8;&#x9636;&#x7EC4;&#x4EF6;)</span></p>
 <ul>
 <li>&#x4F7F;&#x7528; extends &#x6DF7;&#x5165; (&#x76F8;&#x5173;&#x547D;&#x540D;&#x9700;&#x8981;&#x52A0; ex &#x524D;&#x7F00;&#xFF0C;&#x9632;&#x6B62;&#x8986;&#x76D6;)</li>
 <li>&#x4F7F;&#x7528;<a target="_blank" href="https://cn.vuejs.org/v2/guide/render-function.html">&#x51FD;&#x6570;&#x5F0F;&#x7EC4;&#x4EF6;</a>&#x5305;&#x88C5;</li>
@@ -600,7 +599,7 @@ data/$store
 <p>&#x5BFC;&#x5165;&#x6A21;&#x5757;&#x65F6;&#x4E0D;&#x8981;&#x7701;&#x7565;&#x540E;&#x7F00;&#xFF08;js &#x9664;&#x5916;&#xFF09;&#xFF0C;&#x5229;&#x4E8E; IDE &#x611F;&#x77E5;</p>
 </li>
 <li>
-<p>&#x5F53;&#x5BFC;&#x5165;&#x7236;&#x5C42;&#x53CA;&#x4EE5;&#x4E0A;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x6A21;&#x5757;&#x65F6;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&apos;@&apos;&#x522B;&#x540D;</p>
+<p>&#x5BFC;&#x5165;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4EE5;&#x5916;&#x7684;&#x6A21;&#x5757;&#x65F6;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&apos;@&apos;&#x522B;&#x540D;</p>
 <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token comment">// js</span>
 <span class="token keyword">import</span> XxxXxx <span class="token keyword">from</span> <span class="token string">&apos;@/components/XxxXxx.vue&apos;</span>
 </pre><pre data-role="codeBlock" data-info="html" class="language-html"><span class="token comment">&lt;!-- template --&gt;</span>
@@ -746,7 +745,7 @@ data/$store
 |-- .env.test
 |-- static-server.js ------------ &#x9759;&#x6001;&#x8D44;&#x6E90;&#x670D;&#x52A1; (node &#x8FD0;&#x884C;)&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x9884;&#x89C8;/&#x68C0;&#x67E5;&#x6253;&#x5305;&#x7ED3;&#x679C;
 |-- README.html ----------------- &#x7531; README.md &#x624B;&#x52A8;&#x751F;&#x6210; (&#x4F7F;&#x7528; VSCode &#x63D2;&#x4EF6; Markdown Preview Enhanced)
-|-- .vscode --------------------- &#x7EDF;&#x4E00; VSCode &#x914D;&#x7F6E;
+|-- .vscode --------------------- &#x7EDF;&#x4E00; VSCode &#x63D2;&#x4EF6;&#x53CA;&#x914D;&#x7F6E;
 |-- public
 |   |-- favicon.ico
 |   |-- index.html
