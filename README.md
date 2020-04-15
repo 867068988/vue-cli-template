@@ -38,6 +38,8 @@
   - 打包为 prod 环境：`npm run build`
   - 检查并修复源码：`npm run lint`
   - 运行单元测试：`npm run test:unit`
+  - 版本号操作：`npm version [major | minor | patch]`
+    - 版本号格式说明：major(主版本号).minor(次版本号).patch(修订号)
 
 # 开发本地环境变量
 
