@@ -131,8 +131,8 @@
 
 - 使用 <a target="_blank" href="https://vue-loader.vuejs.org/zh/guide/css-modules.html">CSS Modules</a>，基于如下考虑：
 
-  - 不让外部进行样式重写，避免耦合 (与组件通信的唯一方式是 props)
-  - 放心使用简短且语义强的 class 名，无需担心命名空间，使可读性更好
+  - 不让外部进行样式重写，避免强耦合 (可通过 props 来处理内部样式的变化)
+  - 放心使用简短且语义强的 class 名，无需多余的命名空间
 
 - 使用方式
 
