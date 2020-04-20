@@ -1,11 +1,25 @@
 <!-- svg-sprite 图标，颜色与大小的控制同 iconfont -->
 
 <script>
-const requireCtx = require.context(
-  './icons/',
-  false, // 不解析子文件夹
-  /\.svg$/,
-)
+let requireCtx
+try {
+  requireCtx = require.context(
+    './icons/',
+    false, // 不解析子文件夹
+    /\.svg$/,
+  )
+} catch (err) {
+  if (
+    /* 允许文件夹缺失（处理 git 无法提交空文件夹的情况） */
+    err.code === 'MODULE_NOT_FOUND'
+  ) {
+    requireCtx = () => {}
+    requireCtx.keys = () => []
+  } else {
+    throw err
+  }
+}
+
 const fileNames = requireCtx.keys()
 const names = Object.freeze(
   fileNames.map(fileName =>
