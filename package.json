@@ -59,10 +59,11 @@
   "//browserslist说明": "@PC & @H5",
   "browserslist": [
     "> 1%",
+    "last 2 versions",
     "since 2016",
-    "edge > 11",
-    "ie > 10",
-    "Android >= 4.0",
+    "edge >= 12",
+    "not ie <= 10",
+    "Android >= 4",
     "iOS >= 8"
   ],
   "jest": {

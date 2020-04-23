@@ -28,6 +28,11 @@ module.exports = Object /* 防止 GUI 改写配置 */.assign({
 
   css: {
     loaderOptions: {
+      less: {
+        globalVars: {
+          hack: `true; @import '${join(__dirname, './src/styles/vars.less')}'`,
+        },
+      },
       postcss: {
         plugins: function({ resourcePath: path }) {
           const pxtorem = postcssPxtorem({ propList: ['*'] }) // @H5 将 px 转成 rem
@@ -90,6 +95,7 @@ module.exports = Object /* 防止 GUI 改写配置 */.assign({
       .use.forEach(({ __useName, loader, options = {} }) => {
         const ops = _.cloneDeep(options)
         if (__useName === 'less-loader') {
+          delete ops.globalVars
           ops.modifyVars = {
             hack: `true; @import '${join(__dirname, './src/vant/vars.less')}'`,
           }

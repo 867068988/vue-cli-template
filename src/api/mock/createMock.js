@@ -30,9 +30,8 @@ export const createMock = (baseURL, isCollapsed = true) =>
       const body = (() => {
         try {
           return JSON.parse(opts.body)
-        } catch (e) {
-          return opts.body
-        }
+        } catch (e) {}
+        return opts.body
       })()
       /* res */
       const res = func.call(this, opts, query, body)
@@ -43,9 +42,8 @@ export const createMock = (baseURL, isCollapsed = true) =>
         const resCopy = (() => {
           try {
             return removeProto(JSON.parse(JSON.stringify(res)))
-          } catch (e) {
-            return removeProto(_.cloneDeep(res))
-          }
+          } catch (e) {}
+          return removeProto(_.cloneDeep(res))
         })()
         const logger = console
         const _k = isCollapsed ? 'groupCollapsed' : 'group'

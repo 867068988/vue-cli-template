@@ -429,7 +429,7 @@
     |-- styles
     |   |-- global.less
     |   |-- reset.less
-    |   |-- vars.less ----------- less 全局变量
+    |   |-- vars.less ----------- less 全局变量/函数 (webpack 自动注入)
     |   |-- xxx.less
     |-- scripts
     |   |-- utils --------------- 通用方法
