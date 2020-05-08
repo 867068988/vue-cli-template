@@ -24,7 +24,7 @@ module.exports = Object /* 防止 GUI 改写配置 */.assign({
 
   assetsDir: 'static-hash',
 
-  publicPath: env.BASE_URL || '/',
+  publicPath: env.BASE_URL,
 
   css: {
     loaderOptions: {
