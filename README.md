@@ -32,6 +32,7 @@
 # 项目运行指南
 
 - 安装/更新依赖包：`npm install`
+  - 说明：进入正式开发时需要提交 package-lock.json，并且慎用 npm update
 - 运行：
   - 启动为 dev 环境：`npm run serve` 或 `npm start`
   - 打包为 stage 环境：`npm run build:stage`

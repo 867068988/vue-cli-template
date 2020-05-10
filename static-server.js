@@ -46,7 +46,7 @@ app.use(BASE_URL, function(req, res) {
       if (req.path === '/') {
         cacheControl = 'no-store'
       }
-      sendfilePath = req.path + '/index.html'
+      sendfilePath = join(req.path, '/index.html')
     }
   }
   res.setHeader('Cache-Control', cacheControl)
@@ -77,7 +77,7 @@ app.listen(port, function() {
   })()
   const local = `http://localhost:${port}${BASE_URL}`
   const network = `http://${ip}:${port}${BASE_URL}`
-  global.console.log(`\nLocal:   ${local}`)
+  global.console.log(`\n  Local: ${local}`)
   global.console.log(`Network: ${network}\n`)
   open(network)
 })

@@ -1,3 +1,8 @@
+/**
+ * 路由权限控制方式：beforeEach | addRoutes | 两者结合
+ * 这里封装了 addRoutes 方式，即 resetRoutes 与 filterMapRoutes
+ */
+
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './routes'
