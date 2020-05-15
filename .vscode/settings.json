@@ -31,7 +31,8 @@
     {
       "language": "vue",
       "autoFix": true
-    }
+    },
+    "html"
   ],
 
   "path-autocomplete.pathMappings": {

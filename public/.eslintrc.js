@@ -7,7 +7,7 @@ module.exports = {
   globals: {},
 
   extends: ["eslint:recommended"],
-  plugins: ["prettier"],
+  plugins: ["html", "prettier"],
   rules: {
     "no-console": "warn",
     "no-unused-vars": "warn",
