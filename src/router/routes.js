@@ -2,6 +2,9 @@
 
 import Home from '@/views/Home/index.vue'
 
+/**
+ * @type {import('vue-router').RouteConfig[]}
+ */
 export const routes = [
   {
     path: '/',
@@ -29,4 +32,5 @@ if (process.env.NODE_ENV === 'development') {
       ),
   })
 }
+
 export default routes

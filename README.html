@@ -6,7 +6,6 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
       
       
-
       
       
       
@@ -14,7 +13,6 @@
       
       
       
-
       <style>
       /**
  * prism.js Github theme based on GitHub's theme.
@@ -321,7 +319,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>&#x65B0;&#x5EFA; .env.development.local &#x6765;&#x91CD;&#x5199;&#x90E8;&#x5206;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#xFF1A;
 <ul>
 <li>&#x6A21;&#x62DF;&#x6570;&#x636E;&#xFF1A;<code>VUE_APP_MOCK = true</code></li>
-<li>&#x63A5;&#x53E3;&#x5730;&#x5740;&#xFF1A;<code>DEV_PROXY_TARGET_API = http://10.25.73.159:8081</code></li>
+<li>&#x63A5;&#x53E3;&#x670D;&#x52A1;&#xFF1A;<code>DEV_PROXY_TARGET_API = http://10.25.73.159:8081</code></li>
 <li>...</li>
 </ul>
 </li>
@@ -636,7 +634,7 @@ data/$store/$route
 
 <ul>
 <li>
-<p>&#x6587;&#x6863;&#x5934;&#x90E8;&#x6CE8;&#x91CA;</p>
+<p>&#x6587;&#x4EF6;&#x5934;&#x90E8;&#x6CE8;&#x91CA;</p>
 <ul>
 <li>
 <p>&#x811A;&#x672C;&#x6587;&#x4EF6;&#x3001;&#x6837;&#x5F0F;&#x6587;&#x4EF6;</p>
@@ -653,12 +651,12 @@ data/$store/$route
 </ul>
 </li>
 <li>
-<p>js &#x6CE8;&#x91CA; (&#x4F7F;&#x7528; <a target="_blank" href="https://jsdoc.app/">JSDoc &#x6CE8;&#x91CA;&#x6807;&#x51C6;</a>&#xFF0C;&#x8FD8;&#x80FD;&#x5E2E;&#x52A9; IDE &#x667A;&#x80FD;&#x611F;&#x77E5;)</p>
+<p>js &#x6CE8;&#x91CA; (&#x7ED3;&#x5408; <a target="_blank" href="https://jsdoc.app/">JSDoc &#x6CE8;&#x91CA;&#x6807;&#x51C6;</a>&#xFF0C;&#x5E2E;&#x52A9; IDE &#x667A;&#x80FD;&#x611F;&#x77E5;)</p>
 <ul>
 <li>
 <p>&#x6CE8;&#x91CA;&#x683C;&#x5F0F;</p>
 <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token comment">/**
- * &#x5927;&#x7684;&#x533A;&#x5757;&#x3001;&#x6587;&#x6863;&#x5934;&#x90E8;&#x3001;JSDoc
+ * &#x6587;&#x4EF6;&#x5934;&#x90E8;&#x3001;&#x5927;&#x7684;&#x533A;&#x5757;&#x3001;JSDoc
  */</span>
 
 <span class="token comment">/* &#x4E00;&#x822C;&#x7684;&#x533A;&#x5757; */</span>
@@ -668,50 +666,67 @@ data/$store/$route
 <li>
 <p><a target="_blank" href="https://jsdoc.app/howto-es2015-modules.html">ES 2015 Modules</a></p>
 <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token comment">/**
- * &#x8BF4;&#x660E;
- * @author &#x4F5C;&#x8005;
- * @param {&#x7C7B;&#x578B;} a
- * @param {Object} options
- * @param {&#x7C7B;&#x578B;} options.x
- * @param {&#x7C7B;&#x578B;} options.y
- * @param {&#x7C7B;&#x578B;} [options.z] &#x53EF;&#x9009;&#x53C2;&#x6570;
+ * &#x4F7F;&#x7528; param &#x8868;&#x793A;&#x51FD;&#x6570;&#x5F62;&#x53C2;
+ * &#x4F7F;&#x7528; returns &#x8868;&#x793A;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;
+ * @param {&#x7C7B;&#x578B;} data
+ * @param {object} options
+ * @param {&#x7C7B;&#x578B;} options.xxx
+ * @param {&#x7C7B;&#x578B;} options.yyy
+ * @param {&#x7C7B;&#x578B;} [options.zzz] &#x53EF;&#x9009;&#x53C2;&#x6570;
+ * @returns {&#x7C7B;&#x578B;}
  */</span>
-<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token parameter">data<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * &#x4F7F;&#x7528; type &#x8FDB;&#x884C;&#x7C7B;&#x578B;&#x65AD;&#x8A00;
+ * @type {import(&apos;vue-router&apos;).RouteConfig[]}
+ */</span>
+<span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+<span class="token comment">/**
+ * &#x4F7F;&#x7528; typedef &#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#xFF0C;&#x65B9;&#x4FBF;&#x591A;&#x5904;&#x4F7F;&#x7528;
+ * @typedef {import(&apos;vue-router&apos;).RouteConfig} RouteConfig
+ * @param {(meta: object, route: RouteConfig) =&gt; boolean} filterCallback
+ * @returns {RouteConfig[]}
+ */</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">filterMapRoutes</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">filterCallback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 
 <span class="token comment">/**
  * &#x7C7B;&#x578B;&#x53C2;&#x8003;&#xFF1A;https://www.tslang.cn/docs/handbook/basic-types.html
  *
  * &#x57FA;&#x672C;
- * @param {boolean}
- * @param {number}
- * @param {string}
- * @param {1|2|3}
- * @param {&apos;a&apos;|&apos;b&apos;|&apos;c&apos;}
+ * @type {boolean}
+ * @type {number}
+ * @type {string}
+ * @type {1 | 2 | 3}
+ * @type {&apos;a&apos; | &apos;b&apos; | &apos;c&apos;}
  *
  * &#x6570;&#x7EC4;
- * @param {Array}
- * @param {Array&lt;string&gt;}
+ * @type {Array}
+ * @type {string[]}
  *
  * &#x51FD;&#x6570;
- * @param {Function}
- * @param {(data)=&gt;void}
- * @param {(data:Array)=&gt;void|boolean}
+ * @type {Function}
+ * @type {(data) =&gt; void}
+ * @type {(data: Array) =&gt; void | boolean}
  *
  * &#x5BF9;&#x8C61;
- * @param {Object}
- * @param {any}
+ * @type {object}
  *
  * &#x8054;&#x5408;
- * @param {number|string}
- * @param {boolean|(()=&gt;boolean)}
+ * @type {number | string}
+ * @type {boolean | (() =&gt; boolean)}
+ *
+ * &#x5BFC;&#x5165;
+ * @type {import(&apos;xxx&apos;).xxx}
  */</span>
 </pre></li>
 <li>
 <p><a target="_blank" href="https://jsdoc.app/howto-es2015-classes.html">ES 2015 Classes</a></p>
 </li>
 <li>
-<p>&#x5F85;&#x5B8C;&#x6210;&#x7684;&#x529F;&#x80FD;</p>
-<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token comment">/* TODO &#x8BF4;&#x660E; */</span>
+<p>&#x5F85;&#x5B8C;&#x6210;&#x6216;&#x5F85;&#x4F18;&#x5316;&#x7684;&#x5730;&#x65B9;</p>
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token comment">/* TODO: &#x8BF4;&#x660E; */</span>
 </pre></li>
 </ul>
 </li>
@@ -719,7 +734,7 @@ data/$store/$route
 <p>css &#x6CE8;&#x91CA;</p>
 <ul>
 <li>
-<p>&#x5168;&#x5C40;&#x6837;&#x5F0F;&#x4E00;&#x5B9A;&#x8981;&#x5199;&#x6CE8;&#x91CA;</p>
+<p>&#x5168;&#x5C40;&#x6837;&#x5F0F;&#x9700;&#x8981;&#x5199;&#x6CE8;&#x91CA;</p>
 <pre data-role="codeBlock" data-info="less" class="language-less"><span class="token comment">/* &#x8BF4;&#x660E; */</span>
 <span class="token selector">.g-class1</span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span>
@@ -731,7 +746,7 @@ data/$store/$route
 </ul>
 </li>
 <li>
-<p>vue template</p>
+<p>vue template &#x6CE8;&#x91CA;</p>
 <ul>
 <li>
 <p>&#x9002;&#x5F53;&#x4F7F;&#x7528;&#x6CE8;&#x91CA;&#x4E0E;&#x7A7A;&#x884C;</p>

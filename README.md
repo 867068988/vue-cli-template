@@ -46,7 +46,7 @@
 
 - 新建 .env.development.local 来重写部分环境变量，如：
   - 模拟数据：`VUE_APP_MOCK = true`
-  - 接口地址：`DEV_PROXY_TARGET_API = http://10.25.73.159:8081`
+  - 接口服务：`DEV_PROXY_TARGET_API = http://10.25.73.159:8081`
   - ...
 
 # 开发相关插件/工具
@@ -298,7 +298,7 @@
 
 ## 代码注释
 
-- 文档头部注释
+- 文件头部注释
 
   - 脚本文件、样式文件
 
@@ -315,13 +315,13 @@
     <!-- @author 作者 -->
     ```
 
-- js 注释 (使用 <a target="_blank" href="https://jsdoc.app/">JSDoc 注释标准</a>，还能帮助 IDE 智能感知)
+- js 注释 (结合 <a target="_blank" href="https://jsdoc.app/">JSDoc 注释标准</a>，帮助 IDE 智能感知)
 
   - 注释格式
 
     ```js
     /**
-     * 大的区块、文档头部、JSDoc
+     * 文件头部、大的区块、JSDoc
      */
 
     /* 一般的区块 */
@@ -333,55 +333,72 @@
 
     ```js
     /**
-     * 说明
-     * @author 作者
-     * @param {类型} a
-     * @param {Object} options
-     * @param {类型} options.x
-     * @param {类型} options.y
-     * @param {类型} [options.z] 可选参数
+     * 使用 param 表示函数形参
+     * 使用 returns 表示函数返回值
+     * @param {类型} data
+     * @param {object} options
+     * @param {类型} options.xxx
+     * @param {类型} options.yyy
+     * @param {类型} [options.zzz] 可选参数
+     * @returns {类型}
      */
-    export function myMethod(a, options) {}
+    export function myMethod(data, options) {}
+
+    /**
+     * 使用 type 进行类型断言
+     * @type {import('vue-router').RouteConfig[]}
+     */
+    const routes = []
+
+    /**
+     * 使用 typedef 定义类型，方便多处使用
+     * @typedef {import('vue-router').RouteConfig} RouteConfig
+     * @param {(meta: object, route: RouteConfig) => boolean} filterCallback
+     * @returns {RouteConfig[]}
+     */
+    export const filterMapRoutes = function(filterCallback) {}
 
     /**
      * 类型参考：https://www.tslang.cn/docs/handbook/basic-types.html
      *
      * 基本
-     * @param {boolean}
-     * @param {number}
-     * @param {string}
-     * @param {1|2|3}
-     * @param {'a'|'b'|'c'}
+     * @type {boolean}
+     * @type {number}
+     * @type {string}
+     * @type {1 | 2 | 3}
+     * @type {'a' | 'b' | 'c'}
      *
      * 数组
-     * @param {Array}
-     * @param {Array<string>}
+     * @type {Array}
+     * @type {string[]}
      *
      * 函数
-     * @param {Function}
-     * @param {(data)=>void}
-     * @param {(data:Array)=>void|boolean}
+     * @type {Function}
+     * @type {(data) => void}
+     * @type {(data: Array) => void | boolean}
      *
      * 对象
-     * @param {Object}
-     * @param {any}
+     * @type {object}
      *
      * 联合
-     * @param {number|string}
-     * @param {boolean|(()=>boolean)}
+     * @type {number | string}
+     * @type {boolean | (() => boolean)}
+     *
+     * 导入
+     * @type {import('xxx').xxx}
      */
     ```
 
   - <a target="_blank" href="https://jsdoc.app/howto-es2015-classes.html">ES 2015 Classes</a>
 
-  - 待完成的功能
+  - 待完成或待优化的地方
     ```js
-    /* TODO 说明 */
+    /* TODO: 说明 */
     ```
 
 - css 注释
 
-  - 全局样式一定要写注释
+  - 全局样式需要写注释
 
     ```less
     /* 说明 */
@@ -393,7 +410,7 @@
     }
     ```
 
-- vue template
+- vue template 注释
 
   - 适当使用注释与空行
 

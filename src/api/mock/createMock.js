@@ -6,13 +6,13 @@ Mock.setup({ timeout: '100-500' })
 
 /**
  * @param {string} baseURL
- * @param {boolean} [isCollapsed]
+ * @param {boolean} [isGroupOpened]
  */
-export const createMock = (baseURL, isCollapsed = true) =>
+export const createMock = (baseURL, isGroupOpened = false) =>
   /**
    * @param {string} url 用 reg: 前缀表示正则
-   * @param {'get'|'post'|'put'|'patch'|'delete'} [type]
-   * @param {(opts, query, body)=>any} func
+   * @param {'get' | 'post' | 'put' | 'delete'} [type]
+   * @param {(opts, query, body) => any} func
    */
   (url, type, func) => {
     if (typeof type === 'function') {
@@ -46,7 +46,7 @@ export const createMock = (baseURL, isCollapsed = true) =>
           return removeProto(_.cloneDeep(res))
         })()
         const logger = console
-        const _k = isCollapsed ? 'groupCollapsed' : 'group'
+        const _k = isGroupOpened ? 'group' : 'groupCollapsed'
         logger[_k](`mock:${type}:${urlParsed.pathname}`)
         !_.isEmpty(queryCopy) && logger.log('query', queryCopy)
         !_.isEmpty(bodyCopy) && logger.log('body ', bodyCopy)

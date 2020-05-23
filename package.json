@@ -10,7 +10,7 @@
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
-  "//dependencies说明": "@H5.vant: vant",
+  "//dependencies说明": "@H5: vconsole; @H5.vant: vant",
   "dependencies": {
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
@@ -22,6 +22,7 @@
     "qs": "^6.9.4",
     "url-parse": "^1.4.7",
     "vant": "^2.8.1",
+    "vconsole": "^3.3.4",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
     "vuex": "^3.3.0"

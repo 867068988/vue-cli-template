@@ -22,14 +22,10 @@ const responseErrHandle = err => {
 }
 
 /**
- * @param {Objec} [instanceConfig]
- * @param {(instance)=>void} [func]
+ * @param {import('axios').AxiosRequestConfig} instanceConfig
+ * @param {(instance: import('axios').AxiosInstance) => void} [callback]
  */
-export const createAxios = (instanceConfig, func) => {
-  if (typeof instanceConfig === 'function') {
-    func = instanceConfig
-    instanceConfig = {}
-  }
+export const createAxios = (instanceConfig, callback) => {
   instanceConfig = instanceConfig || {}
   const defaults = {
     /* 默认配置 */
@@ -37,7 +33,7 @@ export const createAxios = (instanceConfig, func) => {
   const instance = axios.create(mergeConfig(defaults, instanceConfig))
   instance.interceptors.request.use(requestHandle, requestErrHandle)
   instance.interceptors.response.use(responseHandle, responseErrHandle)
-  func && func(instance)
+  callback && callback(instance)
   return instance
 }
 

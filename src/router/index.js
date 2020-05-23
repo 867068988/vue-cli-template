@@ -22,7 +22,7 @@ export const router = createRouter()
 
 /**
  * 路由重置
- * @param {Array} newRoutes
+ * @param {import('vue-router').RouteConfig[]} newRoutes
  */
 export const resetRoutes = function(newRoutes) {
   router.matcher = createRouter().matcher
@@ -30,15 +30,16 @@ export const resetRoutes = function(newRoutes) {
   if (router.app) {
     const { path, query, hash } = router.currentRoute
     router
-      .replace({ path, query: { ...query, [Date.now()]: null }, hash })
+      .replace({ path, query: { ...query, _resetRoutes: '1' }, hash })
       .then(() => router.replace({ path, query, hash }))
   }
 }
 
 /**
  * 路由过滤（过滤出有权限的路由）
- * @param {(meta:Object,route:Object)=>boolean} filterCallback
- * @returns {Array}
+ * @typedef {import('vue-router').RouteConfig} RouteConfig
+ * @param {(meta: object, route: RouteConfig) => boolean} filterCallback
+ * @returns {RouteConfig[]}
  */
 export const filterMapRoutes = function(filterCallback) {
   const loop = curRoutes =>

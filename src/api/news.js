@@ -2,7 +2,7 @@ import http from '@/scripts/http'
 
 /**
  * 获取新闻列表
- * @param {Object} [query]
+ * @param {object} [query]
  * @param {string} [query.type] 分类
  * @param {string} [query.keyword] 关键词
  * @param {string} [query.pageNum] 第几页

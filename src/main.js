@@ -13,6 +13,9 @@ import './injects'
 if (process.env.VUE_APP_MOCK === 'true') {
   require('./api/mock')
 }
+if (process.env.VUE_APP_ENV === 'dev' || process.env.VUE_APP_ENV === 'stage') {
+  require('./vconsole') // @H5
+}
 
 Vue.config.devtools =
   process.env.NODE_ENV === 'development' || process.env.VUE_APP_ENV === 'stage'
