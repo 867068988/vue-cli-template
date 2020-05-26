@@ -6,7 +6,7 @@ if (process.env.VUE_APP_ENV === 'dev') {
   ) {
     const VConsole = require('vconsole')
     window.console.log(
-      '\n移动端模拟器环境禁用 vConsole 的方法：\nlocalStorage._vConsole_close = 1\n\n',
+      '\n移动端模拟器禁用 vConsole 的方式：\nlocalStorage._vConsole_close = 1\n\n',
     )
     new VConsole()
   }
@@ -18,9 +18,9 @@ if (process.env.VUE_APP_ENV === 'stage') {
     let vConsole
     const loadVconsole = async function() {
       const { default: VConsole } = await import('vconsole')
-      vConsole = new VConsole()
+      vConsole = vConsole || new VConsole()
     }
-    // 启用后在指定时间内，页面刷新或重新进入时直接启用
+    // 通过连击启用后在指定时间内，页面刷新或重新进入时直接启用
     if (Date.now() - localStorage._vConsole_enabledTime < 30 * 60 * 1000) {
       loadVconsole()
     }
@@ -32,6 +32,7 @@ if (process.env.VUE_APP_ENV === 'stage') {
       count = 0
     }
     const eventHandler = async function(event) {
+      if (!event.isTrusted) return
       clearTimeout(timer)
       timer = setTimeout(reset, 200)
       if (event.targetTouches.length > 1) {
