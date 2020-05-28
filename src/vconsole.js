@@ -6,7 +6,7 @@ if (process.env.VUE_APP_ENV === 'dev') {
   ) {
     const VConsole = require('vconsole')
     window.console.log(
-      '\n移动端模拟器禁用 vConsole 的方式：\nlocalStorage._vConsole_close = 1\n\n',
+      '\ndev 环境的移动端禁用 vConsole 的方式：\nlocalStorage._vConsole_close = 1\n\n',
     )
     new VConsole()
   }

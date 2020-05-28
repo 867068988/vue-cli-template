@@ -58,7 +58,19 @@ module.exports = Object /* 防止 GUI 改写配置 */.assign({
 
   configureWebpack: config => {
     if (isDev) config.devtool = 'source-map'
-    config.optimization.splitChunks.cacheGroups.vendors.test = /[\\/]node_modules[\\/]|[\\/]src[\\/]libs[\\/]/ // 合在一起的 vendors 同步包
+    config.optimization.splitChunks.cacheGroups.vendors.test = module => {
+      const { resource: path } = module
+      if (!path) return false
+      if (
+        /* 为了 chunk-vendors*.js 的稳定性，需要排除掉经过 babel 插件处理成按需引入的模块（详见 babel.config.js） */
+        /[\\/]node_modules[\\/]element-ui[\\/]/.test(path) || // @PC.element-ui
+        /[\\/]node_modules[\\/]vant[\\/]/.test(path) || // @H5.vant
+        /[\\/]node_modules[\\/]lodash[\\/]/.test(path)
+      ) {
+        return false
+      }
+      return /[\\/]node_modules[\\/]|[\\/]src[\\/]libs[\\/]/.test(path) // 将这些初始化时的依赖包纳入 chunk-vendors*.js（其它的则纳入 app*.js）
+    }
   },
 
   chainWebpack: config => {
