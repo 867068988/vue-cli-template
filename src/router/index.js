@@ -22,7 +22,7 @@ export const router = createRouter()
 
 /**
  * 路由重置
- * @param {import('vue-router').RouteConfig[]} newRoutes
+ * @param {routes} newRoutes
  */
 export const resetRoutes = function(newRoutes) {
   router.matcher = createRouter().matcher
@@ -37,9 +37,8 @@ export const resetRoutes = function(newRoutes) {
 
 /**
  * 路由过滤（过滤出有权限的路由）
- * @typedef {import('vue-router').RouteConfig} RouteConfig
- * @param {(meta: object, route: RouteConfig) => boolean} filterCallback
- * @returns {RouteConfig[]}
+ * @param {(meta: object, route: routes[0]) => boolean} filterCallback
+ * @returns {routes}
  */
 export const filterMapRoutes = function(filterCallback) {
   const loop = curRoutes =>

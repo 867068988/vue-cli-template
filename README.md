@@ -32,7 +32,7 @@
 # 项目运行指南
 
 - 安装/更新依赖包：`npm install`
-  - 说明：进入正式开发时需要提交 package-lock.json，并且慎用 npm update
+  - 说明：进入正式开发前需要提交 package-lock.json，正式开发后慎用 npm update
 - 运行：
   - 启动为 dev 环境：`npm run serve` 或 `npm start`
   - 打包为 stage 环境：`npm run build:stage`
@@ -352,7 +352,7 @@
 
     /**
      * 使用 typedef 定义类型，方便多处使用
-     * @typedef {import('vue-router').RouteConfig} RouteConfig
+     * @typedef {routes[0]} RouteConfig
      * @param {(meta: object, route: RouteConfig) => boolean} filterCallback
      * @returns {RouteConfig[]}
      */
@@ -384,8 +384,15 @@
      * @type {number | string}
      * @type {boolean | (() => boolean)}
      *
-     * 导入
-     * @type {import('xxx').xxx}
+     * 导入 ts 类型
+     * @type {import('xxx').yyy}
+     *
+     * 从现有的 js 变量或 ts 类型进行推导
+     * @type {Parameters<fn>} 取函数形参的类型
+     * @type {Parameters<fn>[0]} 取函数第一个形参的类型
+     * @type {ReturnType<fn>} 取函数返回值的类型
+     * @type {obj['xxx']} 取指定属性值的类型（不能使用点语法）
+     * ...
      */
     ```
 

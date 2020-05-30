@@ -1,6 +1,9 @@
 import createAxios from './createAxios'
 
-/* 发送前拦截 */
+/**
+ * 发送前拦截
+ * @param {Parameters<createAxios>[0]} config
+ */
 const requestHandle = config => {
   return config
 }

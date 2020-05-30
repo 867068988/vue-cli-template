@@ -1,7 +1,10 @@
 import axios from 'axios'
 import mergeConfig from 'axios/lib/core/mergeConfig'
 
-/* 发送前拦截 (全局) */
+/**
+ * 发送前拦截 (全局)
+ * @param {Parameters<axios['create']>[0]} config
+ */
 const requestHandle = config => {
   return config
 }
@@ -22,15 +25,16 @@ const responseErrHandle = err => {
 }
 
 /**
- * @param {import('axios').AxiosRequestConfig} instanceConfig
- * @param {(instance: import('axios').AxiosInstance) => void} [callback]
+ * @param {Parameters<axios['create']>[0]} requestConfig
+ * @param {(instance: ReturnType<axios['create']>) => any} [callback]
  */
-export const createAxios = (instanceConfig, callback) => {
-  instanceConfig = instanceConfig || {}
+
+export const createAxios = (requestConfig, callback) => {
+  requestConfig = requestConfig || {}
   const defaults = {
     /* 默认配置 */
   }
-  const instance = axios.create(mergeConfig(defaults, instanceConfig))
+  const instance = axios.create(mergeConfig(defaults, requestConfig))
   instance.interceptors.request.use(requestHandle, requestErrHandle)
   instance.interceptors.response.use(responseHandle, responseErrHandle)
   callback && callback(instance)

@@ -295,7 +295,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <ul>
 <li>&#x5B89;&#x88C5;/&#x66F4;&#x65B0;&#x4F9D;&#x8D56;&#x5305;&#xFF1A;<code>npm install</code>
 <ul>
-<li>&#x8BF4;&#x660E;&#xFF1A;&#x8FDB;&#x5165;&#x6B63;&#x5F0F;&#x5F00;&#x53D1;&#x65F6;&#x9700;&#x8981;&#x63D0;&#x4EA4; package-lock.json&#xFF0C;&#x5E76;&#x4E14;&#x614E;&#x7528; npm update</li>
+<li>&#x8BF4;&#x660E;&#xFF1A;&#x8FDB;&#x5165;&#x6B63;&#x5F0F;&#x5F00;&#x53D1;&#x524D;&#x9700;&#x8981;&#x63D0;&#x4EA4; package-lock.json&#xFF0C;&#x6B63;&#x5F0F;&#x5F00;&#x53D1;&#x540E;&#x614E;&#x7528; npm update</li>
 </ul>
 </li>
 <li>&#x8FD0;&#x884C;&#xFF1A;
@@ -685,7 +685,7 @@ data/$store/$route
 
 <span class="token comment">/**
  * &#x4F7F;&#x7528; typedef &#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#xFF0C;&#x65B9;&#x4FBF;&#x591A;&#x5904;&#x4F7F;&#x7528;
- * @typedef {import(&apos;vue-router&apos;).RouteConfig} RouteConfig
+ * @typedef {routes[0]} RouteConfig
  * @param {(meta: object, route: RouteConfig) =&gt; boolean} filterCallback
  * @returns {RouteConfig[]}
  */</span>
@@ -717,8 +717,15 @@ data/$store/$route
  * @type {number | string}
  * @type {boolean | (() =&gt; boolean)}
  *
- * &#x5BFC;&#x5165;
- * @type {import(&apos;xxx&apos;).xxx}
+ * &#x5BFC;&#x5165; ts &#x7C7B;&#x578B;
+ * @type {import(&apos;xxx&apos;).yyy}
+ *
+ * &#x4ECE;&#x73B0;&#x6709;&#x7684; js &#x53D8;&#x91CF;&#x6216; ts &#x7C7B;&#x578B;&#x8FDB;&#x884C;&#x63A8;&#x5BFC;
+ * @type {Parameters&lt;fn&gt;} &#x53D6;&#x51FD;&#x6570;&#x5F62;&#x53C2;&#x7684;&#x7C7B;&#x578B;
+ * @type {Parameters&lt;fn&gt;[0]} &#x53D6;&#x51FD;&#x6570;&#x7B2C;&#x4E00;&#x4E2A;&#x5F62;&#x53C2;&#x7684;&#x7C7B;&#x578B;
+ * @type {ReturnType&lt;fn&gt;} &#x53D6;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x7C7B;&#x578B;
+ * @type {obj[&apos;xxx&apos;]} &#x53D6;&#x6307;&#x5B9A;&#x5C5E;&#x6027;&#x503C;&#x7684;&#x7C7B;&#x578B;&#xFF08;&#x4E0D;&#x80FD;&#x4F7F;&#x7528;&#x70B9;&#x8BED;&#x6CD5;&#xFF09;
+ * ...
  */</span>
 </pre></li>
 <li>
