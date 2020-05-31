@@ -1,3 +1,10 @@
+/**
+ * 这里的拦截器通常和业务相关
+ * 请求拦截器的执行顺序：最后注册--->最先注册
+ * 响应拦截器的执行顺序：最先注册--->最后注册
+ * 根据顺序做好数据及状态的传递
+ */
+
 import createAxios from './createAxios'
 
 /**
@@ -10,7 +17,7 @@ const requestHandle = config => {
 
 /* 发送失败拦截 */
 const requestErrHandle = err => {
-  return err
+  throw err
 }
 
 /* 响应成功拦截 */
@@ -20,7 +27,7 @@ const responseHandle = res => {
 
 /* 响应失败拦截 */
 const responseErrHandle = err => {
-  return err
+  throw err
 }
 
 export const http = createAxios(
