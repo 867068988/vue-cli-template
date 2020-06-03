@@ -18,8 +18,8 @@ export default {
     }
   },
   created() {
-    getNewsList({ keyword: 'xxx' }).then(res => (this.newsList = res.data))
-    getNewsDetails('xxx').then(res => (this.newsDetails = res.data))
+    getNewsList({ keyword: 'xxx' }).then(res => (this.newsList = res.exData))
+    getNewsDetails('xxx').then(res => (this.newsDetails = res.exData))
   },
 }
 </script>
