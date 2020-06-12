@@ -1,11 +1,11 @@
 <template>
-  <div :class="$style.box">
-    <div :class="$style.nav">
+  <div>
+    <div :class="$style.header">
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
       <router-link
         v-if="$env.VUE_APP_ENV === 'dev'"
-        to="/component-examples"
+        to="/component-examples#SvgIcon"
         target="_blank"
         >开发文档</router-link
       >
@@ -15,19 +15,13 @@
 </template>
 
 <style lang="less" module>
-.box {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-}
-.nav {
-  padding: 30px;
+.header {
+  margin: 1.5em;
   text-align: center;
   a {
-    margin: 0 6px;
+    margin: 0 0.3em;
     font-weight: bold;
-    color: #2c3e50;
+    color: inherit;
     &:global(.router-link-exact-active) {
       color: #42b983;
     }

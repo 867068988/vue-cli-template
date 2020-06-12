@@ -13,8 +13,8 @@ export default {
   data() {
     return {
       style,
-      newsList: {},
-      newsDetails: {},
+      newsList: null,
+      newsDetails: null,
     }
   },
   created() {
@@ -26,28 +26,46 @@ export default {
 
 <template>
   <div :class="[style.bg, $style.box]">
-    <div>
+    <div :class="$style.res">
       <b>getNewsList：</b>
-      <br />
       {{ newsList }}
-    </div>
-    <br />
-    <div>
       <b>getNewsDetails：</b>
-      <br />
       {{ newsDetails }}
     </div>
-    <br />
-    <img alt="Vue logo" height="80" src="@/assets/logo.png" />
-    <hello-world msg="Welcome to Your Vue.js App" />
-    <br />
-    <private-component />
+
+    <!-- 在 template 中使用'@'别名 -->
+    <img :class="$style.logo" src="@/assets/logo.png" />
+
+    <hello-world :class="$style.helloWorld" msg="Welcome to Your Vue.js App" />
+    <private-component :class="$style.privateComponent" />
   </div>
 </template>
 
 <style lang="less" module>
 .box {
-  text-align: center;
+  margin: 1em;
+  padding: 1em;
   border: 2px dashed #ccc;
+}
+.res {
+  b {
+    display: block;
+    margin: 1em 0 0.25em;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}
+.logo {
+  display: block;
+  height: 2em;
+  margin: 3em 0;
+}
+.helloWorld {
+  background: url('~@/assets/logo.png') no-repeat right center; // 在 style 中使用'@'别名
+  background-size: auto 2em;
+}
+.privateComponent {
+  margin-top: 3em;
 }
 </style>

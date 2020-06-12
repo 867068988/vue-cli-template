@@ -19,6 +19,12 @@ export const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ '@/views/About.vue'),
   },
+  {
+    path: '/*',
+    name: '404',
+    meta: { title: '404' },
+    component: () => import(/* webpackChunkName: "error" */ '@/views/404.vue'),
+  },
 ]
 
 if (process.env.NODE_ENV === 'development') {
@@ -26,10 +32,7 @@ if (process.env.NODE_ENV === 'development') {
     path: '/component-examples',
     name: 'component-examples',
     meta: { title: '开发相关文档' },
-    component: () =>
-      import(
-        /* webpackChunkName: "component-examples" */ '@/components/ComponentExamples/index.vue'
-      ),
+    component: () => import('@/components/ComponentExamples/index.vue'),
   })
 }
 

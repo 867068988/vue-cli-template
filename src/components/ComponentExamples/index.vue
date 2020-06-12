@@ -126,7 +126,7 @@ export default {
     toKebabCase: name => _.kebabCase(name),
     targetScrollIntoView() {
       if (this.currLinkIsComp) {
-        const id = `${this.currLinkName}_${this.uid}`
+        const id = `${this.currLinkName}_target_${this.uid}`
         const target = document.getElementById(id)
         target && target.scrollIntoView()
       }
@@ -146,7 +146,7 @@ export default {
 
 <template>
   <el-container :class="$style.box">
-    <el-aside :class="$style.aside" width="230px">
+    <el-aside :class="$style.aside" width="220px">
       <div :class="$style.linkGroup">
         <a
           :class="$style.link"
@@ -157,14 +157,14 @@ export default {
         <a
           :class="$style.link"
           target="_blank"
-          href="https://vuex.vuejs.org/zh/api/"
-          >vuex 官网</a
+          href="https://router.vuejs.org/zh/api/"
+          >vue-router 官网</a
         >
         <a
           :class="$style.link"
           target="_blank"
-          href="https://router.vuejs.org/zh/api/"
-          >vue-router 官网</a
+          href="https://vuex.vuejs.org/zh/api/"
+          >vuex 官网</a
         >
         <!-- @PC.element-ui -->
         <a
@@ -206,7 +206,7 @@ export default {
       <template v-if="currLinkIsComp">
         <div v-for="(compName, i) in compNames" :key="compName">
           <div
-            :id="`${compName}_${uid}`"
+            :id="`${compName}_target_${uid}`"
             @mouseenter="mouseEnterComp(compName)"
           >
             <h2>
@@ -283,7 +283,7 @@ export default {
 }
 .link {
   display: block;
-  padding: 5px 15px;
+  padding: 5px 5px 5px 15px;
   margin-bottom: 1px;
   font-size: 14px;
   font-weight: bold;
@@ -310,6 +310,7 @@ export default {
   > pre {
     margin: 0;
     > code {
+      width: min-content;
       overflow: visible;
       padding: 20px;
     }

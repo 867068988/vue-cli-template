@@ -1,6 +1,6 @@
 {
   "include": ["./src/**/*"],
-  "exclude": ["node_modules", "dist", "./src/libs"],
+  "exclude": ["node_modules", "./src/libs"],
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
