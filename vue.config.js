@@ -11,7 +11,10 @@ if (isDev) {
   if (isEmpty(env.VUE_APP_BASEURL_API)) env.VUE_APP_BASEURL_API = '/@API'
 }
 
-module.exports = Object /* 防止 GUI 改写配置 */.assign({
+/**
+ * @type {import('@vue/cli-service').ConfigFunction}
+ */
+module.exports = () => ({
   devServer: {
     /* 更详细的配置规则：https://webpack.docschina.org/configuration/dev-server/#devserver-proxy */
     proxy: {
