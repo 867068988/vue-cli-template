@@ -1,10 +1,10 @@
 {
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules", "./src/libs"],
+  "include": ["./src/**/*", "./tests/**/*"],
+  "exclude": ["node_modules", "dist", "./src/libs"],
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   }
 }

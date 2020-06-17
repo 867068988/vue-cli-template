@@ -18,7 +18,7 @@ if (process.env.VUE_APP_ENV === 'dev' || process.env.VUE_APP_ENV === 'stage') {
 }
 
 Vue.config.devtools =
-  process.env.NODE_ENV === 'development' || process.env.VUE_APP_ENV === 'stage'
+  process.env.VUE_APP_ENV === 'dev' || process.env.VUE_APP_ENV === 'stage'
 Vue.config.productionTip = false
 
 new Vue({

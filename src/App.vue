@@ -4,7 +4,7 @@
       <router-link to="/">Home</router-link>
       <router-link to="/about">About</router-link>
       <router-link
-        v-if="$env.VUE_APP_ENV === 'dev'"
+        v-if="$env.VUE_APP_ENV === 'dev' || $env.VUE_APP_ENV === 'stage'"
         to="/component-examples#SvgIcon"
         target="_blank"
         >开发文档</router-link

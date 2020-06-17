@@ -12,10 +12,8 @@ hljs.registerLanguage('xml', hljs_xml)
 hljs.registerLanguage('css', hljs_css)
 hljs.registerLanguage('javascript', hljs_javascript)
 
-if (window.__$mainComponentLibrary !== 'element-ui') {
-  Vue.use(require('element-ui'))
-  require('element-ui/lib/theme-chalk/index.css')
-}
+Vue.use(require('element-ui'))
+require('element-ui/lib/theme-chalk/index.css')
 
 const README_src = require('!file-loader!../../../README.html')
 const requireCtx = require.context(
@@ -79,14 +77,14 @@ export default {
   },
   mounted() {
     document.body.classList.add('ComponentExamples')
+    this.$once('hook:beforeDestroy', () => {
+      document.body.classList.remove('ComponentExamples')
+    })
     this.targetScrollIntoView()
   },
   beforeRouteUpdate(to, from, next) {
     next()
     !this.isRouteChangeFromMouseEnter && this.targetScrollIntoView()
-  },
-  destroyed() {
-    document.body.classList.remove('ComponentExamples')
   },
   methods: {
     showCode(compName) {

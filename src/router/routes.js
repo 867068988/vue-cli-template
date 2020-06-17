@@ -1,5 +1,6 @@
 /* 动态 path 匹配例子：https://github.com/vuejs/vue-router/blob/dev/examples/route-matching/app.js */
 
+import router from '@/router'
 import Home from '@/views/Home/index.vue'
 
 /**
@@ -27,12 +28,20 @@ export const routes = [
   },
 ]
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.VUE_APP_ENV === 'dev' || process.env.VUE_APP_ENV === 'stage') {
   routes.unshift({
     path: '/component-examples',
     name: 'component-examples',
     meta: { title: '开发相关文档' },
     component: () => import('@/components/ComponentExamples/index.vue'),
+    beforeEnter(to, from, next) {
+      if (from.matched.length > 0) {
+        window.open(router.resolve(to.fullPath).href)
+        next(false)
+        return
+      }
+      next()
+    },
   })
 }
 
