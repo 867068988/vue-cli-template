@@ -516,7 +516,7 @@
         |-- Xxx.vue
         |-- Xxx ----------------- 除了 api 和 vuex，其它的专属模块要内聚在同一目录下
             |-- index.vue
-            |-- Xxx.vue --------- 子路由组件
+            |-- Xxx.vue --------- 相关页面/子页面/子路由
             |-- xxx.js
             |-- xxx.module.less
             |-- components ------ 存放私有组件

@@ -86,6 +86,11 @@ export default {
     next()
     !this.isRouteChangeFromMouseEnter && this.targetScrollIntoView()
   },
+  beforeRouteLeave(to, from, next) {
+    next(false)
+    const { href } = this.$router.resolve(to.fullPath)
+    window.open(href)
+  },
   methods: {
     showCode(compName) {
       const key = `${compName}_popoverInited`

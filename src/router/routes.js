@@ -35,12 +35,12 @@ if (process.env.VUE_APP_ENV === 'dev' || process.env.VUE_APP_ENV === 'stage') {
     meta: { title: '开发相关文档' },
     component: () => import('@/components/ComponentExamples/index.vue'),
     beforeEnter(to, from, next) {
-      if (from.matched.length > 0) {
-        window.open(router.resolve(to.fullPath).href)
-        next(false)
+      if (from.matched.length === 0 && from.path === '/') {
+        next()
         return
       }
-      next()
+      next(false)
+      window.open(router.resolve(to.fullPath).href)
     },
   })
 }

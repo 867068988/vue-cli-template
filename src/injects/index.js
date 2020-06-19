@@ -5,9 +5,13 @@
 
 import Vue from 'vue'
 import SvgIcon from '@/components/SvgIcon/index.vue'
+import * as utils from '@/scripts/utils'
+import * as constants from '@/scripts/constants'
 
 /* 原型属性/方法 Vue.prototype (使用 $ 前缀) */
 Vue.prototype.$env = Object.freeze(process.env)
+Vue.prototype.$utils = Object.freeze({ ...utils })
+Vue.prototype.$const = Object.freeze({ ...constants })
 
 /* 全局指令 Vue.directive */
 
