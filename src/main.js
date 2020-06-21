@@ -4,10 +4,10 @@ import Vue from 'vue'
 import './element-ui' // @PC.element-ui
 import './vant' // @H5.vant
 import './styles/global.less'
-import App from './App.vue'
 import router from './router'
 import store from './store'
 import './injects'
+import App from './App.vue'
 
 /* 条件编译 (不能是运行时变量，必须是可用的环境变量，否则模块必定会打包) */
 if (process.env.VUE_APP_MOCK === 'true') {
