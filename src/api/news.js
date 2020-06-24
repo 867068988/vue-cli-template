@@ -5,8 +5,8 @@ import http from '@/scripts/http'
  * @param {object} [query]
  * @param {string} [query.type] 分类
  * @param {string} [query.keyword] 关键词
- * @param {string} [query.pageNum] 第几页
- * @param {string} [query.pageSize] 每页多少条
+ * @param {number | string} [query.pageNum] 第几页
+ * @param {number | string} [query.pageSize] 每页多少条
  */
 export const getNewsList = query => {
   const params = {

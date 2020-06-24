@@ -29,6 +29,7 @@ import {
   // Divider,
   // DropdownItem,
   // DropdownMenu,
+  // Empty,
   // Field,
   // Form,
   // GoodsAction,
@@ -115,6 +116,7 @@ import './rewrite/index.less'
 // Vue.use(Divider)
 // Vue.use(DropdownItem)
 // Vue.use(DropdownMenu)
+// Vue.use(Empty)
 // Vue.use(Field)
 // Vue.use(Form)
 // Vue.use(GoodsAction)

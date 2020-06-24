@@ -49,6 +49,7 @@
   - 模拟数据：`VUE_APP_MOCK = true`
   - 接口服务：`DEV_PROXY_TARGET_API = http://10.25.73.159:8081`
   - ...
+- 配置 git 大小写敏感：`git config core.ignorecase false`
 
 # 开发相关插件/工具
 
@@ -193,7 +194,7 @@
 
 - 路由的 name 值 (命名路由) 使用 kebab-case 命名法
 
-- 视图跳转尽量使用声明式
+- 视图跳转尽量使用声明式（特别是 PC 端）
 
   ```html
   <router-link :to="path | { path, ... }">使用声明式</router-link>
@@ -224,7 +225,9 @@
 - 避免重复造轮子，多使用成熟的现成工具/类库/组件，如：lodash、qs、url-parse 等
 - 模块设计原则：
   - 高内聚低耦合、可扩展
-  - 永远不要去改变模块输入的数据，如：函数参数、组件 prop
+  - 不要去改变模块输入的数据 (引用类型)，如：函数参数、组件 prop
+  - 模块的入参为可选 Boolean 时，默认值应设计为 false
+    - 如：`hasToolbar?=false 或 noToolbar?=false`
   - …
 - 方法接口的设计
 
