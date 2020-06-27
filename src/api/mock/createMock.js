@@ -2,7 +2,13 @@ import Mock from 'mockjs'
 import urlParse from 'url-parse'
 import qs from 'qs'
 import _ from 'lodash'
-Mock.setup({ timeout: '100-500' })
+Mock.setup({ timeout: '100-600' })
+const console = (() => {
+  const iframe = document.createElement('iframe')
+  iframe.style.display = 'none'
+  document.body.appendChild(iframe)
+  return iframe.contentWindow.console
+})()
 
 /**
  * @param {string} baseURL
@@ -45,13 +51,12 @@ export const createMock = (baseURL, isGroupOpened = false) =>
           } catch (e) {}
           return removeProto(_.cloneDeep(res))
         })()
-        const logger = console
         const _k = isGroupOpened ? 'group' : 'groupCollapsed'
-        logger[_k](`mock:${type}:${urlParsed.pathname}`)
-        !_.isEmpty(queryCopy) && logger.log('query', queryCopy)
-        !_.isEmpty(bodyCopy) && logger.log('body ', bodyCopy)
-        logger.log('res  ', resCopy)
-        logger.groupEnd()
+        console[_k](`mock:${type}:${urlParsed.pathname}`)
+        !_.isEmpty(queryCopy) && console.log('query', queryCopy)
+        !_.isEmpty(bodyCopy) && console.log('body ', bodyCopy)
+        console.log('res  ', resCopy)
+        console.groupEnd()
       }
       return res
     })

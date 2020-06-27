@@ -49,7 +49,6 @@
   - 模拟数据：`VUE_APP_MOCK = true`
   - 接口服务：`DEV_PROXY_TARGET_API = http://10.25.73.159:8081`
   - ...
-- 配置 git 大小写敏感：`git config core.ignorecase false`
 
 # 开发相关插件/工具
 
@@ -443,9 +442,12 @@
 |-- .env.production-stage ------- stage 环境变量
 |-- .env.production ------------- prod 环境变量
 |-- .env.test
-|-- static-server.js ------------ 静态资源服务 (node 运行)，通常用于预览/检查打包结果
-|-- README.html ----------------- 由 README.md 手动生成 (使用 VSCode 插件 Markdown Preview Enhanced)
 |-- .vscode --------------------- 统一 VSCode 插件及配置
+|-- static-server.js ------------ 静态资源服务 (node 运行)，通常用于预览/检查打包结果
+|-- docs ------------------------ 开发文档
+|   |-- README.html ------------- 由 ../README.md 手动生成 (使用 VSCode 插件 Markdown Preview Enhanced)
+|   |-- xxx.md
+|   |-- xxx.html
 |-- public
 |   |-- favicon.ico
 |   |-- index.html

@@ -6,6 +6,7 @@
  */
 
 import _ from 'lodash'
+import qs from 'qs'
 import axios from 'axios'
 import mergeConfig from 'axios/lib/core/mergeConfig'
 
@@ -43,6 +44,7 @@ const responseErrHandle = err => {
 export const createAxios = (requestConfig, callback) => {
   const defaults = {
     /* 默认配置 */
+    paramsSerializer: params => qs.stringify(params, { arrayFormat: 'repeat' }),
   }
   const instance = axios.create(mergeConfig(defaults, requestConfig))
   instance.interceptors.request.use(requestHandle, requestErrHandle)

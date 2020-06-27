@@ -5,6 +5,7 @@
 
 import Vue from 'vue'
 import Router from 'vue-router'
+import scrollBehavior from './scrollBehavior'
 import routes from './routes'
 import registerInterceptor from './registerInterceptor'
 Vue.use(Router)
@@ -12,7 +13,7 @@ Vue.use(Router)
 const mode = 'hash'
 const createRouter = function() {
   const base = mode === 'hash' ? '/' : process.env.BASE_URL
-  return new Router({ mode, base })
+  return new Router({ mode, base, scrollBehavior })
 }
 
 /**

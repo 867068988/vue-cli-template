@@ -15,7 +15,8 @@ hljs.registerLanguage('javascript', hljs_javascript)
 Vue.use(require('element-ui'))
 require('element-ui/lib/theme-chalk/index.css')
 
-const README_src = require('!file-loader!../../../README.html')
+const README_src = require('!file-loader!../../../docs/README.html')
+const axios使用规范_src = require('!file-loader!../../../docs/axios使用规范.html')
 const requireCtx = require.context(
   '../ComponentExamples',
   false, // 不解析子文件夹
@@ -56,6 +57,7 @@ export default {
   data() {
     return {
       README_src,
+      axios使用规范_src,
       compNames: Object.keys(comps),
       compsRaw,
       uid: `id${Date.now()}${_.uniqueId()}`,
@@ -64,10 +66,11 @@ export default {
   computed: {
     currLinkName() {
       const hashVal = this.$route.hash.slice(1)
-      return this.compNames.find(compName => compName === hashVal) || 'README'
+      const hit = ['axios使用规范', ...this.compNames].includes(hashVal)
+      return hit ? hashVal : 'README'
     },
     currLinkIsComp() {
-      return !!this.compNames.find(compName => compName === this.currLinkName)
+      return this.compNames.includes(this.currLinkName)
     },
   },
   created() {
@@ -76,9 +79,9 @@ export default {
     }
   },
   mounted() {
-    document.body.classList.add('ComponentExamples')
+    document.documentElement.classList.add('ComponentExamples')
     this.$once('hook:beforeDestroy', () => {
-      document.body.classList.remove('ComponentExamples')
+      document.documentElement.classList.remove('ComponentExamples')
     })
     this.targetScrollIntoView()
   },
@@ -98,7 +101,7 @@ export default {
         this.$set(this.compsRaw, key, true)
       }
     },
-    README_onLoad(event) {
+    iframeOnLoad(event) {
       const doc = event.currentTarget.contentDocument
       const bodyId = doc.body.id ? doc.body.id : (doc.body.id = this.uid)
       const div = doc.createElement('div')
@@ -188,6 +191,11 @@ export default {
         <router-link :class="$style.link" :to="{ ...$route, hash: '#README' }"
           >README</router-link
         >
+        <router-link
+          :class="$style.link"
+          :to="{ ...$route, hash: '#axios使用规范' }"
+          >axios使用规范</router-link
+        >
       </div>
       <div :class="$style.linkGroup">
         <router-link
@@ -202,11 +210,17 @@ export default {
     <el-main :class="$style.main">
       <iframe
         v-if="currLinkName === 'README'"
-        :class="$style.README"
+        :class="$style.iframe"
         :src="README_src"
-        @load="README_onLoad"
+        @load="iframeOnLoad"
       ></iframe>
-      <template v-if="currLinkIsComp">
+      <iframe
+        v-else-if="currLinkName === 'axios使用规范'"
+        :class="$style.iframe"
+        :src="axios使用规范_src"
+        @load="iframeOnLoad"
+      ></iframe>
+      <template v-else-if="currLinkIsComp">
         <div v-for="(compName, i) in compNames" :key="compName">
           <div
             :id="`${compName}_target_${uid}`"
@@ -262,9 +276,15 @@ export default {
 </template>
 
 <style lang="less" module>
-:global(body.ComponentExamples) {
-  height: 0 !important;
-  overflow: hidden !important;
+:global {
+  html.ComponentExamples {
+    // prettier-ignore
+    font-size: 16PX !important;
+    body {
+      height: 0 !important;
+      overflow: hidden !important;
+    }
+  }
 }
 .box {
   position: fixed;
@@ -297,7 +317,7 @@ export default {
     background: fade(#000, 5%);
   }
 }
-.README {
+.iframe {
   position: absolute;
   top: 0;
   left: 0;
