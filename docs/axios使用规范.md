@@ -86,12 +86,13 @@ http.put('/xxx', data)
 
 ### 响应行为处理
 
-#### 在拦截器中 --- 处理业务无关的逻辑
+#### 在拦截器中
 
-在拦截器中做好数据及状态的传递以及异常处理，在业务中不需要有多余的判断或行为，让业务更专注
+在拦截器中`做好数据及状态的传递以及异常处理`，在业务中不需要有多余的判断或行为，让业务更专注
 
-- 在业务中，then 不需要进行 `res.data.code == 'xxx'` 等多余的判断（交给拦截器）
+- 在业务中，then 不需要进行 `res.data.code == 'xxx'` 等多余的操作（交给拦截器）
 - 在业务中，catch 不需要处理弹出消息层（交给拦截器）
+- ...
 
 #### 在请求方法中
 
@@ -99,7 +100,9 @@ http.put('/xxx', data)
 import http from '@/scripts/http'
 
 export const getXxx = function() {
-  return http.get('/xxx', { exNoErrorMassage: true }) // 告诉拦截器响应异常时不要弹出消息层
+  return http.get('/xxx', {
+    exNoErrorMassage: true, // 告诉拦截器响应异常时不要弹出消息层
+  })
 }
 ```
 
@@ -110,19 +113,19 @@ import { getXxx } from '@/scripts/api/common'
 
 export default {
   methods: {
-    getXxx() {
+    getData() {
       this.loading = true
       return getXxx()
         .then(res => {
-          const data = res.exData // res.data.data 的引用
+          const data = res.exData // 相当于 res.data.data
           // ...
           this.isError = false
         })
         .catch(error => {
           this.isError = true
-          throw error // 不要吃掉异常
+          throw error // !!一定要抛出异常!!
         })
-        .finally(error => {
+        .finally(() => {
           this.loading = false
         })
     },
@@ -137,7 +140,8 @@ import { getXxx } from '@/scripts/api/common'
 
 export default {
   methods: {
-    async getXxx() {
+    // 处理成功与失败时
+    async getData() {
       try {
         this.loading = true
         const { exData: data } = await getXxx()
@@ -147,8 +151,14 @@ export default {
       } catch (error) {
         this.loading = false
         this.isError = true
-        throw error // 不要吃掉异常
+        throw error // !!一定要抛出异常!!
       }
+    },
+
+    // 仅处理成功时
+    async getData2() {
+      const { exData: data } = await getXxx()
+      // ...
     },
   },
 }
