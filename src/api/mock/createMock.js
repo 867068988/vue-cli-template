@@ -4,6 +4,10 @@ import qs from 'qs'
 import _ from 'lodash'
 Mock.setup({ timeout: '100-600' })
 const console = (() => {
+  const _console = window.console
+  if (_console.log.toString().includes('[native code]')) {
+    return Object.assign(Object.create(_console), { log: _console.log })
+  }
   const iframe = document.createElement('iframe')
   iframe.style.display = 'none'
   document.body.appendChild(iframe)

@@ -1,4 +1,18 @@
 import _ from 'lodash'
+import dateFns_format from 'date-fns/format'
+
+/**
+ * 时间格式化
+ * @param {Date | string | number} date
+ * @param {string} [format]
+ */
+export const formatTime = function(date, format = 'YYYY-MM-DD HH:mm') {
+  try {
+    return dateFns_format(date, format)
+  } catch (error) {
+    return date
+  }
+}
 
 /**
  * 将对象转成 formData

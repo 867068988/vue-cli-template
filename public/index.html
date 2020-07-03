@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html
   lang="zh-cmn-Hans"
+  env="<%= VUE_APP_ENV %>"
   version="<%= require('../package.json').version %>"
-  updated="<%= new Date().toLocaleString() %>"
+  updated="<%= require('date-fns/format')(Date.now(), 'YYYY-MM-DD HH:mm:ss') %>"
 >
   <head>
     <meta charset="utf-8" />

@@ -127,7 +127,7 @@ module.exports = () => ({
         args[0][0].transform = function(content, path) {
           if (
             /* 让 public 中的其它文件也支持 EJS 语法（传入运行时可用的环境变量） */
-            /\.(html|htm|css|js|json)$/.test(path) &&
+            /\.(html|htm|js|json)$/.test(path) &&
             /[\\/]public[\\/]libs[\\/]/.test(path) === false
           ) {
             const ejsData = _.pickBy(env, (val, key) =>
