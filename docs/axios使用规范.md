@@ -106,24 +106,24 @@ export const getXxx = function() {
 }
 ```
 
-#### 在业务中 --- 使用 then / catch / finally
+#### 在业务中 --- 使用 .then .catch .finally
 
 ```js
 import { getXxx } from '@/scripts/api/common'
 
 export default {
   methods: {
+    /* 成功 & 失败 & 完成 */
     getData() {
       this.loading = true
       return getXxx()
-        .then(res => {
-          const data = res.exData // 相当于 res.data.data
+        .then(({ exData: data }) => {
           // ...
           this.isError = false
         })
         .catch(error => {
           this.isError = true
-          throw error // !!一定要抛出异常!!
+          throw error // 一定要抛出异常!!!
         })
         .finally(() => {
           this.loading = false
@@ -140,8 +140,25 @@ import { getXxx } from '@/scripts/api/common'
 
 export default {
   methods: {
-    // 处理成功与失败时
-    async getData() {
+    /* 成功 */
+    async getData1() {
+      const { exData: data } = await getXxx()
+      // ...
+    },
+
+    /* 成功 & 完成 */
+    async getData2() {
+      try {
+        this.loading = true
+        const { exData: data } = await getXxx()
+        // ...
+      } finally {
+        this.loading = false
+      }
+    },
+
+    /* 成功 & 失败 */
+    async getData3() {
       try {
         this.loading = true
         const { exData: data } = await getXxx()
@@ -151,14 +168,23 @@ export default {
       } catch (error) {
         this.loading = false
         this.isError = true
-        throw error // !!一定要抛出异常!!
+        throw error // 一定要抛出异常!!!
       }
     },
 
-    // 仅处理成功时
-    async getData2() {
-      const { exData: data } = await getXxx()
-      // ...
+    /* 成功 & 失败 & 完成 */
+    async getData4() {
+      try {
+        this.loading = true
+        const { exData: data } = await getXxx()
+        // ...
+        this.isError = false
+      } catch (error) {
+        this.isError = true
+        throw error // 一定要抛出异常!!!
+      } finally {
+        this.loading = false
+      }
     },
   },
 }

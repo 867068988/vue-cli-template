@@ -352,23 +352,23 @@ http<span class="token punctuation">.</span><span class="token function">put</sp
     exNoErrorMassage<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// &#x544A;&#x8BC9;&#x62E6;&#x622A;&#x5668;&#x54CD;&#x5E94;&#x5F02;&#x5E38;&#x65F6;&#x4E0D;&#x8981;&#x5F39;&#x51FA;&#x6D88;&#x606F;&#x5C42;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
-</pre><h4 class="mume-header" id="%E5%9C%A8%E4%B8%9A%E5%8A%A1%E4%B8%AD-%E4%BD%BF%E7%94%A8-then-catch-finally">&#x5728;&#x4E1A;&#x52A1;&#x4E2D; --- &#x4F7F;&#x7528; then / catch / finally</h4>
+</pre><h4 class="mume-header" id="%E5%9C%A8%E4%B8%9A%E5%8A%A1%E4%B8%AD-%E4%BD%BF%E7%94%A8-then-catch-finally">&#x5728;&#x4E1A;&#x52A1;&#x4E2D; --- &#x4F7F;&#x7528; .then .catch .finally</h4>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> getXxx <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;@/scripts/api/common&apos;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
   methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* &#x6210;&#x529F; &amp; &#x5931;&#x8D25; &amp; &#x5B8C;&#x6210; */</span>
     <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span>
       <span class="token keyword">return</span> <span class="token function">getXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-          <span class="token keyword">const</span> data <span class="token operator">=</span> res<span class="token punctuation">.</span>exData <span class="token comment">// &#x76F8;&#x5F53;&#x4E8E; res.data.data</span>
+        <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> exData<span class="token punctuation">:</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
           <span class="token comment">// ...</span>
           <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">false</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
           <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">true</span>
-          <span class="token keyword">throw</span> error <span class="token comment">// !!&#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;!!</span>
+          <span class="token keyword">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;!!!</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
           <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">false</span>
@@ -382,8 +382,25 @@ http<span class="token punctuation">.</span><span class="token function">put</sp
 
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
   methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    <span class="token comment">// &#x5904;&#x7406;&#x6210;&#x529F;&#x4E0E;&#x5931;&#x8D25;&#x65F6;</span>
-    <span class="token keyword">async</span> <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">/* &#x6210;&#x529F; */</span>
+    <span class="token keyword">async</span> <span class="token function">getData1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">const</span> <span class="token punctuation">{</span> exData<span class="token punctuation">:</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token comment">// ...</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">/* &#x6210;&#x529F; &amp; &#x5B8C;&#x6210; */</span>
+    <span class="token keyword">async</span> <span class="token function">getData2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token keyword">const</span> <span class="token punctuation">{</span> exData<span class="token punctuation">:</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment">// ...</span>
+      <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">/* &#x6210;&#x529F; &amp; &#x5931;&#x8D25; */</span>
+    <span class="token keyword">async</span> <span class="token function">getData3</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">try</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span>
         <span class="token keyword">const</span> <span class="token punctuation">{</span> exData<span class="token punctuation">:</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
@@ -393,14 +410,23 @@ http<span class="token punctuation">.</span><span class="token function">put</sp
       <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">false</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">true</span>
-        <span class="token keyword">throw</span> error <span class="token comment">// !!&#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;!!</span>
+        <span class="token keyword">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;!!!</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
 
-    <span class="token comment">// &#x4EC5;&#x5904;&#x7406;&#x6210;&#x529F;&#x65F6;</span>
-    <span class="token keyword">async</span> <span class="token function">getData2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token keyword">const</span> <span class="token punctuation">{</span> exData<span class="token punctuation">:</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-      <span class="token comment">// ...</span>
+    <span class="token comment">/* &#x6210;&#x529F; &amp; &#x5931;&#x8D25; &amp; &#x5B8C;&#x6210; */</span>
+    <span class="token keyword">async</span> <span class="token function">getData4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token keyword">const</span> <span class="token punctuation">{</span> exData<span class="token punctuation">:</span> data <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment">// ...</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token keyword">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;!!!</span>
+      <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>

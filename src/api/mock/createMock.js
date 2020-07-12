@@ -40,8 +40,9 @@ export const createMock = (baseURL, isGroupOpened = false) =>
       const body = (() => {
         try {
           return JSON.parse(opts.body)
-        } catch (e) {}
-        return opts.body
+        } catch (e) {
+          return opts.body
+        }
       })()
       /* res */
       const res = func.call(this, opts, query, body)
@@ -52,8 +53,9 @@ export const createMock = (baseURL, isGroupOpened = false) =>
         const resCopy = (() => {
           try {
             return removeProto(JSON.parse(JSON.stringify(res)))
-          } catch (e) {}
-          return removeProto(_.cloneDeep(res))
+          } catch (e) {
+            return removeProto(_.cloneDeep(res))
+          }
         })()
         const _k = isGroupOpened ? 'group' : 'groupCollapsed'
         console[_k](`mock:${type}:${urlParsed.pathname}`)

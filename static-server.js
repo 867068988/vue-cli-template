@@ -61,7 +61,7 @@ app.use((req, res) => res.status(404).send(404))
 app.listen(port, function() {
   const ip = (() => {
     const interfaces = os.networkInterfaces()
-    for (let devName in interfaces) {
+    for (const devName in interfaces) {
       const iface = interfaces[devName]
       for (let i = 0; i < iface.length; i++) {
         const alias = iface[i]
