@@ -17,6 +17,7 @@ module.exports = {
     ],
     'no-var': 'warn',
     'prefer-const': ['warn', { destructuring: 'all' }],
+    'no-empty': 'warn',
   },
 
   parserOptions: {

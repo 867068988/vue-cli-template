@@ -1,5 +1,5 @@
 {
-  "name": "vue-cli-template-4.3.1",
+  "name": "vue-cli-template-4.4.6",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -30,14 +30,14 @@
   "//devDependencies说明": "@H5: postcss-pxtorem",
   "devDependencies": {
     "@types/lodash": "^4.14.157",
-    "@vue/cli-plugin-babel": "~4.3.0",
-    "@vue/cli-plugin-eslint": "~4.3.0",
-    "@vue/cli-plugin-router": "~4.3.0",
-    "@vue/cli-plugin-unit-jest": "~4.3.0",
-    "@vue/cli-plugin-vuex": "~4.3.0",
-    "@vue/cli-service": "~4.3.0",
+    "@vue/cli-plugin-babel": "~4.4.0",
+    "@vue/cli-plugin-eslint": "~4.4.0",
+    "@vue/cli-plugin-router": "~4.4.0",
+    "@vue/cli-plugin-unit-jest": "~4.4.0",
+    "@vue/cli-plugin-vuex": "~4.4.0",
+    "@vue/cli-service": "~4.4.0",
     "@vue/eslint-config-prettier": "^6.0.0",
-    "@vue/test-utils": "1.0.0-beta.31",
+    "@vue/test-utils": "^1.0.3",
     "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
     "babel-plugin-lodash": "^3.3.4",
