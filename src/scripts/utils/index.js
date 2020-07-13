@@ -4,7 +4,7 @@ import dateFns_format from 'date-fns/format'
 /**
  * 时间格式化
  * @param {Date | string | number} date
- * @param {string} [format]
+ * @param {string} [format] 例如：'YYYY年MM月DD日 HH时mm分ss秒 Q季'
  */
 export const formatTime = function(date, format = 'YYYY-MM-DD HH:mm') {
   try {
