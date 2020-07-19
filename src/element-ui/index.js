@@ -43,7 +43,7 @@ import {
   // Input,
   // InputNumber,
   // Link,
-  // Loading,
+  Loading,
   // Main,
   // Menu,
   // MenuItem,
@@ -128,8 +128,8 @@ import './rewrite/index.less'
 // Vue.use(Input)
 // Vue.use(InputNumber)
 // Vue.use(Link)
-// Vue.use(Loading.directive)
-// Vue.prototype.$loading = Loading.service
+Vue.use(Loading.directive)
+Vue.prototype.$loading = Loading.service
 // Vue.use(Main)
 // Vue.use(Menu)
 // Vue.use(MenuItem)

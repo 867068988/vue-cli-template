@@ -102,6 +102,7 @@ import http from '@/scripts/http'
 export const getXxx = function() {
   return http.get('/xxx', {
     exNoErrorMassage: true, // 告诉拦截器响应异常时不要弹出消息层
+    exShowLoading: true, // 告诉拦截器请求过程中显示全局 loading
   })
 }
 ```

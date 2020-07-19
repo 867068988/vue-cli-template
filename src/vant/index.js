@@ -89,6 +89,8 @@ import {
 } from 'vant'
 import './rewrite/index.less'
 
+setDefault()
+
 // Vue.use(ActionSheet)
 // Vue.use(AddressEdit)
 // Vue.use(AddressList)
@@ -173,3 +175,23 @@ import './rewrite/index.less'
 Vue.use(Toast)
 // Vue.use(TreeSelect)
 // Vue.use(Uploader)
+
+/**
+ * 默认值处理
+ */
+function setDefault() {
+  /* Toast */
+  Toast.setDefaultOptions('loading', {
+    message: '加载中...',
+    forbidClick: true,
+    duration: 0,
+  })
+  Toast.setDefaultOptions = function() {
+    Promise.reject(
+      new Error('Toast.setDefaultOptions 功能被禁用（只能集中处理）'),
+    )
+  }
+  Toast.resetDefaultOptions = function() {
+    Promise.reject(new Error('Toast.resetDefaultOptions 功能被禁用'))
+  }
+}

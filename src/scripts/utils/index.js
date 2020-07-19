@@ -3,15 +3,14 @@ import dateFns_format from 'date-fns/format'
 
 /**
  * 时间格式化
- * @param {Date | string | number} date
- * @param {string} [format] 例如：'YYYY年MM月DD日 HH时mm分ss秒 Q季'
+ * @param {string | number | Date} date
+ * @param {string} [format] 官方文档：https://date-fns.org/v1.30.1/docs/format#description
+ * @example dateFormat('YYYY年MM月DD日 HH时mm分ss秒SSS毫秒 Z时区 Q季度 X秒时间戳 x毫秒时间戳')
  */
-export const formatTime = function(date, format = 'YYYY-MM-DD HH:mm') {
-  try {
-    return dateFns_format(date, format)
-  } catch (error) {
-    return date
-  }
+export const dateFormat = function(date, format = 'YYYY-MM-DD') {
+  if (!date) return ''
+  if (format === '@iso') format = 'YYYY-MM-DDTHH:mm:ss.SSSZ'
+  return dateFns_format(date, format)
 }
 
 /**

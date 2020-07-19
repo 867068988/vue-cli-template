@@ -44,9 +44,11 @@ export default {
 </script>
 
 <template>
-  <svg :class="['svg-icon', `svg-icon-${icon}`]">
-    <use :xlink:href="`#$svgSpriteIcon_${icon}`" />
-  </svg>
+  <span :class="['svg-icon', `svg-icon-${icon}`]">
+    <svg class="svg-icon__icon">
+      <use :xlink:href="`#$svgSpriteIcon_${icon}`" />
+    </svg>
+  </span>
 </template>
 
 <style lang="less">
@@ -55,9 +57,14 @@ export default {
   width: 1em;
   height: 1em;
   line-height: 1;
-  vertical-align: -0.13em;
-  overflow: hidden;
-  fill: currentColor;
+  vertical-align: -0.165em;
+  &__icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    fill: currentColor;
+  }
 }
 [id^='$svgSpriteIcon_'] {
   [fill] {

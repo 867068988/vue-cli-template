@@ -4,7 +4,7 @@
 import Vue from 'vue'
 import _ from 'lodash'
 import 'highlight.js/styles/vs2015.css'
-import hljs from 'highlight.js/lib/highlight'
+import hljs from 'highlight.js/lib/core'
 import hljs_xml from 'highlight.js/lib/languages/xml'
 import hljs_css from 'highlight.js/lib/languages/css'
 import hljs_javascript from 'highlight.js/lib/languages/javascript'

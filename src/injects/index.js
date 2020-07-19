@@ -13,6 +13,9 @@ Vue.prototype.$env = Object.freeze(process.env)
 Vue.prototype.$utils = Object.freeze({ ...utils })
 Vue.prototype.$const = Object.freeze({ ...constants })
 
+/* 全局过滤器 Vue.filter */
+Vue.filter('dateFormat', utils.dateFormat)
+
 /* 全局指令 Vue.directive */
 
 /* 全局混入 Vue.mixin */
