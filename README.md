@@ -187,22 +187,50 @@
 
 ## vue-router
 
-- url 定义准则：path 对应视图变化 (使用 kebab-case 命名法)，query 对应数据变化，hash 对应滚动条位置
+- url 定义准则
 
-  `如：/project-list?type=1&search=keyword#position`
+  - path 对应视图变化，query 对应数据变化，hash 对应滚动条位置
 
-- 路由的 name 值 (命名路由) 使用 kebab-case 命名法
+  - path 使用 kebab-case 命名法，并且尽量与组件名相匹配（即一眼看到 path 就能迅速找到对应的组件）
+    ```
+    路由 path：/project-list
+      ↓
+    路由组件：@/views/ProjectList.vue | @/views/ProjectList/index.vue
+    ```
+
+- 命名路由的 name 值使用 kebab-case 命名法，并且嵌套时要带命名空间（使用简写）
+
+  ```js
+  export const routes = {
+    path: '/user-center',
+    name: 'user-center',
+    // ...
+    children: [
+      {
+        path: 'base-info',
+        name: 'uc-base-info', // 带命名空间 uc-
+        // ...
+      },
+    ],
+  }
+  ```
+
+- 当组件依赖 \$route 作为核心数据时，要使用<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/passing-props.html">路由组件传参</a>，与 \$route 解耦，也使得依赖更为显式清晰
+
+  ```js
+  export const routes = {
+    path: '/project-detail',
+    props: ({ query: { id } }) => ({ id }),
+    // ...
+  }
+  ```
 
 - 视图跳转尽量使用声明式（特别是 PC 端）
 
   ```html
-  <router-link :to="path | { path, ... }">使用声明式</router-link>
-
-  <!-- 不推荐的做法 -->
+  <router-link :to="path | { name, ... }">使用声明式</router-link>
   <a @click="$router.push(...)">使用命令式</a>
   ```
-
-- 当路由组件依赖 \$route 时 (特别是 \$route.params)，要使用<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/passing-props.html">路由组件传参</a>，与 \$route 解耦，也使得依赖更为显式清晰
 
 ---
 
