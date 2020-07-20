@@ -202,7 +202,7 @@
   <a @click="$router.push(...)">使用命令式</a>
   ```
 
-- 当组件依赖 \$route 时 (特别是 \$route.params)，要使用<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/passing-props.html">路由组件传参</a>，与 \$route 解耦
+- 当路由组件依赖 \$route 时 (特别是 \$route.params)，要使用<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/passing-props.html">路由组件传参</a>，与 \$route 解耦，也使得依赖更为显式清晰
 
 ---
 

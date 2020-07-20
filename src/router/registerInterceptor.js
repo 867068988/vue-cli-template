@@ -7,7 +7,8 @@ export default function(router) {
 
   /* 页面标题处理 */
   router.afterEach(to => {
-    const title = to.meta.title
+    let { title } = to.meta
+    title = typeof title === 'function' ? title(to) : title
     if (title) {
       document.title = title
     }
