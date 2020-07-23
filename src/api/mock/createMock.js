@@ -20,20 +20,22 @@ const console = (() => {
  */
 export const createMock = (baseURL, isGroupOpened = false) =>
   /**
+   * @typedef {'get' | 'post' | 'put' | 'patch' | 'delete'} Method
+   * @typedef {(opts, query, body) => any} Template
    * @param {string} url 用 reg: 前缀表示正则
-   * @param {'get' | 'post' | 'put' | 'delete'} [type]
-   * @param {(opts, query, body) => any} func
+   * @param {Method | Template} method
+   * @param {Template} [tplFn]
    */
-  (url, type, func) => {
-    if (typeof type === 'function') {
-      func = type
-      type = 'get'
+  (url, method, tplFn) => {
+    if (typeof method === 'function') {
+      tplFn = method
+      method = 'get'
     }
-    const fullUrl = url.startsWith('reg:')
+    const rurl = url.startsWith('reg:')
       ? new RegExp(`^${_.escapeRegExp(baseURL)}${url.slice(4)}`)
       : baseURL + url
 
-    Mock.mock(fullUrl, type, function(opts) {
+    Mock.mock(rurl, method, function(opts) {
       const urlParsed = urlParse(opts.url)
       /* query & body */
       const query = qs.parse(urlParsed.query.slice(1))
@@ -45,7 +47,7 @@ export const createMock = (baseURL, isGroupOpened = false) =>
         }
       })()
       /* res */
-      const res = func.call(this, opts, query, body)
+      const res = tplFn.call(this, opts, query, body)
       /* console */
       if (process.env.NODE_ENV === 'development') {
         const queryCopy = removeProto(_.cloneDeep(query))
@@ -58,7 +60,7 @@ export const createMock = (baseURL, isGroupOpened = false) =>
           }
         })()
         const _k = isGroupOpened ? 'group' : 'groupCollapsed'
-        console[_k](`mock:${type}:${urlParsed.pathname}`)
+        console[_k](`mock:${method}:${urlParsed.pathname}`)
         !_.isEmpty(queryCopy) && console.log('query', queryCopy)
         !_.isEmpty(bodyCopy) && console.log('body ', bodyCopy)
         console.log('res  ', resCopy)

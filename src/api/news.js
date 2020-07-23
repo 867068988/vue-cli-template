@@ -3,10 +3,10 @@ import http from '@/scripts/http'
 /**
  * 获取新闻列表
  * @param {object} [query]
- * @param {string} [query.keyword]
- * @param {number | string | Array<number | string>} [query.status]
- * @param {number | string} [query.pageNum]
- * @param {number | string} [query.pageSize]
+ * @param {string =} query.keyword
+ * @param {number | string | Array<number | string> =} query.status
+ * @param {number | string =} query.pageNum
+ * @param {number | string =} query.pageSize
  */
 export const getNewsList = query => {
   const params = {

@@ -1,6 +1,7 @@
 import 'normalize.css'
 import './styles/reset.less'
 import Vue from 'vue'
+import './catchError'
 import './element-ui' // @PC.element-ui
 import './vant' // @H5.vant
 import './styles/global.less'

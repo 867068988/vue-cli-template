@@ -124,7 +124,7 @@ export default {
         })
         .catch(error => {
           this.isError = true
-          throw error // 一定要抛出异常!!!
+          throw error // 一定要抛出异常!!!（让全局统一处理）
         })
         .finally(() => {
           this.loading = false
@@ -169,7 +169,7 @@ export default {
       } catch (error) {
         this.loading = false
         this.isError = true
-        throw error // 一定要抛出异常!!!
+        throw error // 一定要抛出异常!!!（让全局统一处理）
       }
     },
 
@@ -182,7 +182,7 @@ export default {
         this.isError = false
       } catch (error) {
         this.isError = true
-        throw error // 一定要抛出异常!!!
+        throw error // 一定要抛出异常!!!（让全局统一处理）
       } finally {
         this.loading = false
       }

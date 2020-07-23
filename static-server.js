@@ -10,7 +10,7 @@ const { join } = require('path')
 const os = require('os')
 const open = require('open')
 
-const BASE_URL = '/' // 打包时的 process.env.BASE_URL
+const BASE_URL = '' // 打包时的 process.env.BASE_URL
 const port = 8181
 const isHistoryMode = false
 const projectDir = join(__dirname, './dist')

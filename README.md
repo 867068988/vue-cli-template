@@ -178,7 +178,7 @@
 - 慎用 this\.\$refs、this\.\$parent、this\.\$root、provide/inject
   - this\.\$refs 一般用在第三方开源组件或内部公共库组件或非常稳定的组件，以调用显式声明的方法
   - 在万不得已的情况下需要暴露方法给外部调用时需要加 pub 前缀，如：this\.\$refs.pubFocus()
-- 尽量不要在 watch 中变更数据，易造成死循环。数据变更应该交给用户交互事件或初始化的异步回调
+- 尽量不要在 watch 中直接变更数据，易造成死循环。数据变更应该交给用户交互事件或初始化的异步回调
 - 组件中的 data 及 vuex 中的 state 应该可序列化，即不要存 undefined、function 等
 
 ### 【 <a target="_blank" href="https://cn.vuejs.org/v2/style-guide/">!!!其它则严格遵守 vue 官方风格指南</a>】
@@ -367,10 +367,9 @@
      * 使用 param 表示函数形参
      * 使用 returns 表示函数返回值
      * @param {类型} data
-     * @param {object} options
+     * @param {object} [options] 可选参数
      * @param {类型} options.xxx
-     * @param {类型} options.yyy
-     * @param {类型} [options.zzz] 可选参数
+     * @param {类型 =} options.yyy 可选属性
      * @returns {类型}
      */
     export function myMethod(data, options) {}
@@ -382,7 +381,7 @@
     const routes = []
 
     /**
-     * 使用 typedef 定义类型，方便多处使用
+     * 使用 typedef 定义类型，方便多处使用（命名时需要首字母大写）
      * @typedef {routes[0]} RouteConfig
      * @param {(meta: object, route: RouteConfig) => boolean} filterCallback
      * @returns {RouteConfig[]}

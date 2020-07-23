@@ -492,7 +492,7 @@ data/$store/$route
 <li>&#x5728;&#x4E07;&#x4E0D;&#x5F97;&#x5DF2;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x9700;&#x8981;&#x66B4;&#x9732;&#x65B9;&#x6CD5;&#x7ED9;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x65F6;&#x9700;&#x8981;&#x52A0; pub &#x524D;&#x7F00;&#xFF0C;&#x5982;&#xFF1A;this.$refs.pubFocus()</li>
 </ul>
 </li>
-<li>&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x5728; watch &#x4E2D;&#x53D8;&#x66F4;&#x6570;&#x636E;&#xFF0C;&#x6613;&#x9020;&#x6210;&#x6B7B;&#x5FAA;&#x73AF;&#x3002;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x5E94;&#x8BE5;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x4E8B;&#x4EF6;&#x6216;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5F02;&#x6B65;&#x56DE;&#x8C03;</li>
+<li>&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x5728; watch &#x4E2D;&#x76F4;&#x63A5;&#x53D8;&#x66F4;&#x6570;&#x636E;&#xFF0C;&#x6613;&#x9020;&#x6210;&#x6B7B;&#x5FAA;&#x73AF;&#x3002;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x5E94;&#x8BE5;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x4E8B;&#x4EF6;&#x6216;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5F02;&#x6B65;&#x56DE;&#x8C03;</li>
 <li>&#x7EC4;&#x4EF6;&#x4E2D;&#x7684; data &#x53CA; vuex &#x4E2D;&#x7684; state &#x5E94;&#x8BE5;&#x53EF;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x5373;&#x4E0D;&#x8981;&#x5B58; undefined&#x3001;function &#x7B49;</li>
 </ul>
 <h3 class="mume-header" id="a-target_blank-hrefhttpscnvuejsorgv2style-guide%E5%85%B6%E5%AE%83%E5%88%99%E4%B8%A5%E6%A0%BC%E9%81%B5%E5%AE%88-vue-%E5%AE%98%E6%96%B9%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97a">&#x3010; <a target="_blank" href="https://cn.vuejs.org/v2/style-guide/">!!!&#x5176;&#x5B83;&#x5219;&#x4E25;&#x683C;&#x9075;&#x5B88; vue &#x5B98;&#x65B9;&#x98CE;&#x683C;&#x6307;&#x5357;</a>&#x3011;</h3>
@@ -700,10 +700,9 @@ data/$store/$route
  * &#x4F7F;&#x7528; param &#x8868;&#x793A;&#x51FD;&#x6570;&#x5F62;&#x53C2;
  * &#x4F7F;&#x7528; returns &#x8868;&#x793A;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x503C;
  * @param {&#x7C7B;&#x578B;} data
- * @param {object} options
+ * @param {object} [options] &#x53EF;&#x9009;&#x53C2;&#x6570;
  * @param {&#x7C7B;&#x578B;} options.xxx
- * @param {&#x7C7B;&#x578B;} options.yyy
- * @param {&#x7C7B;&#x578B;} [options.zzz] &#x53EF;&#x9009;&#x53C2;&#x6570;
+ * @param {&#x7C7B;&#x578B; =} options.yyy &#x53EF;&#x9009;&#x5C5E;&#x6027;
  * @returns {&#x7C7B;&#x578B;}
  */</span>
 <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">myMethod</span><span class="token punctuation">(</span><span class="token parameter">data<span class="token punctuation">,</span> options</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
@@ -715,7 +714,7 @@ data/$store/$route
 <span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
 
 <span class="token comment">/**
- * &#x4F7F;&#x7528; typedef &#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#xFF0C;&#x65B9;&#x4FBF;&#x591A;&#x5904;&#x4F7F;&#x7528;
+ * &#x4F7F;&#x7528; typedef &#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#xFF0C;&#x65B9;&#x4FBF;&#x591A;&#x5904;&#x4F7F;&#x7528;&#xFF08;&#x547D;&#x540D;&#x65F6;&#x9700;&#x8981;&#x9996;&#x5B57;&#x6BCD;&#x5927;&#x5199;&#xFF09;
  * @typedef {routes[0]} RouteConfig
  * @param {(meta: object, route: RouteConfig) =&gt; boolean} filterCallback
  * @returns {RouteConfig[]}

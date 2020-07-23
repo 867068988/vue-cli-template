@@ -23,7 +23,10 @@ const requestErrHandle = err => {
   throw err
 }
 
-/* 响应成功拦截 (全局) */
+/**
+ * 响应成功拦截 (全局)
+ * @param {import('axios').AxiosResponse} res
+ */
 const responseHandle = res => {
   res.exData = _.get(res.data, 'data')
   return res

@@ -20,7 +20,10 @@ const requestErrHandle = err => {
   throw err
 }
 
-/* 响应成功拦截 */
+/**
+ * 响应成功拦截
+ * @param {import('axios').AxiosResponse} res
+ */
 const responseHandle = res => {
   return res
 }
