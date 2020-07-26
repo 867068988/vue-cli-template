@@ -12,6 +12,7 @@ import SvgIcon from '@/components/SvgIcon/index.vue'
 Vue.prototype.$env = Object.freeze(process.env)
 Vue.prototype.$utils = Object.freeze({ ...utils })
 Vue.prototype.$const = Object.freeze({ ...constants })
+Vue.prototype.$isCancel = utils.isCancel
 
 /* 全局过滤器 Vue.filter */
 Vue.filter('dateFormat', utils.dateFormat)

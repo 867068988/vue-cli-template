@@ -291,6 +291,7 @@ http<span class="token punctuation">.</span><span class="token keyword">get</spa
 http<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> config<span class="token punctuation">)</span>
 http<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> config<span class="token punctuation">)</span>
 http<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> config<span class="token punctuation">)</span>
+http<span class="token punctuation">.</span><span class="token function">patch</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> config<span class="token punctuation">)</span>
 </pre><h4 class="mume-header" id="request-payloadapplicationjson">Request Payload&#xFF1A;application/json</h4>
 
 <pre data-role="codeBlock" data-info="ts" class="language-ts"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">&apos;@/scripts/http&apos;</span>
@@ -304,6 +305,7 @@ http<span class="token punctuation">.</span><span class="token keyword">get</spa
 http<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> config<span class="token punctuation">)</span>
 http<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
 http<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+http<span class="token punctuation">.</span><span class="token function">patch</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
 </pre><h4 class="mume-header" id="form-dataapplicationx-www-form-urlencoded">Form Data&#xFF1A;application/x-www-form-urlencoded</h4>
 
 <pre data-role="codeBlock" data-info="ts" class="language-ts"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">&apos;@/scripts/http&apos;</span>
@@ -318,6 +320,7 @@ http<span class="token punctuation">.</span><span class="token keyword">get</spa
 http<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> config<span class="token punctuation">)</span>
 http<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
 http<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+http<span class="token punctuation">.</span><span class="token function">patch</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
 </pre><h4 class="mume-header" id="form-datamultipartform-data">Form Data&#xFF1A;multipart/form-data</h4>
 
 <pre data-role="codeBlock" data-info="ts" class="language-ts"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">&apos;@/scripts/http&apos;</span>
@@ -332,25 +335,50 @@ http<span class="token punctuation">.</span><span class="token keyword">get</spa
 http<span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> config<span class="token punctuation">)</span>
 http<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
 http<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+http<span class="token punctuation">.</span><span class="token function">patch</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+</pre><h4 class="mume-header" id="request-headers">Request Headers</h4>
+
+<pre data-role="codeBlock" data-info="ts" class="language-ts"><span class="token comment">// &#x901A;&#x5E38;&#x5728;&#x8BF7;&#x6C42;&#x62E6;&#x622A;&#x5668;&#x4E2D;&#x6DFB;&#x52A0;&#xFF08;&#x8BB0;&#x5F97;&#x8FDB;&#x884C;&#x76F8;&#x5173;&#x7F16;&#x7801;&#xFF09;</span>
+config<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>token <span class="token operator">=</span> localStorage<span class="token punctuation">.</span>token
+config<span class="token punctuation">.</span>headers<span class="token punctuation">.</span>curUrl <span class="token operator">=</span> <span class="token function">encodeURI</span><span class="token punctuation">(</span>location<span class="token punctuation">.</span>href<span class="token punctuation">)</span>
 </pre><hr>
 <h3 class="mume-header" id="%E5%93%8D%E5%BA%94%E8%A1%8C%E4%B8%BA%E5%A4%84%E7%90%86">&#x54CD;&#x5E94;&#x884C;&#x4E3A;&#x5904;&#x7406;</h3>
 
-<h4 class="mume-header" id="%E5%9C%A8%E6%8B%A6%E6%88%AA%E5%99%A8%E4%B8%AD">&#x5728;&#x62E6;&#x622A;&#x5668;&#x4E2D;</h4>
+<h4 class="mume-header" id="%E5%9C%A8%E6%8B%A6%E6%88%AA%E5%99%A8%E6%88%96%E7%9B%B8%E5%85%B3%E9%92%A9%E5%AD%90%E4%B8%AD">&#x5728;&#x62E6;&#x622A;&#x5668;&#x6216;&#x76F8;&#x5173;&#x94A9;&#x5B50;&#x4E2D;</h4>
 
-<p>&#x5728;&#x62E6;&#x622A;&#x5668;&#x4E2D;<code>&#x505A;&#x597D;&#x6570;&#x636E;&#x53CA;&#x72B6;&#x6001;&#x7684;&#x4F20;&#x9012;&#x4EE5;&#x53CA;&#x5F02;&#x5E38;&#x5904;&#x7406;</code>&#xFF0C;&#x5728;&#x4E1A;&#x52A1;&#x4E2D;&#x4E0D;&#x9700;&#x8981;&#x6709;&#x591A;&#x4F59;&#x7684;&#x5224;&#x65AD;&#x6216;&#x884C;&#x4E3A;&#xFF0C;&#x8BA9;&#x4E1A;&#x52A1;&#x66F4;&#x4E13;&#x6CE8;</p>
+<p>&#x5728;&#x62E6;&#x622A;&#x5668;&#x6216;&#x76F8;&#x5173;&#x94A9;&#x5B50;&#x4E2D;<code>&#x505A;&#x597D;&#x6570;&#x636E;&#x53CA;&#x72B6;&#x6001;&#x7684;&#x4F20;&#x9012;&#x3001;&#x5F02;&#x5E38;&#x5904;&#x7406;&#x7B49;</code>&#xFF0C;&#x5728;&#x4E1A;&#x52A1;&#x4E2D;&#x4E0D;&#x9700;&#x8981;&#x6709;&#x591A;&#x4F59;&#x7684;&#x5224;&#x65AD;&#x6216;&#x884C;&#x4E3A;&#xFF0C;&#x8BA9;&#x4E1A;&#x52A1;&#x66F4;&#x4E13;&#x6CE8;</p>
 <ul>
-<li>&#x5728;&#x4E1A;&#x52A1;&#x4E2D;&#xFF0C;then &#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C; <code>res.data.code == &apos;xxx&apos;</code> &#x7B49;&#x591A;&#x4F59;&#x7684;&#x64CD;&#x4F5C;&#xFF08;&#x4EA4;&#x7ED9;&#x62E6;&#x622A;&#x5668;&#xFF09;</li>
-<li>&#x5728;&#x4E1A;&#x52A1;&#x4E2D;&#xFF0C;catch &#x4E0D;&#x9700;&#x8981;&#x5904;&#x7406;&#x5F39;&#x51FA;&#x6D88;&#x606F;&#x5C42;&#xFF08;&#x4EA4;&#x7ED9;&#x62E6;&#x622A;&#x5668;&#xFF09;</li>
+<li>&#x5728;&#x4E1A;&#x52A1;&#x4E2D;&#xFF0C;then &#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C; <code>res.data.code == &apos;xxx&apos;</code> &#x7B49;&#x591A;&#x4F59;&#x7684;&#x64CD;&#x4F5C;&#xFF08;&#x8BA9;&#x62E6;&#x622A;&#x5668;&#x5168;&#x5C40;&#x5904;&#x7406;&#xFF09;</li>
+<li>&#x5728;&#x4E1A;&#x52A1;&#x4E2D;&#xFF0C;catch &#x4E0D;&#x9700;&#x8981;&#x5904;&#x7406;&#x5F39;&#x51FA;&#x6D88;&#x606F;&#x5C42;&#xFF08;&#x8BA9;&#x62E6;&#x622A;&#x5668;&#x5168;&#x5C40;&#x5904;&#x7406;&#xFF09;</li>
+<li>&#x5728;&#x4E1A;&#x52A1;&#x4E2D;&#xFF0C;&#x8BF7;&#x6C42;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E0D;&#x9700;&#x8981;&#x5904;&#x7406;&#x5168;&#x5C40; loading&#xFF08;&#x8BA9;&#x76F8;&#x5173;&#x94A9;&#x5B50;&#x5168;&#x5C40;&#x5904;&#x7406;&#xFF09;</li>
 <li>...</li>
 </ul>
 <h4 class="mume-header" id="%E5%9C%A8%E8%AF%B7%E6%B1%82%E6%96%B9%E6%B3%95%E4%B8%AD">&#x5728;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x4E2D;</h4>
 
 <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword">import</span> http <span class="token keyword">from</span> <span class="token string">&apos;@/scripts/http&apos;</span>
 
-<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getXxx</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">getXxx</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> http<span class="token punctuation">.</span><span class="token keyword">get</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
-    exNoErrorMassage<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// &#x544A;&#x8BC9;&#x62E6;&#x622A;&#x5668;&#x54CD;&#x5E94;&#x5F02;&#x5E38;&#x65F6;&#x4E0D;&#x8981;&#x5F39;&#x51FA;&#x6D88;&#x606F;&#x5C42;</span>
-    exShowLoading<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// &#x544A;&#x8BC9;&#x62E6;&#x622A;&#x5668;&#x8BF7;&#x6C42;&#x8FC7;&#x7A0B;&#x4E2D;&#x663E;&#x793A;&#x5168;&#x5C40; loading</span>
+    exNoErrorMassage<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// &#x54CD;&#x5E94;&#x5F02;&#x5E38;&#x65F6;&#x4E0D;&#x8981;&#x5F39;&#x51FA;&#x6D88;&#x606F;&#x5C42;</span>
+    exShowLoading<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// &#x8BF7;&#x6C42;&#x8FC7;&#x7A0B;&#x4E2D;&#x663E;&#x793A;&#x5168;&#x5C40; loading</span>
+
+    exCancel<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token comment">// &#x8BF7;&#x6C42;&#x524D;&#x5148;&#x53D6;&#x6D88;&#x672A;&#x5B8C;&#x6210;&#x7684;&#x8BF7;&#x6C42;</span>
+
+    <span class="token comment">// &#x5BF9;&#x4E8E; `/xxx/${id}` &#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x7684; path&#xFF0C;&#x53C2;&#x8003;&#x5982;&#x4E0B;&#xFF1A;</span>
+    <span class="token comment">// exCancel: &apos;/xxx/*&apos;,</span>
+    <span class="token comment">// exCancelName: &apos;/xxx/*&apos;,</span>
+
+    <span class="token comment">// &#x5BF9;&#x4E8E; `/xxx/${id}/yyy` &#x8FD9;&#x79CD;&#x5F62;&#x5F0F;&#x7684; path&#xFF0C;&#x53C2;&#x8003;&#x5982;&#x4E0B;&#xFF1A;</span>
+    <span class="token comment">// exCancel: &apos;/xxx/*/yyy&apos;,</span>
+    <span class="token comment">// exCancelName: &apos;/xxx/*/yyy&apos;,</span>
+
+    <span class="token comment">// &#x4E25;&#x683C;&#x5339;&#x914D;&#xFF0C;&#x53C2;&#x8003;&#x5982;&#x4E0B;&#xFF08;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x540D;&#x79F0;&#xFF09;&#xFF1A;</span>
+    <span class="token comment">// exCancel: `/xxx?${id}`,</span>
+    <span class="token comment">// exCancelName: `/xxx?${id}`,</span>
+
+    <span class="token comment">// &#x5339;&#x914D;&#x4E00;&#x7C7B;&#xFF0C;&#x53C2;&#x8003;&#x5982;&#x4E0B;&#xFF08;&#x7C7B;&#x540D;&#x4E0D;&#x80FD;&#x4EE5;&#x659C;&#x6760;&#x5F00;&#x5934;&#xFF09;&#xFF1A;</span>
+    <span class="token comment">// exCancel: &apos;xxx&apos;,</span>
+    <span class="token comment">// exCancelName: &apos;xxx&apos;,</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </pre><h4 class="mume-header" id="%E5%9C%A8%E4%B8%9A%E5%8A%A1%E4%B8%AD-%E4%BD%BF%E7%94%A8-then-catch-finally">&#x5728;&#x4E1A;&#x52A1;&#x4E2D; --- &#x4F7F;&#x7528; .then .catch .finally</h4>
@@ -360,7 +388,7 @@ http<span class="token punctuation">.</span><span class="token function">put</sp
 <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
   methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     <span class="token comment">/* &#x6210;&#x529F; &amp; &#x5931;&#x8D25; &amp; &#x5B8C;&#x6210; */</span>
-    <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">getData1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
       <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span>
       <span class="token keyword">return</span> <span class="token function">getXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> exData<span class="token punctuation">:</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -368,12 +396,27 @@ http<span class="token punctuation">.</span><span class="token function">put</sp
           <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">false</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">true</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$isCancel</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
           <span class="token keyword">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;!!!&#xFF08;&#x8BA9;&#x5168;&#x5C40;&#x7EDF;&#x4E00;&#x5904;&#x7406;&#xFF09;</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
           <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">false</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+
+    <span class="token comment">/* &#x6210;&#x529F; &amp; &#x5931;&#x8D25;&#xFF08;&#x4E0D;&#x63A8;&#x8350;&#xFF09; */</span>
+    <span class="token function">getData2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">true</span>
+      <span class="token keyword">return</span> <span class="token function">getXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>
+        <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> exData<span class="token punctuation">:</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token comment">// ...</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">false</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$isCancel</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+          <span class="token keyword">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;!!!&#xFF08;&#x8BA9;&#x5168;&#x5C40;&#x7EDF;&#x4E00;&#x5904;&#x7406;&#xFF09;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      <span class="token punctuation">)</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span>
@@ -410,7 +453,7 @@ http<span class="token punctuation">.</span><span class="token function">put</sp
         <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">false</span>
       <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">false</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$isCancel</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
         <span class="token keyword">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;!!!&#xFF08;&#x8BA9;&#x5168;&#x5C40;&#x7EDF;&#x4E00;&#x5904;&#x7406;&#xFF09;</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -423,7 +466,7 @@ http<span class="token punctuation">.</span><span class="token function">put</sp
         <span class="token comment">// ...</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">false</span>
       <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>isError <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$isCancel</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
         <span class="token keyword">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;!!!&#xFF08;&#x8BA9;&#x5168;&#x5C40;&#x7EDF;&#x4E00;&#x5904;&#x7406;&#xFF09;</span>
       <span class="token punctuation">}</span> <span class="token keyword">finally</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span>loading <span class="token operator">=</span> <span class="token boolean">false</span>

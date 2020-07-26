@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import axios from 'axios'
 import dateFns_format from 'date-fns/format'
 
 /**
@@ -36,3 +37,8 @@ export const toFormData = function(data, arrayFormat = 'repeat') {
   })
   return formData
 }
+
+/**
+ * 判断是否为 axios 取消的请求
+ */
+export const isCancel = axios.isCancel

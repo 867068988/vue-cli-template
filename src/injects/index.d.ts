@@ -9,5 +9,6 @@ declare module 'vue/types/vue' {
     $env: NodeJS.ProcessEnv
     $utils: typeof utils
     $const: typeof constants
+    $isCancel: typeof _utils.isCancel
   }
 }
