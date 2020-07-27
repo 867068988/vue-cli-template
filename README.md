@@ -59,6 +59,7 @@
     - `Prettier - Code formatter`
     - `path Autocomplete`
   - 推荐插件
+    - `stylelint`
     - `vscode-element-helper` (element-ui 专用)
     - `Debugger for Chrome`
     - `GitLens -- Git supercharged`

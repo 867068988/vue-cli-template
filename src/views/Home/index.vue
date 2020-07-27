@@ -43,8 +43,8 @@ export default {
 
 <style lang="less" module>
 .box {
-  margin: 1em;
   padding: 1em;
+  margin: 1em;
   border: 2px dashed #ccc;
 }
 .res {

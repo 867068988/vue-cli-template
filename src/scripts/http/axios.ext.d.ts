@@ -43,7 +43,7 @@ declare module 'axios/index' {
     exCancel?: boolean | string | Array<boolean | string>
 
     /* 通过该值可以取消该请求 */
-    exCancelName?: boolean | string // 参数对应名称规则同上，默认值为 true
+    exCancelName?: boolean | string // 参数值对应名称规则同上，默认值为 true
   }
 
   interface AxiosResponse {

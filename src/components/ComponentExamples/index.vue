@@ -338,21 +338,21 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   width: 100%;
+  height: 100%;
   border: none;
 }
 .highlightBox {
-  font-size: 14px;
-  max-height: calc(100vh - 66px);
   max-width: calc(100vw - 66px);
+  max-height: calc(100vh - 66px);
   overflow: auto;
+  font-size: 14px;
   > pre {
     margin: 0;
     > code {
       width: min-content;
-      overflow: visible;
       padding: 20px;
+      overflow: visible;
     }
   }
 }

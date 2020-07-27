@@ -68,10 +68,10 @@ export const hooks = Object.freeze({
 
 /**
  * 取消未完成的请求
- * @param {string | string[]} exCancelName
+ * @param {string | string[]} name exCancelName 参数值对应的名称
  */
-export const cancel = function(exCancelName) {
-  const names = Array.isArray(exCancelName) ? exCancelName : [exCancelName]
+export const cancel = function(name) {
+  const names = Array.isArray(name) ? name : [name]
   _.each(tokens, (val, key) => {
     if (names.includes(key)) {
       val.forEach(token => {

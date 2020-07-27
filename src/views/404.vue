@@ -6,7 +6,7 @@
 .box {
   margin: 2em 1.5em;
   font-size: 1.5em;
-  text-align: center;
   color: #999;
+  text-align: center;
 }
 </style>
