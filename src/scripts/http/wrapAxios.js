@@ -65,19 +65,19 @@ export default function wrapAxios(instance) {
     const promise = instance.request.call(this, config)
     return complete(promise, this.exHooks, config)
   }
-  for (const key of ['get', 'delete', 'head', 'options']) {
-    wrap[key] = function(url, config) {
-      config = merge(this.defaults, { ...config, url })
+  for (const method of ['delete', 'get', 'head', 'options']) {
+    wrap[method] = function(url, config) {
+      config = merge(this.defaults, { ...config, method, url })
       fireBefore(this.exHooks, config)
-      const promise = instance[key].call(this, url, config)
+      const promise = instance[method].call(this, url, config)
       return complete(promise, this.exHooks, config)
     }
   }
-  for (const key of ['post', 'put', 'patch']) {
-    wrap[key] = function(url, data, config) {
-      config = merge(this.defaults, { ...config, url, data })
+  for (const method of ['post', 'put', 'patch']) {
+    wrap[method] = function(url, data, config) {
+      config = merge(this.defaults, { ...config, method, url })
       fireBefore(this.exHooks, config)
-      const promise = instance[key].call(this, url, data, config)
+      const promise = instance[method].call(this, url, data, config)
       return complete(promise, this.exHooks, config)
     }
   }

@@ -187,11 +187,13 @@ function setDefault() {
     duration: 0,
   })
   Toast.setDefaultOptions = function() {
-    Promise.reject(
-      new Error('Toast.setDefaultOptions 功能被禁用（只能集中处理）'),
-    )
+    setTimeout(() => {
+      throw new Error('Toast.setDefaultOptions 功能被禁用（只能集中处理）')
+    })
   }
   Toast.resetDefaultOptions = function() {
-    Promise.reject(new Error('Toast.resetDefaultOptions 功能被禁用'))
+    setTimeout(() => {
+      throw new Error('Toast.resetDefaultOptions 功能被禁用')
+    })
   }
 }

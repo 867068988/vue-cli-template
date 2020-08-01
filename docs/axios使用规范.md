@@ -43,7 +43,6 @@ const data: object /* json 对象 */ = {
 }
 const config = { data }
 
-http.get('/xxx', config)
 http.delete('/xxx', config)
 http.post('/xxx', data)
 http.put('/xxx', data)
@@ -61,7 +60,6 @@ const data: string = qs.stringify({
 })
 const config = { data }
 
-http.get('/xxx', config)
 http.delete('/xxx', config)
 http.post('/xxx', data)
 http.put('/xxx', data)
@@ -79,7 +77,6 @@ const data: FormData = toFormData({
 })
 const config = { data }
 
-http.get('/xxx', config)
 http.delete('/xxx', config)
 http.post('/xxx', data)
 http.put('/xxx', data)

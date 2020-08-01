@@ -39,6 +39,7 @@
   - 打包为 prod 环境：`npm run build`
   - 检查并修复源码：`npm run lint`
   - 运行单元测试：`npm run test:unit`
+  - 启用静态资源服务：`npm run dist`
   - 版本号操作：`npm version major|minor|patch`
     - 版本号格式说明：major(主版本号).minor(次版本号).patch(修订号)
 
@@ -471,7 +472,7 @@
 |-- .env.production ------------- prod 环境变量
 |-- .env.test
 |-- .vscode --------------------- 统一 VSCode 插件及配置
-|-- static-server.js ------------ 静态资源服务 (node 运行)，通常用于预览/检查打包结果
+|-- static-server.js ------------ 静态资源服务 (node 运行)，通常用于预览/检查打包结果，或者临时给其他人员启用前端服务
 |-- docs ------------------------ 开发文档
 |   |-- README.html ------------- 由 ../README.md 手动生成 (使用 VSCode 插件 Markdown Preview Enhanced)
 |   |-- xxx.md

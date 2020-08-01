@@ -8,7 +8,7 @@ const tokens = {}
  * @param {import('axios').AxiosRequestConfig} config
  */
 export const setConfig = function(config) {
-  const { method, baseURL = '', url, exCancelName } = config
+  const { method, baseURL = '', url, exCancelName, cancelToken } = config
   const path = url.replace(/\?.*$/, '')
 
   let name = `${method}${baseURL}${path}`
@@ -16,11 +16,13 @@ export const setConfig = function(config) {
   else if (/^\//.test(exCancelName)) name = `${method}${baseURL}${exCancelName}`
   else if (typeof exCancelName === 'string' && exCancelName) name = exCancelName
 
-  let token = config.cancelToken
-  if (token instanceof CancelToken === false) {
+  let token, _promise
+  if (cancelToken instanceof CancelToken) {
+    token = cancelToken
+    _promise = cancelToken.promise
+  } else {
     token = new CancelToken(_.noop)
   }
-  const _promise = token.promise
   token.promise = new Promise(resolve => {
     _promise && _promise.then(resolve).catch(e => e)
     token._exCancel_resolvePromise = resolve
@@ -50,7 +52,8 @@ export const hooks = Object.freeze({
         if (/^\//.test(name)) return `${method}${baseURL}${name}`
         if (typeof name === 'string') return name
       })
-      cancel(names.filter(Boolean))
+      names = names.filter(Boolean)
+      cancel(names)
     }
   },
   onComplete(config) {

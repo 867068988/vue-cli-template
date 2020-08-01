@@ -20,7 +20,7 @@ const console = (() => {
  */
 export const createMock = (baseURL, isGroupOpened = false) =>
   /**
-   * @typedef {'get' | 'post' | 'put' | 'patch' | 'delete'} Method
+   * @typedef {'get' | 'delete' | 'post' | 'put' | 'patch'} Method
    * @typedef {(opts, query, body) => any} Template
    * @param {string} url 用 reg: 前缀表示正则
    * @param {Method | Template} method

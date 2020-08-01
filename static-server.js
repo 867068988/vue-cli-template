@@ -1,6 +1,6 @@
 /**
  * 静态资源服务 (node 运行)
- * 通常用于预览/检查打包结果
+ * 通常用于预览/检查打包结果，或者临时给其他人员启用前端服务
  */
 
 const express = require('express')
@@ -75,9 +75,13 @@ app.listen(port, function() {
       }
     }
   })()
-  const local = `http://localhost:${port}${BASE_URL}`
-  const network = `http://${ip}:${port}${BASE_URL}`
-  global.console.log(`\n  Local: ${local}`)
-  global.console.log(`Network: ${network}\n`)
-  open(network)
+  const local1 = `http://localhost:${port}${BASE_URL}`
+  const local2 = `http://127.0.0.1:${port}${BASE_URL}`
+  const network = `http://${ip || '未连接网络'}:${port}${BASE_URL}`
+  global.console.log('')
+  global.console.log(` Local1: ${local1}`)
+  global.console.log(` Local2: ${local2}`)
+  global.console.log(`Network: ${network}`)
+  global.console.log('')
+  open(ip ? network : local2)
 })

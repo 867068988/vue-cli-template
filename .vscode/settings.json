@@ -19,22 +19,10 @@
     "editor.defaultFormatter": "octref.vetur"
   },
 
-  /* VSCode v1.41.0+ 配置 */
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
-  /* VSCode v1.41.0- 配置 */
-  "eslint.autoFixOnSave": true,
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    {
-      "language": "vue",
-      "autoFix": true
-    },
-    "html"
-  ],
 
   "path-autocomplete.pathMappings": {
     "@": "${folder}/src",

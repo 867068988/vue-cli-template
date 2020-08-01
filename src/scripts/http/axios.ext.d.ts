@@ -24,7 +24,7 @@ declare module 'axios/index' {
         resOrErr: AxiosResponse | AxiosError | Error | any,
       ) => any
     }> & {
-      // 添加钩子函数的方法，返回的函数可用于移除该钩子函数
+      // 用于添加一组钩子函数（返回的函数可用于移除该组钩子函数）
       add: (obj: AxiosInstance['exHooks'][0]) => () => any
     }
   }
@@ -35,15 +35,15 @@ declare module 'axios/index' {
 
     /**
      * 请求前先取消未完成的请求
-     * 通过名称来取消一个或一类请求（名称相同的都会被取消），参数值对应名称规则如下：
+     * 通过名称来取消一个或一类请求（名称相同的都会被取消），参数值对应的名称规则如下：
      *  true ---------- method + baseURL + path
      * '/xxx/*' ------- method + baseURL + '/xxx/*'
      * 'xxx' ---------- 'xxx'
      */
     exCancel?: boolean | string | Array<boolean | string>
 
-    /* 通过该值可以取消该请求 */
-    exCancelName?: boolean | string // 参数值对应名称规则同上，默认值为 true
+    /* 通过该值对应的名称可以取消该请求 */
+    exCancelName?: boolean | string // 参数值对应的名称规则同上，默认值为 true
   }
 
   interface AxiosResponse {

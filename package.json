@@ -8,7 +8,8 @@
     "build:stage": "vue-cli-service build --mode=production-stage --modern",
     "build": "vue-cli-service build --modern",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint && stylelint **/*.{css,less,html,vue} --fix"
+    "lint": "stylelint **/*.{css,less,html,vue} --fix && vue-cli-service lint",
+    "dist": "node ./static-server.js"
   },
   "//dependencies说明": "@H5: vconsole; @H5.vant: vant",
   "dependencies": {
@@ -81,12 +82,12 @@
     "pre-commit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,mjs,vue}": [
-      "vue-cli-service lint",
+    "*.{css,less,html,vue}": [
+      "stylelint --aei --fix",
       "git add"
     ],
-    "*.{css,less,html,vue}": [
-      "stylelint --fix",
+    "*.{js,jsx,mjs,vue}": [
+      "vue-cli-service lint",
       "git add"
     ]
   }

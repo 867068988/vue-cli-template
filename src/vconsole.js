@@ -1,14 +1,15 @@
 /* dev 环境的移动端直接启用 */
 if (process.env.VUE_APP_ENV === 'dev') {
-  if (
-    /\bMobile\b/i.test(navigator.userAgent) &&
-    !localStorage._vConsole_close
-  ) {
-    const VConsole = require('vconsole')
-    window.console.log(
-      '\ndev 环境的移动端禁用 vConsole 的方式：\nlocalStorage._vConsole_close = 1\n\n',
-    )
-    new VConsole()
+  if (/\bMobile\b/i.test(navigator.userAgent)) {
+    if (!localStorage._vConsole_close) {
+      const VConsole = require('vconsole')
+      window.console.log(
+        '\ndev 环境的移动端禁用 vConsole 的方式：\nlocalStorage._vConsole_close = 1\n\n',
+      )
+      new VConsole()
+    }
+  } else {
+    localStorage._vConsole_close = 1
   }
 }
 
