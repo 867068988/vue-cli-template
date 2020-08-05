@@ -3,16 +3,6 @@ import urlParse from 'url-parse'
 import qs from 'qs'
 import _ from 'lodash'
 Mock.setup({ timeout: '100-600' })
-const console = (() => {
-  const _console = window.console
-  if (_console.log.toString().includes('[native code]')) {
-    return Object.assign(Object.create(_console), { log: _console.log })
-  }
-  const iframe = document.createElement('iframe')
-  iframe.style.display = 'none'
-  document.body.appendChild(iframe)
-  return iframe.contentWindow.console
-})()
 
 /**
  * @param {string} baseURL
@@ -70,6 +60,7 @@ export const createMock = (baseURL, isGroupOpened = false) =>
     })
   }
 
+// 移除原型，让控制台显示更清爽
 const removeProto = value => {
   if (typeof Map === 'undefined' || !Object.setPrototypeOf) return value
   const map = new Map()
@@ -83,5 +74,38 @@ const removeProto = value => {
   }
   return loop(value)
 }
+
+// 使用原始的 console.log（打印没有原型的对象时不会报错）
+const console = (() => {
+  const _console = window.console
+  if (_console.log.toString().includes('[native code]')) {
+    return Object.assign(Object.create(_console), { log: _console.log })
+  }
+  const iframe = document.createElement('iframe')
+  iframe.style.display = 'none'
+  document.body.appendChild(iframe)
+  return iframe.contentWindow.console
+})()
+
+// 修复 mockjs 相关 bug
+Mock.XHR.prototype.send = (() => {
+  const _send = Mock.XHR.prototype.send
+  return function() {
+    if (!this.match) {
+      this.custom.xhr.responseType = this.responseType || ''
+      this.custom.xhr.timeout = this.timeout || 0
+      this.custom.xhr.withCredentials = this.withCredentials || false
+      this.custom.xhr.onabort = this.onabort || null
+      this.custom.xhr.onerror = this.onerror || null
+      this.custom.xhr.onload = this.onload || null
+      this.custom.xhr.onloadend = this.onloadend || null
+      this.custom.xhr.onloadstart = this.onloadstart || null
+      this.custom.xhr.onprogress = this.onprogress || null
+      this.custom.xhr.onreadystatechange = this.onreadystatechange || null
+      this.custom.xhr.ontimeout = this.ontimeout || null
+    }
+    return _send.apply(this, arguments)
+  }
+})()
 
 export default createMock

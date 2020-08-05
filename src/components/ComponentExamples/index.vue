@@ -15,9 +15,9 @@ hljs.registerLanguage('javascript', hljs_javascript)
 Vue.use(require('element-ui'))
 require('element-ui/lib/theme-chalk/index.css')
 
-const README_src = require('!file-loader?name=docs-dev/[name].[ext]!../../../docs/README.html')
-const axios使用规范_src = require('!file-loader?name=docs-dev/[name].[ext]!../../../docs/axios使用规范.html')
-const 环境变量使用规范_src = require('!file-loader?name=docs-dev/[name].[ext]!../../../docs/环境变量使用规范.html')
+const README_src = require('!file-loader?name=docs-dev/[name].[ext]!@/../docs/README.html')
+const axios使用规范_src = require('!file-loader?name=docs-dev/[name].[ext]!@/../docs/axios使用规范.html')
+const 环境变量使用规范_src = require('!file-loader?name=docs-dev/[name].[ext]!@/../docs/环境变量使用规范.html')
 const requireCtx = require.context(
   '../ComponentExamples',
   false, // 不解析子文件夹
