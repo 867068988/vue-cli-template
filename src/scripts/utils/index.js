@@ -1,6 +1,11 @@
 import _ from 'lodash'
 import axios from 'axios'
 import dateFns_format from 'date-fns/format'
+import download from './download'
+
+export {
+  download, // 附件下载
+}
 
 /**
  * 时间格式化
@@ -16,7 +21,7 @@ export const dateFormat = function(date, format = 'YYYY-MM-DD') {
 
 /**
  * 将对象转成 formData
- * @typedef {string | number | boolean | File} Val
+ * @typedef {string | number | boolean | File | Blob} Val
  * @param {{[key: string]: Val | Val[]}} data
  * @param {'repeat' | 'indices' | 'brackets'} [arrayFormat]
  */
