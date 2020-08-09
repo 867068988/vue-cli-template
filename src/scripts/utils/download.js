@@ -39,6 +39,11 @@ export const download = async function(data, fileName, mimeType) {
     return isResolved ? Promise.resolve() : Promise.reject()
   }
 
+  // no data
+  if (String(this) === 'true' ? mimeType : data) {
+    return createPromise(false)
+  }
+
   // callback
   if (String(this) === 'true') {
     const args = [...arguments]
