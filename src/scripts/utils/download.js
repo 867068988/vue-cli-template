@@ -40,7 +40,7 @@ export const download = async function(data, fileName, mimeType) {
   }
 
   // no data
-  if (String(this) === 'true' ? mimeType : data) {
+  if (String(this) === 'true' ? !mimeType : !data) {
     return createPromise(false)
   }
 
@@ -66,21 +66,7 @@ export const download = async function(data, fileName, mimeType) {
     }
     /// 非同源
     else {
-      //// 支持 download
-      if ('download' in anchor) {
-        anchor.style.display = 'none'
-        anchor.download = ''
-        document.body.appendChild(anchor)
-        setTimeout(() => {
-          anchor.click()
-          document.body.removeChild(anchor)
-        }, 66)
-        return createPromise(true)
-      }
-      //// 不支持 download
-      else {
-        return createPromise(window.open(url))
-      }
+      return createPromise(window.open(url))
     }
   }
 
