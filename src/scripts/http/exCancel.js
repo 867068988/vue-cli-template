@@ -79,7 +79,7 @@ export const cancel = function(name) {
     if (names.includes(key)) {
       val.forEach(token => {
         if (token.reason) return
-        token.reason = new Cancel('')
+        token.reason = new Cancel('exCancel')
         token._exCancel_resolvePromise(token.reason)
       })
       delete tokens[key]

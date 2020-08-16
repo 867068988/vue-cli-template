@@ -6,7 +6,11 @@
 import Vue from 'vue'
 import * as utils from '@/scripts/utils'
 import * as constants from '@/scripts/constants'
-import SvgIcon from '@/components/SvgIcon/index.vue'
+const SvgIcon = function() {
+  return import(
+    /* webpackChunkName: "low-priority" */ '@/components/SvgIcon/index.vue'
+  )
+}
 
 /* 原型属性/方法 Vue.prototype (使用 $ 前缀) */
 Vue.prototype.$env = Object.freeze(process.env)

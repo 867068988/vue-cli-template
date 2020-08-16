@@ -30,6 +30,7 @@ module.exports = () => ({
   publicPath: env.BASE_URL,
 
   css: {
+    extract: false,
     loaderOptions: {
       less: {
         globalVars: {
@@ -51,10 +52,7 @@ module.exports = () => ({
         },
       },
     },
-
-    sourceMap: isDev
-      ? env.DEV_CSS_SOURCEMAP === 'true'
-      : env.VUE_APP_ENV === 'stage',
+    sourceMap: isDev ? env.DEV_CSS_SOURCEMAP === 'true' : false,
   },
 
   productionSourceMap: env.VUE_APP_ENV === 'stage',

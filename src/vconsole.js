@@ -13,12 +13,14 @@ if (process.env.VUE_APP_ENV === 'dev') {
   }
 }
 
-/* stage 环境的移动端需要在页面中快速 6 连击才会启用或禁用 */
+/* stage 环境的移动端需要在页面中快速 8 连击才会启用或禁用 */
 if (process.env.VUE_APP_ENV === 'stage') {
   if (/\bMobile\b/i.test(navigator.userAgent)) {
     let vConsole
     const loadVconsole = async function() {
-      const { default: VConsole } = await import('vconsole')
+      const { default: VConsole } = await import(
+        /* webpackChunkName: "vconsole" */ 'vconsole'
+      )
       vConsole = vConsole || new VConsole()
     }
     // 通过连击启用后在指定时间内，页面刷新或重新进入时直接启用
@@ -54,7 +56,7 @@ if (process.env.VUE_APP_ENV === 'stage') {
           }
         }
       }
-      if (count >= 6) {
+      if (count >= 8) {
         reset()
         if (vConsole) {
           vConsole.destroy()

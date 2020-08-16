@@ -1,5 +1,6 @@
 import _ from 'lodash'
 import axios from 'axios'
+import stringify from 'qs/lib/stringify'
 import dateFns_format from 'date-fns/format'
 import download from './download'
 
@@ -20,24 +21,36 @@ export const dateFormat = function(date, format = 'YYYY-MM-DD') {
 }
 
 /**
+ * 将对象序列化成参数
+ * @param {object} data
+ * @param {Parameters<qs.stringify>[1]} [options]
+ */
+export const qsStringify = function(data, options) {
+  options = { arrayFormat: 'repeat', ...options }
+  return stringify(data, options)
+}
+
+/**
  * 将对象转成 formData
  * @typedef {string | number | boolean | File | Blob} Val
  * @param {{[key: string]: Val | Val[]}} data
- * @param {'repeat' | 'indices' | 'brackets'} [arrayFormat]
+ * @param {'repeat' | 'brackets' | 'indices'} [arrayFormat]
  */
 export const toFormData = function(data, arrayFormat = 'repeat') {
   if (data instanceof FormData) return data
   const formData = new FormData()
   _.each(data, (val, key) => {
+    if (val === undefined) return
     if (Array.isArray(val)) {
+      val = val.filter(v => v !== undefined)
       val.forEach((v, i) => {
         let k = key
-        if (arrayFormat === 'indices') k += `[${i}]`
-        else if (arrayFormat === 'brackets') k += '[]'
-        formData.append(k, v)
+        if (arrayFormat === 'brackets') k += '[]'
+        else if (arrayFormat === 'indices') k += `[${i}]`
+        formData.append(k, v === null ? '' : v)
       })
     } else {
-      formData.append(key, val)
+      formData.append(key, val === null ? '' : val)
     }
   })
   return formData

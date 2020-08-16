@@ -24,11 +24,12 @@ export const routes = [
     path: '/*',
     name: '404',
     meta: { title: '404' },
-    component: () => import(/* webpackChunkName: "error" */ '@/views/404.vue'),
+    component: () =>
+      import(/* webpackChunkName: "low-priority" */ '@/views/404.vue'),
   },
 ]
 
-if (process.env.VUE_APP_ENV === 'dev' || process.env.VUE_APP_ENV === 'stage') {
+if (process.env.VUE_APP_ENV === 'dev') {
   routes.unshift({
     path: '/component-examples',
     name: 'component-examples',

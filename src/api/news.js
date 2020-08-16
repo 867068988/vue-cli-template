@@ -2,17 +2,17 @@ import http from '@/scripts/http'
 
 /**
  * 获取新闻列表
- * @param {object} [query]
- * @param {string =} query.keyword
- * @param {number | string | Array<number | string> =} query.status
- * @param {number | string =} query.pageNum
- * @param {number | string =} query.pageSize
+ * @param {object} [params]
+ * @param {string =} params.keyword
+ * @param {number | string | Array<number | string> =} params.status
+ * @param {number | string =} params.pageNum
+ * @param {number | string =} params.pageSize
  */
-export const getNewsList = query => {
-  const params = {
+export const getNewsList = params => {
+  params = {
     pageNum: 1,
     pageSize: 10,
-    ...query,
+    ...params,
   }
   return http.get('/news/getList', { params })
 }

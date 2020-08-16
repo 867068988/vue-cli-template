@@ -6,21 +6,23 @@ axios 中文文档：<a href="http://www.axios-js.com/zh-cn/docs/" target="_blan
 
 ```ts
 import http from '@/scripts/http'
-import qs from 'qs'
+import { qsStringify } from '@/scripts/utils'
 
 const params = {
   pageNum: 1,
   pageSize: 10,
-  keyword: '深圳',
   status: [1, 2],
   // ...
 }
-const paramsSerializer = params => {
-  // indices ----> ?pageNum=1&pageSize=10&keyword=深圳&status[0]=1&status[1]=2
-  // brackets ---> ?pageNum=1&pageSize=10&keyword=深圳&status[]=1&status[]=2
-  // repeat -----> ?pageNum=1&pageSize=10&keyword=深圳&status=1&status=2
-  return qs.stringify(params, { arrayFormat: 'repeat' })
-}
+
+/**
+ * Parameters<qsStringify>[1]['arrayFormat'] 对应的输出
+ * repeat（默认）---> pageNum=1&pageSize=10&status=1&status=2
+ * brackets --------> pageNum=1&pageSize=10&status[]=1&status[]=2
+ * indices ---------> pageNum=1&pageSize=10&status[0]=1&status[1]=2
+ */
+const paramsSerializer = params => qsStringify(params)
+
 const config = {
   params,
   paramsSerializer, // 在拦截器中已配置默认值（默认值同上），在业务中通常不需要重写
@@ -53,9 +55,9 @@ http.patch('/xxx', data)
 
 ```ts
 import http from '@/scripts/http'
-import qs from 'qs'
+import { qsStringify } from '@/scripts/utils'
 
-const data: string = qs.stringify({
+const data: string = qsStringify({
   // ...
 })
 const config = { data }
@@ -109,8 +111,12 @@ config.headers.curUrl = encodeURI(location.href)
 ```js
 import http from '@/scripts/http'
 
-export const getXxx = function(id) {
+export const getXxx = function(params, opts) {
+  params = { ...params }
+  opts = { ...opts }
   return http.get('/xxx', {
+    params,
+
     exNoErrorMassage: true, // 响应异常时不要弹出消息层
     exShowLoading: true, // 请求过程中显示全局 loading
 
@@ -125,12 +131,16 @@ export const getXxx = function(id) {
     // exCancelName: '/xxx/*/yyy',
 
     // 严格匹配，参考如下（使用动态名称）：
-    // exCancel: `/xxx?${id}`,
-    // exCancelName: `/xxx?${id}`,
+    // exCancel: `/xxx?${params.id}`,
+    // exCancelName: `/xxx?${params.id}`,
 
     // 匹配一类，参考如下（类名不能以斜杠开头）：
     // exCancel: 'xxx',
     // exCancelName: 'xxx',
+
+    // 调用时传入，使其具备较高灵活度，以实现不同的应用场景（比如锁定作用范围等）：
+    // exCancel: opts.cancelName,
+    // exCancelName: opts.cancelName,
   })
 }
 ```
@@ -152,14 +162,14 @@ export default {
         })
         .catch(error => {
           this.isError = !this.$isCancel(error)
-          throw error // 一定要抛出异常!!!（让全局统一处理）
+          throw error // 一定要抛出异常，让全局统一处理
         })
         .finally(() => {
           this.loading = false
         })
     },
 
-    /* 成功 & 失败（不推荐） */
+    /* 成功 & 失败（不推荐的写法） */
     getData2() {
       this.loading = true
       return getXxx().then(
@@ -169,7 +179,7 @@ export default {
         },
         error => {
           this.isError = !this.$isCancel(error)
-          throw error // 一定要抛出异常!!!（让全局统一处理）
+          throw error // 一定要抛出异常，让全局统一处理
         },
       )
     },
@@ -212,7 +222,7 @@ export default {
       } catch (error) {
         this.loading = false
         this.isError = !this.$isCancel(error)
-        throw error // 一定要抛出异常!!!（让全局统一处理）
+        throw error // 一定要抛出异常，让全局统一处理
       }
     },
 
@@ -225,7 +235,7 @@ export default {
         this.isError = false
       } catch (error) {
         this.isError = !this.$isCancel(error)
-        throw error // 一定要抛出异常!!!（让全局统一处理）
+        throw error // 一定要抛出异常，让全局统一处理
       } finally {
         this.loading = false
       }
