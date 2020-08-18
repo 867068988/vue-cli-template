@@ -270,13 +270,14 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>&#x5F00;&#x53D1;&#x73AF;&#x5883;&#xFF1A;.env.development &amp; .env.development.local</li>
 <li>&#x6D4B;&#x8BD5;&#x73AF;&#x5883;&#xFF1A;.env.production-stage</li>
 <li>&#x751F;&#x4EA7;&#x73AF;&#x5883;&#xFF1A;.env.production</li>
+<li>&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#xFF1A;.env.test</li>
 </ul>
 </li>
 <li>
 <p>&#x53D8;&#x91CF;&#x540C;&#x540D;&#x65F6;&#xFF0C;&#x4F1A;&#x8986;&#x76D6;&#x524D;&#x9762;&#x5B9A;&#x4E49;&#x7684;</p>
 </li>
 <li>
-<p>.env.development.local &#x4F18;&#x5148;&#x7EA7;&#x9AD8;&#x4E8E; .env.development</p>
+<p>.env.development.local &#x4E2D;&#x7684;&#x53D8;&#x91CF;&#x4F18;&#x5148;&#x7EA7;&#x6700;&#x9AD8;</p>
 </li>
 <li>
 <p>.env.development.local &#x4E0D;&#x4F1A;&#x88AB; git &#x8FFD;&#x8E2A;&#xFF0C;&#x901A;&#x5E38;&#x7528;&#x4E8E;&#x91CD;&#x5199;&#x9891;&#x7E41;&#x53D8;&#x52A8;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x5982;&#xFF1A;</p>
@@ -294,9 +295,10 @@ DEV_PROXY_TARGET_API = &#x540E;&#x7AEF;&#x5F00;&#x53D1;C&#x7684;&#x63A5;&#x53E3;
 
 <pre data-role="codeBlock" data-info="ts" class="language-ts"><span class="token comment">/**
  * &#x8FD0;&#x884C;&#x65F6;&#x53EF;&#x7528;&#x7684;&#xFF1A;process.env.NODE_ENV&#x3001;process.env.BASE_URL&#x3001;process.env.VUE_APP_*
+ * &#x73AF;&#x5883;&#x5224;&#x65AD;&#x63A8;&#x8350;&#x4F7F;&#x7528; process.env.VUE_APP_ENV
  */</span>
 <span class="token keyword">interface</span> <span class="token class-name">Env</span> <span class="token punctuation">{</span>
-  <span class="token comment">// development:&#x5F00;&#x53D1;&#x73AF;&#x5883; | production:&#x975E;&#x5F00;&#x53D1;&#x73AF;&#x5883; | test:&#x5355;&#x5143;&#x6D4B;&#x8BD5;</span>
+  <span class="token comment">// development:&#x5F00;&#x53D1;&#x73AF;&#x5883; | production:&#x975E;&#x5F00;&#x53D1;&#x73AF;&#x5883; | test:&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;</span>
   <span class="token keyword">readonly</span> <span class="token constant">NODE_ENV</span><span class="token punctuation">:</span> <span class="token string">&apos;development&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;production&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;test&apos;</span>
 
   <span class="token comment">// dev:&#x5F00;&#x53D1;&#x73AF;&#x5883; | stage:&#x6D4B;&#x8BD5;&#x73AF;&#x5883; | prod:&#x751F;&#x4EA7;&#x73AF;&#x5883;</span>
@@ -306,7 +308,7 @@ DEV_PROXY_TARGET_API = &#x540E;&#x7AEF;&#x5F00;&#x53D1;C&#x7684;&#x63A5;&#x53E3;
   <span class="token keyword">readonly</span> <span class="token constant">BASE_URL</span><span class="token punctuation">:</span> <span class="token string">&apos;&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;./&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;/**/&apos;</span> <span class="token comment">// &#x9700;&#x8981;&#x5C3E;&#x659C;&#x6760;&#xFF0C;&#x5982;&#x6CA1;&#x6709;&#x5219;&#x6784;&#x5EFA;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x4E0A;</span>
 
   <span class="token comment">// &#x63A5;&#x53E3;&#x524D;&#x7F00;</span>
-  <span class="token keyword">readonly</span> <span class="token constant">VUE_APP_BASEURL_API</span><span class="token punctuation">:</span> <span class="token string">&apos;/**/*&apos;</span> <span class="token comment">// &#x4E0D;&#x9700;&#x8981;&#x5C3E;&#x659C;&#x6760;</span>
+  <span class="token keyword">readonly</span> <span class="token constant">VUE_APP_BASEURL_API</span><span class="token punctuation">:</span> <span class="token string">&apos;/**/*&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;http*(s)://**/*&apos;</span> <span class="token comment">// &#x4E0D;&#x9700;&#x8981;&#x5C3E;&#x659C;&#x6760;</span>
 
   <span class="token comment">// &#x662F;&#x5426;&#x542F;&#x7528; mockjs</span>
   <span class="token keyword">readonly</span> <span class="token constant">VUE_APP_MOCK</span><span class="token punctuation">:</span> <span class="token string">&apos;true&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;false&apos;</span>
@@ -356,7 +358,7 @@ DEV_PROXY_TARGET_API = &#x540E;&#x7AEF;&#x5F00;&#x53D1;C&#x7684;&#x63A5;&#x53E3;
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
-  <span class="token comment">&lt;!-- &#x6A21;&#x677F;&#x4E2D;&#x4E0D;&#x80FD;&#x4F7F;&#x7528; process.env --&gt;</span>
+  <span class="token comment">&lt;!-- &#x5728;&#x6A21;&#x677F;&#x4E2D;&#x53EA;&#x80FD;&#x95F4;&#x63A5;&#x53D6;&#x7528; --&gt;</span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span>
     <span class="token attr-name">download</span>
     <span class="token attr-name">target</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">&quot;</span>_blank<span class="token punctuation">&quot;</span></span>
@@ -375,7 +377,7 @@ DEV_PROXY_TARGET_API = &#x540E;&#x7AEF;&#x5F00;&#x53D1;C&#x7684;&#x63A5;&#x53E3;
 
 <p>&#x5FC5;&#x987B;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x53EF;&#x7528;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;&#x5E76;&#x4E14;&#x53D8;&#x91CF;&#x503C;&#x4E0D;&#x80FD;&#x4E3A; undefined&#xFF0C;&#x5426;&#x5219;&#x6A21;&#x5757;&#x5FC5;&#x5B9A;&#x4F1A;&#x6253;&#x5305;</p>
 <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token comment">// &#x6B63;&#x786E;&#x7684;&#x7528;&#x6CD5;1</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">NODE_ENV</span> <span class="token operator">===</span> <span class="token string">&apos;development&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">VUE_APP_ENV</span> <span class="token operator">===</span> <span class="token string">&apos;dev&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&apos;xxx&apos;</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 <span class="token comment">// &#x6B63;&#x786E;&#x7684;&#x7528;&#x6CD5;2</span>

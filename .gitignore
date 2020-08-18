@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-/TODO-local
+/TODO.local.md
 
 # local env files
 .env.local

@@ -39,7 +39,7 @@ export const createMock = (baseURL, isGroupOpened = false) =>
       /* res */
       const res = tplFn.call(this, opts, query, body)
       /* console */
-      if (process.env.NODE_ENV === 'development') {
+      if (process.env.VUE_APP_ENV === 'dev') {
         const queryCopy = removeProto(_.cloneDeep(query))
         const bodyCopy = removeProto(_.cloneDeep(body))
         const resCopy = (() => {

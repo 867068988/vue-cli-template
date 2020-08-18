@@ -3,7 +3,7 @@ const postcssPxtorem = require('postcss-pxtorem') // @H5 将 px 转成 rem
 const _ = require('lodash')
 const { join } = require('path')
 const env = process.env
-const isDev = env.NODE_ENV === 'development'
+const isDev = env.VUE_APP_ENV === 'dev'
 
 /* 当代理的前缀为空时 */
 if (isDev) {
@@ -128,10 +128,14 @@ module.exports = () => ({
             /\.(html|htm|js|json)$/.test(path) &&
             /[\\/]public[\\/]libs[\\/]/.test(path) === false
           ) {
-            const ejsData = _.pickBy(env, (val, key) =>
+            const options = {
+              interpolate: /<%=([\s\S]+?)%>/g,
+              sourceURL: path,
+            }
+            const obj = _.pickBy(env, (val, key) =>
               /^(NODE_ENV|BASE_URL|VUE_APP_.*)$/.test(key),
             )
-            content = _.template(`${content}`, { sourceURL: path })(ejsData)
+            content = _.template(`${content}`, options)(obj)
           }
           return content
         }
