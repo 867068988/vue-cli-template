@@ -34,7 +34,7 @@ declare module 'axios/index' {
     exShowLoading?: boolean // 请求过程中显示全局 loading
 
     /**
-     * 请求前先取消未完成的请求
+     * 请求前先取消未完成的请求（通常用于幂等性请求，如列表查询等）
      * 通过名称来取消一个或一类请求（名称相同的都会被取消），参数值对应的名称规则如下：
      *  true ---------- method + baseURL + path
      * '/xxx/*' ------- method + baseURL + '/xxx/*'

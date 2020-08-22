@@ -120,7 +120,7 @@ export const getXxx = function(params, opts) {
     exNoErrorMassage: true, // 响应异常时不要弹出消息层
     exShowLoading: true, // 请求过程中显示全局 loading
 
-    exCancel: true, // 请求前先取消未完成的请求
+    exCancel: true, // 请求前先取消未完成的请求（通常用于幂等性请求，如列表查询等）
 
     // 对于 `/xxx/${id}` 这种形式的 path，参考如下：
     // exCancel: '/xxx/*',
