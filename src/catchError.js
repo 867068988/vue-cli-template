@@ -14,7 +14,7 @@ window.addEventListener('unhandledrejection', function(event) {
   const { reason } = event
   if (!isSystemError(reason)) {
     if (
-      process.env.VUE_APP_ENV === 'production' ||
+      process.env.VUE_APP_ENV === 'prod' ||
       (isError(reason) && reason.isAxiosError)
     ) {
       event.preventDefault() // 隐藏
