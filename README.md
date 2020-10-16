@@ -45,7 +45,6 @@
 
 # 开发本地环境
 
-- 在 VSCode 中给予独立的工作区，而非文件夹，以获得最佳的智能感知
 - 新建 .env.development.local 来重写部分环境变量，如：
   - 模拟数据：`VUE_APP_MOCK = true`
   - 接口服务：`DEV_PROXY_TARGET_API = http://10.25.73.159:8081`
