@@ -36,8 +36,8 @@ export default {
     <!-- 在 template 中使用'@'别名 -->
     <img :class="$style.logo" src="@/assets/logo.png" />
 
-    <hello-world :class="$style.helloWorld" msg="Welcome to Your Vue.js App" />
-    <private-component :class="$style.privateComponent" />
+    <HelloWorld :class="$style.helloWorld" msg="Welcome to Your Vue.js App" />
+    <PrivateComponent :class="$style.privateComponent" />
   </div>
 </template>
 

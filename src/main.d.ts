@@ -6,7 +6,7 @@ declare namespace NodeJS {
     readonly NODE_ENV: 'development' | 'production' | 'test'
     readonly VUE_APP_ENV: 'dev' | 'stage' | 'prod'
 
-    readonly BASE_URL: '' | './' | '/**/'
+    readonly BASE_URL: '' | '/**/'
     readonly VUE_APP_BASEURL_API: '/**/*' | 'http*(s)://**/*'
 
     readonly VUE_APP_MOCK: 'true' | 'false'

@@ -413,15 +413,15 @@ data/$store/$route
 <pre data-role="codeBlock" data-info="html" class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">&gt;</span></span><span class="token script language-javascript">
   <span class="token keyword">import</span> MyComponent <span class="token keyword">from</span> <span class="token string">&apos;@/components/MyComponent.vue&apos;</span> <span class="token comment">// &#x6587;&#x4EF6;&#x540D;&#x4F7F;&#x7528; PascalCase &#x547D;&#x540D;&#x6CD5;</span>
   <span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
-    name<span class="token punctuation">:</span> <span class="token string">&apos;ComponentName&apos;</span><span class="token punctuation">,</span> <span class="token comment">// &#x5FC5;&#x987B;&#x6709; name</span>
     components<span class="token punctuation">:</span> <span class="token punctuation">{</span> MyComponent <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span>
 </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
 
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span><span class="token punctuation">&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
-    <span class="token comment">&lt;!-- &#x5728; template &#x4E2D;&#x4E00;&#x5F8B;&#x4F7F;&#x7528; kebab-case &#x65B9;&#x5F0F;&#x8C03;&#x7528; --&gt;</span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>my-component</span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token comment">&lt;!-- &#x5C40;&#x90E8;&#x6CE8;&#x518C;&#x7684;&#x4F7F;&#x7528; PascalCase &#x65B9;&#x5F0F;&#x8C03;&#x7528;&#xFF08;&#x533A;&#x522B;&#x4E8E;&#x5168;&#x5C40;&#x6CE8;&#x518C;&#x7684;&#xFF0C;&#x540C;&#x65F6;&#x53C8;&#x65B9;&#x4FBF;&#x9009;&#x4E2D;&#x5B9A;&#x4F4D;&#xFF09; --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>MyComponent</span> <span class="token punctuation">/&gt;</span></span>
+    <span class="token comment">&lt;!-- &#x5168;&#x5C40;&#x6CE8;&#x518C;&#x7684;&#x4F7F;&#x7528; kebab-case &#x65B9;&#x5F0F;&#x8C03;&#x7528; --&gt;</span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-input</span> <span class="token punctuation">/&gt;</span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">&gt;</span></span>
@@ -490,10 +490,10 @@ data/$store/$route
 <li>&#x614E;&#x7528; this.$refs&#x3001;this.$parent&#x3001;this.$root&#x3001;provide/inject
 <ul>
 <li>this.$refs &#x4E00;&#x822C;&#x7528;&#x5728;&#x7B2C;&#x4E09;&#x65B9;&#x5F00;&#x6E90;&#x7EC4;&#x4EF6;&#x6216;&#x5185;&#x90E8;&#x516C;&#x5171;&#x5E93;&#x7EC4;&#x4EF6;&#x6216;&#x975E;&#x5E38;&#x7A33;&#x5B9A;&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x4EE5;&#x8C03;&#x7528;&#x663E;&#x5F0F;&#x58F0;&#x660E;&#x7684;&#x65B9;&#x6CD5;</li>
-<li>&#x5728;&#x4E07;&#x4E0D;&#x5F97;&#x5DF2;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x9700;&#x8981;&#x66B4;&#x9732;&#x65B9;&#x6CD5;&#x7ED9;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x65F6;&#x9700;&#x8981;&#x52A0; pub &#x524D;&#x7F00;&#xFF0C;&#x5982;&#xFF1A;this.$refs.pubFocus()</li>
+<li>&#x5728;&#x4E07;&#x4E0D;&#x5F97;&#x5DF2;&#x60C5;&#x51B5;&#x4E0B;&#x9700;&#x8981;&#x66B4;&#x9732;&#x65B9;&#x6CD5;&#x7ED9;&#x5916;&#x90E8;&#x8C03;&#x7528;&#x65F6;&#x6700;&#x597D;&#x52A0;&#x4E0A; pub_ &#x524D;&#x7F00;&#xFF0C;&#x5982;&#xFF1A;this.$refs.xxx.pub_focus()</li>
 </ul>
 </li>
-<li>&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x5728; watch &#x4E2D;&#x76F4;&#x63A5;&#x53D8;&#x66F4;&#x6570;&#x636E;&#xFF0C;&#x6613;&#x9020;&#x6210;&#x6B7B;&#x5FAA;&#x73AF;&#x3002;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x5E94;&#x8BE5;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x4E8B;&#x4EF6;&#x6216;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5F02;&#x6B65;&#x56DE;&#x8C03;</li>
+<li>&#x5C3D;&#x91CF;&#x4E0D;&#x8981;&#x5728; watch &#x4E2D;&#x76F4;&#x63A5;&#x53D8;&#x66F4;&#x6570;&#x636E;&#xFF08;&#x662F;&#x4E0D;&#x662F;&#x53EF;&#x4EE5;&#x8003;&#x8651; computed&#xFF09;&#xFF0C;&#x6613;&#x9020;&#x6210;&#x6B7B;&#x5FAA;&#x73AF;&#x3002;&#x6570;&#x636E;&#x53D8;&#x66F4;&#x5E94;&#x8BE5;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x4EA4;&#x4E92;&#x4E8B;&#x4EF6;&#x6216;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5F02;&#x6B65;&#x56DE;&#x8C03;</li>
 <li>&#x7EC4;&#x4EF6;&#x4E2D;&#x7684; data &#x53CA; vuex &#x4E2D;&#x7684; state &#x5E94;&#x8BE5;&#x53EF;&#x5E8F;&#x5217;&#x5316;&#xFF0C;&#x5373;&#x4E0D;&#x8981;&#x5B58; undefined&#x3001;function &#x7B49;</li>
 </ul>
 <h3 class="mume-header" id="a-target_blank-hrefhttpscnvuejsorgv2style-guide%E5%85%B6%E5%AE%83%E5%88%99%E4%B8%A5%E6%A0%BC%E9%81%B5%E5%AE%88-vue-%E5%AE%98%E6%96%B9%E9%A3%8E%E6%A0%BC%E6%8C%87%E5%8D%97a">&#x3010; <a target="_blank" href="https://cn.vuejs.org/v2/style-guide/">!!!&#x5176;&#x5B83;&#x5219;&#x4E25;&#x683C;&#x9075;&#x5B88; vue &#x5B98;&#x65B9;&#x98CE;&#x683C;&#x6307;&#x5357;</a>&#x3011;</h3>

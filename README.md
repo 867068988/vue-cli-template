@@ -111,15 +111,15 @@
   <script>
     import MyComponent from '@/components/MyComponent.vue' // 文件名使用 PascalCase 命名法
     export default {
-      name: 'ComponentName', // 必须有 name
       components: { MyComponent },
     }
   </script>
 
   <template>
     <div>
-      <!-- 在 template 中一律使用 kebab-case 方式调用 -->
-      <my-component />
+      <!-- 局部注册的使用 PascalCase 方式调用（区别于全局注册的，同时又方便选中定位） -->
+      <MyComponent />
+      <!-- 全局注册的使用 kebab-case 方式调用 -->
       <el-input />
     </div>
   </template>
@@ -178,8 +178,8 @@
 
 - 慎用 this\.\$refs、this\.\$parent、this\.\$root、provide/inject
   - this\.\$refs 一般用在第三方开源组件或内部公共库组件或非常稳定的组件，以调用显式声明的方法
-  - 在万不得已的情况下需要暴露方法给外部调用时需要加 pub 前缀，如：this\.\$refs.pubFocus()
-- 尽量不要在 watch 中直接变更数据，易造成死循环。数据变更应该交给用户交互事件或初始化的异步回调
+  - 在万不得已情况下需要暴露方法给外部调用时最好加上 pub\_ 前缀，如：this\.\$refs.xxx.pub_focus()
+- 尽量不要在 watch 中直接变更数据（是不是可以考虑 computed），易造成死循环。数据变更应该交给用户交互事件或初始化的异步回调
 - 组件中的 data 及 vuex 中的 state 应该可序列化，即不要存 undefined、function 等
 
 ### 【 <a target="_blank" href="https://cn.vuejs.org/v2/style-guide/">!!!其它则严格遵守 vue 官方风格指南</a>】

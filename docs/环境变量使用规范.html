@@ -291,10 +291,10 @@ DEV_PROXY_TARGET_API = &#x540E;&#x7AEF;&#x5F00;&#x53D1;C&#x7684;&#x63A5;&#x53E3;
 # ...
 </code></pre></li>
 </ul>
-<h3 class="mume-header" id="%E8%BF%90%E8%A1%8C%E6%97%B6%E5%8F%AF%E7%94%A8%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">&#x8FD0;&#x884C;&#x65F6;&#x53EF;&#x7528;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;</h3>
+<h3 class="mume-header" id="%E8%BF%90%E8%A1%8C%E6%97%B6%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8F%AF%E7%94%A8%E7%9A%84%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">&#x8FD0;&#x884C;&#x65F6;(&#x5BA2;&#x6237;&#x7AEF;)&#x53EF;&#x7528;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;</h3>
 
 <pre data-role="codeBlock" data-info="ts" class="language-ts"><span class="token comment">/**
- * &#x8FD0;&#x884C;&#x65F6;&#x53EF;&#x7528;&#x7684;&#xFF1A;process.env.NODE_ENV&#x3001;process.env.BASE_URL&#x3001;process.env.VUE_APP_*
+ * &#x8FD0;&#x884C;&#x65F6;(&#x5BA2;&#x6237;&#x7AEF;)&#x53EF;&#x7528;&#x7684;&#xFF1A;process.env.NODE_ENV&#x3001;process.env.BASE_URL&#x3001;process.env.VUE_APP_*
  * &#x73AF;&#x5883;&#x5224;&#x65AD;&#x63A8;&#x8350;&#x4F7F;&#x7528; process.env.VUE_APP_ENV
  */</span>
 <span class="token keyword">interface</span> <span class="token class-name">Env</span> <span class="token punctuation">{</span>
@@ -305,7 +305,7 @@ DEV_PROXY_TARGET_API = &#x540E;&#x7AEF;&#x5F00;&#x53D1;C&#x7684;&#x63A5;&#x53E3;
   <span class="token keyword">readonly</span> <span class="token constant">VUE_APP_ENV</span><span class="token punctuation">:</span> <span class="token string">&apos;dev&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;stage&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;prod&apos;</span>
 
   <span class="token comment">// &#x9875;&#x9762;&#x90E8;&#x7F72;&#x8DEF;&#x5F84;&#xFF0C;&#x8BE6;&#x60C5;&#xFF1A;https://cli.vuejs.org/zh/config/#publicpath</span>
-  <span class="token keyword">readonly</span> <span class="token constant">BASE_URL</span><span class="token punctuation">:</span> <span class="token string">&apos;&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;./&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;/**/&apos;</span> <span class="token comment">// &#x9700;&#x8981;&#x5C3E;&#x659C;&#x6760;&#xFF0C;&#x5982;&#x6CA1;&#x6709;&#x5219;&#x6784;&#x5EFA;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x4E0A;</span>
+  <span class="token keyword">readonly</span> <span class="token constant">BASE_URL</span><span class="token punctuation">:</span> <span class="token string">&apos;&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;/**/&apos;</span> <span class="token comment">// &#x9700;&#x8981;&#x5C3E;&#x659C;&#x6760;&#xFF0C;&#x5982;&#x6CA1;&#x6709;&#x5219;&#x6784;&#x5EFA;&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x4E0A;</span>
 
   <span class="token comment">// &#x63A5;&#x53E3;&#x524D;&#x7F00;</span>
   <span class="token keyword">readonly</span> <span class="token constant">VUE_APP_BASEURL_API</span><span class="token punctuation">:</span> <span class="token string">&apos;/**/*&apos;</span> <span class="token operator">|</span> <span class="token string">&apos;http*(s)://**/*&apos;</span> <span class="token comment">// &#x4E0D;&#x9700;&#x8981;&#x5C3E;&#x659C;&#x6760;</span>

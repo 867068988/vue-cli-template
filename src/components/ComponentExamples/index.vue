@@ -135,7 +135,6 @@ export default {
       `
       doc.body.appendChild(div)
     },
-    toKebabCase: name => _.kebabCase(name),
     targetScrollIntoView() {
       if (this.currLinkIsComp) {
         const id = `${this.currLinkName}_target_${this.uid}`
@@ -214,7 +213,7 @@ export default {
           :key="compName"
           :class="$style.link"
           :to="{ ...$route, hash: `#${compName}` }"
-          >&lt;{{ toKebabCase(compName) }}&gt;</router-link
+          >&lt;{{ compName }}&gt;</router-link
         >
       </div>
     </el-aside>
@@ -251,7 +250,7 @@ export default {
               >
                 <i
                   class="el-icon-view"
-                  style="font-size:20px;color:#666"
+                  style="font-size: 20px; color: #666"
                   slot="reference"
                 />
                 <div
@@ -262,9 +261,9 @@ export default {
                   <pre><code class="xml">{{ compsRaw[compName] }}</code></pre>
                 </div>
               </el-popover>
-              &lt;{{ toKebabCase(compName) }}&gt;
+              &lt;{{ compName }}&gt;
               <el-tooltip effect="light" placement="right">
-                <i class="el-icon-aim" style="font-size:20px;color:#ccc" />
+                <i class="el-icon-aim" style="font-size: 20px; color: #ccc" />
                 <template slot="content">
                   可通过 vue-devtools 中的 Open in editor 快速定位至源文件
                   <div :style="{ marginTop: '10px', opacity: 0.5 }">
@@ -278,13 +277,13 @@ export default {
                 </template>
               </el-tooltip>
             </h2>
-            <div style="padding-left:30px">
+            <div style="padding-left: 30px">
               <component :is="compName"></component>
             </div>
           </div>
           <hr
             v-if="i < compNames.length - 1"
-            style="margin:40px 0;opacity:0.3"
+            style="margin: 40px 0; opacity: 0.3"
           />
         </div>
       </template>

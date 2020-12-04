@@ -4,5 +4,5 @@ export default { components: { HelloWorld } }
 </script>
 
 <template>
-  <hello-world />
+  <HelloWorld />
 </template>
