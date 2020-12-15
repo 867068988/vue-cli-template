@@ -95,7 +95,7 @@ export const download = async function(data, fileName, mimeType) {
 const getHeaderFilename = function(res) {
   const disposition = _.get(res, 'headers.content-disposition')
   if (disposition) {
-    const reg = /^(.*?;)?\s*filename\s*=\s*["']?(.+?)["']?\s*(;.*)?$/
+    const reg = /^(.*?;)?\s*filename\s*=\s*"?(.+?)"?\s*(;.*)?$/
     const matches = disposition.match(reg)
     if (matches) {
       return decodeURIComponent(matches[2])

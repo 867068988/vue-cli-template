@@ -6,6 +6,7 @@
 import Vue from 'vue'
 import * as utils from '@/scripts/utils'
 import * as constants from '@/scripts/constants'
+import eventBus from '@/scripts/eventBus'
 const SvgIcon = function() {
   return import(
     /* webpackChunkName: "low-priority" */ '@/components/SvgIcon/index.vue'
@@ -17,6 +18,7 @@ Vue.prototype.$env = Object.freeze(process.env)
 Vue.prototype.$utils = Object.freeze({ ...utils })
 Vue.prototype.$const = Object.freeze({ ...constants })
 Vue.prototype.$isCancel = utils.isCancel
+Vue.prototype.$eventBus = eventBus
 
 /* 全局过滤器 Vue.filter */
 Vue.filter('dateFormat', utils.dateFormat)

@@ -520,6 +520,7 @@
     |-- scripts
     |   |-- utils --------------- 通用方法
     |   |-- constants ----------- 常量 (多使用 Object.freeze)
+    |   |-- eventBus ------------ 事件总线
     |   |-- xxx.js
     |   |-- http ---------------- axios 实例
     |       |-- index.js
