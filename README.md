@@ -312,18 +312,18 @@
 - IDE 统一使用 VSCode，并统一使用相关插件及配置
 - js 变量声明尽量使用 const
 - js 变量或对象属性使用驼峰命名法
-- js 私有变量或对象私有属性使用 \_ 前缀 (注意: <a target="_blank" href="https://cn.vuejs.org/v2/style-guide">vue 组件属性不要使用 \_ 前缀</a>)
+- js 私有变量或对象私有属性使用 \_ 前缀，但是 <a target="_blank" href="https://cn.vuejs.org/v2/style-guide">vue 实例属性不要使用 \_ 前缀</a>，避免与内置私有属性产生冲突，推荐使用 \_ 后缀进行标识
 
   ```js
-  // 表明该变量仅在 createId 方法中使用 (与 createId 方法紧挨着)
-  let _count = 0
-  const createId = () => `${Date.now()}_${++_count}`
+  let _count = 0 // 表明该变量仅在 createId 方法中使用 (与 createId 方法紧挨着)
+  const createId = () => `${Date.now()}${++_count}`
 
-  // 适时使用立即执行函数可以简洁作用域及保护私有变量
   const createId = (() => {
-    let count = 0
-    return () => `${Date.now()}_${++count}`
+    let count = 0 // 适时使用立即执行函数可以简洁作用域及保护私有变量
+    return () => `${Date.now()}${++count}`
   })()
+
+  this.uid_ = createId() // vue 实例属性不要使用 _ 前缀，推荐使用 _ 后缀进行标识
   ```
 
 - 导入模块时不要省略后缀（js 除外），利于 IDE 感知

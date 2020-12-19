@@ -93,7 +93,7 @@ export default {
   },
   beforeRouteUpdate(to, from, next) {
     next()
-    !this.isRouteChangeFromMouseEnter && this.targetScrollIntoView()
+    !this.isRouteChangeFromMouseEnter_ && this.targetScrollIntoView()
   },
   beforeRouteLeave(to, from, next) {
     next(false)
@@ -146,9 +146,9 @@ export default {
       if (compName === this.currLinkName) return
       clearTimeout(this.mouseEnterCompTimer)
       this.mouseEnterCompTimer = setTimeout(() => {
-        this.isRouteChangeFromMouseEnter = true
+        this.isRouteChangeFromMouseEnter_ = true
         this.$router.replace({ ...this.$route, hash: `#${compName}` })
-        this.isRouteChangeFromMouseEnter = false
+        this.isRouteChangeFromMouseEnter_ = false
       }, 300)
     },
   },
