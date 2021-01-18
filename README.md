@@ -63,6 +63,7 @@
   - 推荐插件
     - `stylelint`
     - `vscode-element-helper` (element-ui 专用)
+    - `SVG Gallery`
     - `Debugger for Chrome`
     - `GitLens -- Git supercharged`
 - Chrome 相关插件

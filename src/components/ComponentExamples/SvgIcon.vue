@@ -9,8 +9,9 @@ export default {
 <template>
   <div>
     <div :class="$style.title">
-      图标集中放置在 @/components/SvgIcon/icons/ 目录里，颜色与大小的控制同
-      iconfont
+      - 图标集中放置在 @/components/SvgIcon/icons/ 目录里<br />
+      - 单色模式(非'mt-'前缀)，大小继承至 font-size，颜色继承至 color<br />
+      - 多色模式('mt-'前缀)，大小继承至 font-size，颜色则原始显示
     </div>
     <div :class="$style.itemsBox">
       <el-tooltip v-for="name in names" :key="name" effect="light">

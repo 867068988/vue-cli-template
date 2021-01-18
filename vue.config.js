@@ -90,7 +90,7 @@ module.exports = () => ({
       .end()
       .use('svg-sprite-loader')
       .loader('svg-sprite-loader')
-      .options({ symbolId: '$svgSpriteIcon_[name]' })
+      .options({ symbolId: 'svgSpriteIcon__[name]' })
       .end()
       .use('svgo-loader')
       .loader('svgo-loader')

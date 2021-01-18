@@ -1,4 +1,6 @@
-<!-- svg-sprite 图标，颜色与大小的控制同 iconfont -->
+<!-- svg-sprite 图标 -->
+<!-- 单色模式(非'mt-'前缀)，大小继承至 font-size，颜色继承至 color -->
+<!-- 多色模式('mt-'前缀)，大小继承至 font-size，颜色则原始显示 -->
 
 <script>
 let requireCtx
@@ -46,7 +48,7 @@ export default {
 <template>
   <i :class="['svg-icon', `svg-icon-${icon}`]">
     <svg class="svg-icon__icon">
-      <use :xlink:href="`#$svgSpriteIcon_${icon}`" />
+      <use :xlink:href="`#svgSpriteIcon__${icon}`" />
     </svg>
   </i>
 </template>
@@ -67,7 +69,7 @@ export default {
     fill: currentColor;
   }
 }
-[id^='$svgSpriteIcon_'] {
+[id^='svgSpriteIcon__']:not([id^='svgSpriteIcon__mt-']) {
   [fill] {
     fill: currentColor;
   }
