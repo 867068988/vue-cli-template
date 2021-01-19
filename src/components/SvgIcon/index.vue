@@ -69,11 +69,14 @@ export default {
     fill: currentColor;
   }
 }
+
 [id^='svgSpriteIcon__']:not([id^='svgSpriteIcon__mt-']) {
-  [fill] {
+  // svgo-loader 会自动计算内联样式并应用到 fill 属性上
+  [fill]:not([fill='none']):not([fill='transparent']) {
     fill: currentColor;
   }
-  [stroke] {
+  // svgo-loader 会自动计算内联样式并应用到 stroke 属性上
+  [stroke]:not([stroke='none']):not([stroke='transparent']) {
     stroke: currentColor;
   }
 }
