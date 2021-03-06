@@ -158,7 +158,7 @@ export default {
 <template>
   <el-container :class="$style.box">
     <el-aside :class="$style.aside" width="220px">
-      <div :class="$style.linkGroup">
+      <div :class="$style.link_group">
         <a
           :class="$style.link"
           target="_blank"
@@ -192,7 +192,7 @@ export default {
           >vant 官网</a
         >
       </div>
-      <div :class="$style.linkGroup">
+      <div :class="$style.link_group">
         <router-link :class="$style.link" :to="{ ...$route, hash: '#README' }"
           >README</router-link
         >
@@ -207,7 +207,7 @@ export default {
           >环境变量使用规范</router-link
         >
       </div>
-      <div :class="$style.linkGroup">
+      <div :class="$style.link_group">
         <router-link
           v-for="compName in compNames"
           :key="compName"
@@ -254,7 +254,7 @@ export default {
                   slot="reference"
                 />
                 <div
-                  :class="$style.highlightBox"
+                  :class="$style.highlight_box"
                   v-if="!!compsRaw[`${compName}_popoverInited`]"
                   v-highlight
                 >
@@ -317,7 +317,7 @@ export default {
 .main {
   position: relative;
 }
-.linkGroup {
+.link_group {
   margin: 12px 0;
 }
 .link {
@@ -341,7 +341,7 @@ export default {
   height: 100%;
   border: none;
 }
-.highlightBox {
+.highlight_box {
   max-width: calc(100vw - 66px);
   max-height: calc(100vh - 66px);
   overflow: auto;

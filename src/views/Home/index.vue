@@ -36,8 +36,8 @@ export default {
     <!-- 在 template 中使用'@'别名 -->
     <img :class="$style.logo" src="@/assets/logo.png" />
 
-    <HelloWorld :class="$style.helloWorld" msg="Welcome to Your Vue.js App" />
-    <PrivateComponent :class="$style.privateComponent" />
+    <HelloWorld :class="$style.hello_world" msg="Welcome to Your Vue.js App" />
+    <PrivateComponent :class="$style.private_component" />
   </div>
 </template>
 
@@ -61,11 +61,11 @@ export default {
   height: 2em;
   margin: 3em 0;
 }
-.helloWorld {
+.hello_world {
   background: url('~@/assets/logo.png') no-repeat right center; // 在 style 中使用'@'别名
   background-size: auto 2em;
 }
-.privateComponent {
+.private_component {
   margin-top: 3em;
 }
 </style>

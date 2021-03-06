@@ -22,7 +22,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "调试：npm run build",
+      "name": "调试：npm run build:prod",
       "program": "${workspaceFolder}/node_modules/@vue/cli-service/bin/vue-cli-service.js",
       "args": ["build", "--modern"]
     },

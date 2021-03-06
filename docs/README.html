@@ -264,6 +264,7 @@ pre[data-line] .line-highlight[data-end]:after {
       <div class="code-chunk" data-id="code-chunk-id-0" data-cmd="toc"><div class="input-div"><div class="btn-group"><div class="run-btn btn"><span>&#x25B6;&#xFE0E;</span></div><div class="run-all-btn btn">all</div></div><div class="status">running...</div></div><div class="output-div"></div></div><ul>
 <li><a href="#%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C%E6%8C%87%E5%8D%97">&#x9879;&#x76EE;&#x8FD0;&#x884C;&#x6307;&#x5357;</a></li>
 <li><a href="#%E5%BC%80%E5%8F%91%E6%9C%AC%E5%9C%B0%E7%8E%AF%E5%A2%83">&#x5F00;&#x53D1;&#x672C;&#x5730;&#x73AF;&#x5883;</a></li>
+<li><a href="#stage-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83">stage &#x6D4B;&#x8BD5;&#x73AF;&#x5883;</a></li>
 <li><a href="#%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3%E6%8F%92%E4%BB%B6%E5%B7%A5%E5%85%B7">&#x5F00;&#x53D1;&#x76F8;&#x5173;&#x63D2;&#x4EF6;/&#x5DE5;&#x5177;</a></li>
 <li><a href="#%E5%BC%80%E5%8F%91%E8%A7%84%E8%8C%83">&#x5F00;&#x53D1;&#x89C4;&#x8303;</a>
 <ul>
@@ -304,7 +305,7 @@ pre[data-line] .line-highlight[data-end]:after {
 <ul>
 <li>&#x542F;&#x52A8;&#x4E3A; dev &#x73AF;&#x5883;&#xFF1A;<code>npm run serve</code> &#x6216; <code>npm start</code></li>
 <li>&#x6253;&#x5305;&#x4E3A; stage &#x73AF;&#x5883;&#xFF1A;<code>npm run build:stage</code></li>
-<li>&#x6253;&#x5305;&#x4E3A; prod &#x73AF;&#x5883;&#xFF1A;<code>npm run build</code></li>
+<li>&#x6253;&#x5305;&#x4E3A; prod &#x73AF;&#x5883;&#xFF1A;<code>npm run build:prod</code></li>
 <li>&#x68C0;&#x67E5;&#x5E76;&#x4FEE;&#x590D;&#x6E90;&#x7801;&#xFF1A;<code>npm run lint</code></li>
 <li>&#x8FD0;&#x884C;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#xFF1A;<code>npm run test:unit</code></li>
 <li>&#x542F;&#x7528;&#x9759;&#x6001;&#x8D44;&#x6E90;&#x670D;&#x52A1;&#xFF1A;<code>npm run dist</code></li>
@@ -325,6 +326,17 @@ pre[data-line] .line-highlight[data-end]:after {
 <li>&#x63A5;&#x53E3;&#x670D;&#x52A1;&#xFF1A;<code>DEV_PROXY_TARGET_API = http://10.25.73.159:8081</code></li>
 <li>...</li>
 </ul>
+</li>
+</ul>
+<h1 class="mume-header" id="stage-%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83">stage &#x6D4B;&#x8BD5;&#x73AF;&#x5883;</h1>
+
+<ul>
+<li>stage &#x73AF;&#x5883;&#x5BA2;&#x6237;&#x7AEF;&#x4FA7;&#x5141;&#x8BB8;&#x81EA;&#x5B9A;&#x4E49;&#x63A5;&#x53E3;&#x524D;&#x7F00;&#xFF0C;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x540E;&#x7AEF;&#x5F00;&#x53D1;&#xFF0C;&#x5982;&#xFF1A;
+<blockquote>
+<p>localStorage.baseurl_api = &apos;<a href="http://127.0.0.1:8081">http://127.0.0.1:8081</a>&apos;<br>
+localStorage.baseurl_api = &apos;<a href="http://127.0.0.1:8081/api">http://127.0.0.1:8081/api</a>&apos;<br>
+...</p>
+</blockquote>
 </li>
 </ul>
 <h1 class="mume-header" id="%E5%BC%80%E5%8F%91%E7%9B%B8%E5%85%B3%E6%8F%92%E4%BB%B6%E5%B7%A5%E5%85%B7">&#x5F00;&#x53D1;&#x76F8;&#x5173;&#x63D2;&#x4EF6;/&#x5DE5;&#x5177;</h1>
@@ -471,6 +483,7 @@ data/$store/$route
 <ul>
 <li>&#x4E0D;&#x8BA9;&#x5916;&#x90E8;&#x8FDB;&#x884C;&#x6837;&#x5F0F;&#x91CD;&#x5199;&#xFF0C;&#x907F;&#x514D;&#x5F3A;&#x8026;&#x5408; (&#x53EF;&#x901A;&#x8FC7; props &#x6765;&#x5904;&#x7406;&#x5185;&#x90E8;&#x6837;&#x5F0F;&#x7684;&#x53D8;&#x5316;)</li>
 <li>&#x653E;&#x5FC3;&#x4F7F;&#x7528;&#x7B80;&#x77ED;&#x4E14;&#x8BED;&#x4E49;&#x5F3A;&#x7684; class &#x540D;&#xFF0C;&#x65E0;&#x9700;&#x591A;&#x4F59;&#x7684;&#x547D;&#x540D;&#x7A7A;&#x95F4;</li>
+<li>&#x6837;&#x5F0F;&#x5F7B;&#x5E95;&#x6A21;&#x5757;&#x5316;&#xFF08;&#x5373;&#x6211;&#x7684;&#x89C4;&#x5219;&#x5F71;&#x54CD;&#x4E0D;&#x4E86;&#x522B;&#x4EBA;&#xFF0C;&#x522B;&#x4EBA;&#x7684;&#x89C4;&#x5219;&#x4E5F;&#x5F71;&#x54CD;&#x4E0D;&#x4E86;&#x6211;&#xFF09;</li>
 </ul>
 </li>
 <li>
@@ -479,11 +492,11 @@ data/$store/$route
 <li>
 <p>&#x8BED;&#x6CD5;</p>
 <pre data-role="codeBlock" data-info="less" class="language-less"><span class="token comment">/* &#x9ED8;&#x8BA4;&#x4E3A;&#x5C40;&#x90E8; */</span>
-<span class="token selector">.xxx</span> <span class="token punctuation">{</span>
+<span class="token selector">.xxx_xxx</span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span>
 
 <span class="token comment">/* &#x4ECE;&#x5C40;&#x90E8;&#x8F6C;&#x5230;&#x5168;&#x5C40; */</span>
-<span class="token selector">:global(.yyy)</span> <span class="token punctuation">{</span>
+<span class="token selector">:global(.yyy-yyy)</span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span>
 <span class="token comment">// or</span>
 <span class="token selector">:global</span> <span class="token punctuation">{</span>
@@ -503,6 +516,16 @@ data/$store/$route
 <li>
 <p>&#x591A;&#x4E2A;&#x7EC4;&#x4EF6;&#x5171;&#x7528; (*.module.less)</p>
 <pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword module">import</span> <span class="token imports">style</span> <span class="token keyword module">from</span> <span class="token string">&apos;./style.module.less&apos;</span>
+</pre></li>
+</ul>
+</li>
+<li>
+<p>&#x6CE8;&#x610F;&#x4E8B;&#x9879;</p>
+<ul>
+<li>&#x9009;&#x62E9;&#x5668;&#x5C11;&#x5D4C;&#x5957;&#xFF0C;&#x5C3D;&#x91CF;&#x7684;&#x6241;&#x5E73;&#x5316;</li>
+<li>class &#x547D;&#x540D;&#x63A8;&#x8350;&#x5982;&#x4E0B;&#x98CE;&#x683C; (&#x4EC5;&#x9650;&#x5C40;&#x90E8;&#x6A21;&#x5F0F;)&#xFF0C;&#x4EE5;&#x533A;&#x522B;&#x4E8E;&#x9A7C;&#x5CF0;&#x5F0F; js &#x53D8;&#x91CF;<pre data-role="codeBlock" data-info="less" class="language-less"><span class="token selector">.xxx_xxx</span> <span class="token punctuation">{</span>
+  <span class="token comment">// &#x5355;&#x8BCD;&#x5168;&#x5C0F;&#x5199;&#xFF0C;&#x591A;&#x4E2A;&#x5355;&#x8BCD;&#x95F4;&#x7528;&#x4E0B;&#x5212;&#x7EBF;&#x8FDE;&#x63A5;</span>
+<span class="token punctuation">}</span>
 </pre></li>
 </ul>
 </li>

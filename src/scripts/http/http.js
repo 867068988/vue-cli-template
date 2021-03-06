@@ -35,7 +35,10 @@ const responseErrHandle = err => {
 
 export const http = createAxios(
   {
-    baseURL: process.env.VUE_APP_BASEURL_API,
+    baseURL:
+      process.env.VUE_APP_ENV === 'stage'
+        ? localStorage.baseurl_api || process.env.VUE_APP_BASEURL_API // stage 环境客户端侧允许自定义接口前缀，特别是后端开发，方便调试
+        : process.env.VUE_APP_BASEURL_API,
   },
   instance => {
     instance.interceptors.request.use(requestHandle, requestErrHandle)

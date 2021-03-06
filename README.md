@@ -5,6 +5,7 @@
 
 - [项目运行指南](#项目运行指南)
 - [开发本地环境](#开发本地环境)
+- [stage 测试环境](#stage-测试环境)
 - [开发相关插件/工具](#开发相关插件工具)
 - [开发规范](#开发规范)
   - [环境变量使用规范（doc）](#环境变量使用规范doc)
@@ -38,7 +39,7 @@
 - 运行：
   - 启动为 dev 环境：`npm run serve` 或 `npm start`
   - 打包为 stage 环境：`npm run build:stage`
-  - 打包为 prod 环境：`npm run build`
+  - 打包为 prod 环境：`npm run build:prod`
   - 检查并修复源码：`npm run lint`
   - 运行单元测试：`npm run test:unit`
   - 启用静态资源服务：`npm run dist`
@@ -51,6 +52,13 @@
   - 模拟数据：`VUE_APP_MOCK = true`
   - 接口服务：`DEV_PROXY_TARGET_API = http://10.25.73.159:8081`
   - ...
+
+# stage 测试环境
+
+- stage 环境客户端侧允许自定义接口前缀，方便调试，特别是后端开发，如：
+  > localStorage.baseurl_api = 'http://127.0.0.1:8081'
+  > localStorage.baseurl_api = 'http://127.0.0.1:8081/api'
+  > ...
 
 # 开发相关插件/工具
 
@@ -153,6 +161,7 @@
 
   - 不让外部进行样式重写，避免强耦合 (可通过 props 来处理内部样式的变化)
   - 放心使用简短且语义强的 class 名，无需多余的命名空间
+  - 样式彻底模块化（即我的规则影响不了别人，别人的规则也影响不了我）
 
 - 使用方式
 
@@ -160,11 +169,11 @@
 
     ```less
     /* 默认为局部 */
-    .xxx {
+    .xxx_xxx {
     }
 
     /* 从局部转到全局 */
-    :global(.yyy) {
+    :global(.yyy-yyy) {
     }
     // or
     :global {
@@ -185,6 +194,15 @@
   - 多个组件共用 (\*.module.less)
     ```js
     import style from './style.module.less'
+    ```
+
+- 注意事项
+  - 选择器少嵌套，尽量的扁平化
+  - class 命名推荐如下风格 (仅限局部模式)，以区别于驼峰式 js 变量
+    ```less
+    .xxx_xxx {
+      // 单词全小写，多个单词间用下划线连接
+    }
     ```
 
 ### 【统一标签顺序】

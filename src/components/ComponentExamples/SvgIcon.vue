@@ -13,7 +13,7 @@ export default {
       - 单色模式(非'mt-'前缀)，大小继承至 font-size，颜色继承至 color<br />
       - 多色模式('mt-'前缀)，大小继承至 font-size，颜色则原始显示
     </div>
-    <div :class="$style.itemsBox">
+    <div :class="$style.items_box">
       <el-tooltip v-for="name in names" :key="name" effect="light">
         <div :class="$style.item">
           <svg-icon :class="$style.svg" :icon="name" />
@@ -29,7 +29,7 @@ export default {
 .title {
   margin-bottom: 0.6em;
 }
-.itemsBox {
+.items_box {
   display: flex;
   flex-flow: wrap;
   text-align: center;
