@@ -23,6 +23,7 @@ module.exports = () => ({
         target: env.DEV_PROXY_TARGET_API,
       },
     },
+    host: 'localhost', // 需要内网的其它机器也能访问时，将值改成 '0.0.0.0'
   },
 
   assetsDir: 'static-hash',
