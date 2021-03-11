@@ -168,22 +168,34 @@
   - 语法
 
     ```less
-    /* 默认为 local 区域 */
+    // 默认为 local 区域
     .xxx_xxx {
     }
 
-    /* 从 local 区域转到 global 区域*/
-    :global(.yyy-yyy) {
-    }
-    // or
+    // 转到 global 区域
     :global {
+      .yyy-yyy {
+      }
     }
 
-    /* 从 global 区域转到 local 区域 */
-    :local(.zzz) {
+    :global {
+      // 转到 local 区域
+      :local {
+        .xxx_xxx {
+        }
+      }
     }
-    // or
-    :local {
+
+    // 仅转换选择器
+    .xxx_xxx :global(.yyy-yyy):hover {
+    }
+    .xxx_xxx:global(.yyy-yyy):hover {
+    }
+    :global {
+      .yyy-yyy :local(.xxx_xxx):hover {
+      }
+      .yyy-yyy:local(.xxx_xxx):hover {
+      }
     }
     ```
 
@@ -198,7 +210,7 @@
 
 - 注意事项
   - 选择器少嵌套，尽量的扁平化
-  - local 区域的命名推荐如下风格，这样区别于 global 区域，也以区别于驼峰式的 js 变量
+  - local 的命名推荐如下风格，这样区别于 global，也以区别于驼峰式的 js 变量/属性
     ```less
     .xxx_xxx {
       // 单词全小写，多个单词间用下划线连接

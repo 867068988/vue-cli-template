@@ -14,7 +14,7 @@ export default {
       - 多色模式('mt-'前缀)，大小继承至 font-size，颜色则原始显示
     </div>
     <div :class="$style.items_box">
-      <el-tooltip v-for="name in names" :key="name" effect="light">
+      <el-tooltip v-for="name in names" :key="name">
         <div :class="$style.item">
           <svg-icon :class="$style.svg" :icon="name" />
           <div :class="$style.name">{{ name }}</div>
