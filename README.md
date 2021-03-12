@@ -35,7 +35,7 @@
 # 项目运行指南
 
 - 安装/更新依赖包：`npm install`
-  - 说明：正式开发前需提交 package-lock.json，正式开发后慎用 npm update
+  - 说明：正式开发前需提交 package-lock.json，正式开发后慎用 `npm update`
 - 运行：
   - 启动为 dev 环境：`npm run serve` 或 `npm start`
   - 打包为 stage 环境：`npm run build:stage`
@@ -56,9 +56,11 @@
 # stage 测试环境
 
 - stage 环境客户端侧允许自定义接口前缀，方便调试，特别是后端开发，如：
-  > localStorage.baseurl_api = 'http://127.0.0.1:8081'
-  > localStorage.baseurl_api = 'http://127.0.0.1:8081/api'
-  > ...
+  ```js
+  localStorage.baseurl_api = 'http://127.0.0.1:8081'
+  localStorage.baseurl_api = 'http://127.0.0.1:8081/api'
+  // ...
+  ```
 
 # 开发相关插件/工具
 
@@ -110,7 +112,7 @@
 
 - 组件间的数据流
   - 父向子传递用 props
-  - 子向父传递用 vue 内置的自定义事件，即 \$emit
+  - 子向父传递用 vue 内置的自定义事件，即 `$emit`
   - 父子双向传递用 <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">v-model</a> 或 <a target="_blank" href="https://cn.vuejs.org/v2/guide/components-custom-events.html">.sync</a>
   - 跨越传递用 vuex
   - 跨越传递用 eventBus（慎用）
@@ -223,9 +225,9 @@
 
 ### 【其它注意事项】
 
-- 慎用 \$refs、\$parent、\$root、provide/inject
-  - \$refs 一般用于第三方开源组件或内部公共库组件或非常稳定的组件，以调用显式声明的方法
-  - 在万不得已情况下需要暴露方法给外部调用时最好加上 pub\_ 前缀，如：this\.\$refs.xxx.pub_focus()
+- 慎用 `$refs`、`$parent`、`$root`、`provide/inject`
+  - `$refs` 一般用于第三方开源组件或内部公共库组件或非常稳定的组件，以调用显式声明的方法
+  - 在万不得已情况下需要暴露方法给外部调用时最好加上 `pub_` 前缀，如：`this.$refs.xxx.pub_focus()`
 - 尽量不要在 watch 中直接变更数据（是不是考虑 computed），易造成死循环。数据变更应该交给用户交互事件或初始化的异步回调
 - 组件中的 data 及 vuex 中的 state 应该可序列化，即不要存 undefined、function 等
 
@@ -263,7 +265,7 @@
   }
   ```
 
-- 当组件依赖 \$route 作为核心数据时，要使用<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/passing-props.html">路由组件传参</a>，与 \$route 解耦，也使得依赖更为显式清晰
+- 当组件依赖 `$route` 作为核心数据时，要使用<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/passing-props.html">路由组件传参</a>，与 `$route` 解耦，也使得依赖更为显式清晰
 
   ```js
   export const routes = {
@@ -428,7 +430,7 @@
      * @param {类型} data
      * @param {object} [options] 可选参数
      * @param {类型} options.xxx
-     * @param {类型 =} options.yyy 可选属性
+     * @param {类型} [options.yyy] 可选属性
      * @returns {类型}
      */
     export function myMethod(data, options) {}
@@ -452,10 +454,10 @@
      *
      * 基本
      * @type {boolean}
-     * @type {number}
      * @type {string}
-     * @type {1 | 2 | 3}
+     * @type {number}
      * @type {'a' | 'b' | 'c'}
+     * @type {1 | 2 | 3}
      *
      * 数组
      * @type {Array}
@@ -474,7 +476,7 @@
      * @type {boolean | (() => boolean)}
      *
      * 导入 ts 类型
-     * @type {import('xxx').yyy}
+     * @type {import('xxx').Yyy}
      *
      * 从现有的 js 变量或 ts 类型进行推导
      * @type {Parameters<fn>} 取函数形参的类型
