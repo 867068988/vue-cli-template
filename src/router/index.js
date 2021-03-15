@@ -27,7 +27,7 @@ export const router = createRouter()
  */
 export const resetRoutes = function(newRoutes) {
   router.matcher = createRouter().matcher
-  router.addRoutes(newRoutes)
+  newRoutes.forEach(route => router.addRoute(route))
   if (router.app) {
     const { path, query, hash } = router.currentRoute
     router

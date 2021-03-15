@@ -7,6 +7,8 @@ Vue.use(Vuex)
  * 全局唯一 Store 实例
  */
 export const store = new Vuex.Store({
+  devtools:
+    process.env.VUE_APP_ENV === 'dev' || process.env.VUE_APP_ENV === 'stage',
   strict: process.env.VUE_APP_ENV === 'dev',
   ...root,
 
