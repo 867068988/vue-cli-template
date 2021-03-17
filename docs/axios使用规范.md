@@ -17,15 +17,16 @@ const params = {
 
 /**
  * Parameters<qsStringify>[1]['arrayFormat'] 对应的输出
- * repeat（默认）---> pageNum=1&pageSize=10&status=1&status=2
+ * comma ----------> pageNum=1&pageSize=10&status=1,2
+ * repeat（默认）----> pageNum=1&pageSize=10&status=1&status=2
  * brackets --------> pageNum=1&pageSize=10&status[]=1&status[]=2
  * indices ---------> pageNum=1&pageSize=10&status[0]=1&status[1]=2
  */
-const paramsSerializer = params => qsStringify(params)
+const paramsSerializer = params => qsStringify(params, { arrayFormat: 'comma' })
 
 const config = {
   params,
-  paramsSerializer, // 在拦截器中已配置默认值（默认值同上），在业务中通常不需要重写
+  paramsSerializer, // 在拦截器中已配置该默认值，在业务中通常不需要重写
 }
 
 http.get('/xxx', config)

@@ -51,7 +51,7 @@ const responseErrHandle = err => {
 export const createAxios = (requestConfig, callback) => {
   const defaults = {
     /* 默认配置 */
-    paramsSerializer: params => qsStringify(params),
+    paramsSerializer: params => qsStringify(params, { arrayFormat: 'comma' }),
   }
   const instance = wrapAxios(axios.create(mergeConfig(defaults, requestConfig)))
   instance.exHooks.add(exShowLoading)
