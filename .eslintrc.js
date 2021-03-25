@@ -13,7 +13,10 @@ module.exports = {
     'no-debugger': 'warn',
     'no-unused-vars': [
       'warn',
-      { ignoreRestSiblings: true /* 解构剩余变量时不检查 */ },
+      {
+        ignoreRestSiblings: true /* 解构剩余变量时不检查 */,
+        varsIgnorePattern: '^h$', // 支持 JSX 的 h 变量
+      },
     ],
     'no-var': 'warn',
     'prefer-const': ['warn', { destructuring: 'all' }],

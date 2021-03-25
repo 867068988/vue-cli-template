@@ -5,6 +5,7 @@
  * 根据顺序做好数据及状态的传递
  */
 
+import _ from 'lodash'
 import createAxios from './createAxios'
 
 /**
@@ -25,11 +26,37 @@ const requestErrHandle = err => {
  * @param {import('axios').AxiosResponse} res
  */
 const responseHandle = res => {
-  return res
+  const { code, msg } = res.data || {}
+  // 200 类成功
+  if (code === '0000' /* TODO: 结合具体项目 */) {
+    return res
+  }
+  // 200 类失败 (弹出错误消息)
+  else {
+    let message = `${msg || '系统错误'}`
+    if (code) {
+      message = `${code} :: ${message}`
+    }
+    if (!res.config.exNoErrorMassage) {
+      window.console.error(message) // TODO: 使用其它组件弹出消息
+    }
+    throw new Error(message)
+  }
 }
 
 /* 响应失败拦截 */
 const responseErrHandle = err => {
+  // 非 200 类有响应 (弹出错误消息)
+  if (err.response) {
+    if (!_.get(err.config, 'exNoErrorMassage')) {
+      const code = _.get(err.response, 'data.code')
+      let message = _.get(err.response, 'data.msg') || '系统错误'
+      if (code) {
+        message = `${code} :: ${message}`
+      }
+      window.console.error(message) // TODO: 使用其它组件弹出消息
+    }
+  }
   throw err
 }
 

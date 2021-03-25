@@ -9,6 +9,23 @@ export {
 }
 
 /**
+ * 将列表转成对象
+ * @param {object[]} list
+ * @param {string} [valueKey]
+ * @param {string} [labelKey]
+ * @returns {object}
+ */
+export const listToMap = function(list, valueKey, labelKey) {
+  valueKey = valueKey || 'value'
+  labelKey = labelKey || 'label'
+  const map = {}
+  _.each(list, item => {
+    map[item[valueKey]] = item[labelKey]
+  })
+  return map
+}
+
+/**
  * 时间格式化
  * @param {string | number | Date} date
  * @param {string} [format] 官方文档：https://date-fns.org/v1.30.1/docs/format#description

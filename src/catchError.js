@@ -1,3 +1,5 @@
+import Vue from 'vue'
+
 /**
  * 全局统一处理异常（隐藏、上报...）
  */
@@ -21,3 +23,10 @@ window.addEventListener('unhandledrejection', function(event) {
     }
   }
 })
+
+Vue.config.warnHandler = function(msg, vm, trace) {
+  if (/axios_requestConfig_exCancel/.test(msg)) return // axios 取消的请求
+  if (!Vue.config.silent) {
+    window.console.error('[Vue warn]: ' + msg + trace)
+  }
+}

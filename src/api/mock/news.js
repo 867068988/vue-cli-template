@@ -3,7 +3,7 @@ import { mock } from 'mockjs'
 export const getList = function(opts, query) {
   const { pageNum, pageSize } = query
   return mock({
-    code: 200,
+    code: '0000',
     data: {
       pageNum: Number(pageNum) || 1,
       pageSize: Number(pageSize) || 10,
@@ -20,7 +20,7 @@ export const getList = function(opts, query) {
 
 export const getDetails = function() {
   return mock({
-    code: 200,
+    code: '0000',
     data: {
       createDate: '@date("yyyy-MM-dd")',
       title: '@csentence(3, 5)',

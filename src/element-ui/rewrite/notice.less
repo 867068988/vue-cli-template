@@ -6,5 +6,8 @@ html {
   /* loading */
   .el-loading-mask {
     background-color: fade(#fff, 60%);
+    &.is-fullscreen {
+      z-index: 999999999 !important;
+    }
   }
 }
