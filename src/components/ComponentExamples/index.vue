@@ -11,6 +11,12 @@ import hljs_javascript from 'highlight.js/lib/languages/javascript'
 hljs.registerLanguage('xml', hljs_xml)
 hljs.registerLanguage('css', hljs_css)
 hljs.registerLanguage('javascript', hljs_javascript)
+Vue.directive('highlight', {
+  bind(el) {
+    const blocks = el.querySelectorAll('pre >code')
+    blocks.forEach(block => hljs.highlightBlock(block))
+  },
+})
 
 Vue.use(require('element-ui'))
 require('element-ui/lib/theme-chalk/index.css')
@@ -47,14 +53,6 @@ const compsRaw = getModules(requireCtxRaw)
 export default {
   name: 'ComponentExamples',
   components: { ...comps },
-  directives: {
-    highlight: {
-      bind(el) {
-        const blocks = el.querySelectorAll('pre >code')
-        blocks.forEach(block => hljs.highlightBlock(block))
-      },
-    },
-  },
   data() {
     return {
       README_src,
@@ -88,6 +86,7 @@ export default {
     document.documentElement.classList.add('ComponentExamples')
     this.$once('hook:beforeDestroy', () => {
       document.documentElement.classList.remove('ComponentExamples')
+      delete Vue.options.directives.highlight
     })
     this.targetScrollIntoView()
   },

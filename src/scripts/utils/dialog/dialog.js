@@ -24,7 +24,7 @@ const DialogConstructor = Vue.extend(Dialog)
       // el-dialog props ...
       title: row.title,
       main: <Detail id={row.id} />
-      footer: <FtButton onClick={() => close()}>关闭</FtButton>,
+      footer: <ElButton onClick={() => close()}>关闭</ElButton>,
    })
  */
 export default function dialog(props) {
