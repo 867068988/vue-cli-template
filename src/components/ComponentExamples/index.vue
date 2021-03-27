@@ -1,8 +1,10 @@
-<!-- 非单例公共组件需要在 ComponentExamples 目录中写示例 -->
+<!-- 非单例公共组件需要在 @/components/ComponentExamples 目录中写示例 -->
 
 <script>
-import Vue from 'vue'
 import _ from 'lodash'
+import Vue from 'vue'
+
+// 全局注册 v-highlight 指令，方便所有 example 组件
 import 'highlight.js/styles/vs2015.css'
 import hljs from 'highlight.js/lib/core'
 import hljs_xml from 'highlight.js/lib/languages/xml'
@@ -14,12 +16,13 @@ hljs.registerLanguage('javascript', hljs_javascript)
 Vue.directive('highlight', {
   bind(el) {
     const blocks = el.querySelectorAll('pre >code')
-    blocks.forEach(block => hljs.highlightBlock(block))
+    _.each(blocks, block => hljs.highlightBlock(block))
   },
 })
 
-Vue.use(require('element-ui'))
+// 全量导入组件库，方便所有 example 组件 (使用 CommonJS 方式可绕过 babel 的按需引入插件)
 require('element-ui/lib/theme-chalk/index.css')
+Vue.use(require('element-ui'))
 
 const README_src = require('!file-loader?name=docs-dev/[name].[ext]!@/../docs/README.html')
 const axios使用规范_src = require('!file-loader?name=docs-dev/[name].[ext]!@/../docs/axios使用规范.html')
@@ -65,7 +68,7 @@ export default {
   },
   computed: {
     currLinkName() {
-      const hashVal = this.$route.hash.slice(1)
+      const hashVal = decodeURIComponent(this.$route.hash.slice(1))
       const hit = [
         'axios使用规范',
         '环境变量使用规范',
