@@ -21,6 +21,7 @@ module.exports = {
     'no-var': 'warn',
     'prefer-const': ['warn', { destructuring: 'all' }],
     'no-empty': 'warn',
+    'vue/order-in-components': 'warn',
   },
 
   parserOptions: {
