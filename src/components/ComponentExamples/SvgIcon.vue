@@ -35,12 +35,12 @@ export default {
   text-align: center;
 }
 .item {
-  width: 110px;
   padding: 10px 5px;
+  width: 110px;
 }
 .svg {
-  font-size: 32px;
   color: #606266;
+  font-size: 32px;
   transition: color 0.3s;
 }
 .item:hover .svg {

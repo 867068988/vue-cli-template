@@ -252,7 +252,7 @@ export default {
               >
                 <i
                   class="el-icon-view"
-                  style="font-size: 20px; color: #666"
+                  style="color: #666; font-size: 20px"
                   slot="reference"
                 />
                 <div
@@ -265,7 +265,7 @@ export default {
               </el-popover>
               &lt;{{ compName }}&gt;
               <el-tooltip placement="right">
-                <i class="el-icon-aim" style="font-size: 20px; color: #ccc" />
+                <i class="el-icon-aim" style="color: #ccc; font-size: 20px" />
                 <template slot="content">
                   可通过 vue-devtools 中的 Open in editor 快速定位至源文件
                   <div :style="{ marginTop: '10px', opacity: 0.5 }">
@@ -300,8 +300,8 @@ export default {
     // prettier-ignore
     font-size: 16PX !important;
     body {
-      height: 0 !important;
       overflow: hidden !important;
+      height: 0 !important;
     }
   }
 }
@@ -325,10 +325,10 @@ export default {
 }
 .link {
   display: block;
-  padding: 5px 5px 5px 15px;
   margin-bottom: 1px;
-  font-size: 14px;
+  padding: 5px 5px 5px 15px;
   font-weight: bold;
+  font-size: 14px;
   &:hover {
     background: fade(#000, 3%);
   }
@@ -345,16 +345,16 @@ export default {
   border: none;
 }
 .highlight_box {
+  overflow: auto;
   max-width: calc(100vw - 66px);
   max-height: calc(100vh - 66px);
-  overflow: auto;
   font-size: 14px;
   > pre {
     margin: 0;
     > code {
-      width: min-content;
-      padding: 20px;
       overflow: visible;
+      padding: 20px;
+      width: min-content;
     }
   }
 }

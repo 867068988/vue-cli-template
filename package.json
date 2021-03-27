@@ -9,7 +9,7 @@
     "build:prod": "vue-cli-service build --modern",
     "build": "npm run build:prod",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "stylelint **/*.{css,less,html,vue} --fix && vue-cli-service lint",
+    "lint": "stylelint '**/*.{css,less,html,vue}' --fix && vue-cli-service lint",
     "dist": "node ./static-server.js"
   },
   "//dependencies说明": "@H5: vconsole; @H5.vant: vant",

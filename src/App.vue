@@ -20,8 +20,8 @@
   text-align: center;
   a {
     margin: 0 0.3em;
-    font-weight: bold;
     color: inherit;
+    font-weight: bold;
     &:global(.router-link-exact-active) {
       color: #42b983;
     }

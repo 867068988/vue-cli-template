@@ -58,14 +58,14 @@ export default {
   display: inline-block;
   width: 1em;
   height: 1em;
+  vertical-align: -0.165em;
   font-style: normal;
   line-height: 1;
-  vertical-align: -0.165em;
   &__icon {
     display: block;
+    overflow: hidden;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     fill: currentColor;
   }
 }

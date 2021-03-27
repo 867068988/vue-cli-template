@@ -43,8 +43,8 @@ export default {
 
 <style lang="less" module>
 .box {
-  padding: 1em;
   margin: 1em;
+  padding: 1em;
   border: 2px dashed #ccc;
 }
 .res {
@@ -58,8 +58,8 @@ export default {
 }
 .logo {
   display: block;
-  height: 2em;
   margin: 3em 0;
+  height: 2em;
 }
 .hello_world {
   background: url('~@/assets/logo.png') no-repeat right center; // 在 style 中使用'@'别名

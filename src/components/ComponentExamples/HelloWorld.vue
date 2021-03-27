@@ -21,15 +21,15 @@ export default { components: { HelloWorld } }
   display: flex;
 }
 .right {
-  margin-left: 1em;
-  flex: 0 0 60%;
   overflow: hidden;
+  flex: 0 0 60%;
+  margin-left: 1em;
 }
 .code {
+  overflow: auto;
+  margin-top: 0.5em;
   width: 100%;
   height: 25em;
-  margin-top: 0.5em;
-  overflow: auto;
   > pre {
     margin: 0;
   }
