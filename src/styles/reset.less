@@ -2,5 +2,24 @@ body {
   color: #333;
   word-wrap: break-word;
   font-size: 14px;
-  line-height: 1.42857143; // 参考 Bootstrap
+  line-height: @line-height;
+}
+
+::-webkit-scrollbar {
+  width: 6px + 2px + 2px;
+  height: 6px + 2px + 2px;
+}
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-color: rgba(#000, 0.3);
+  background-clip: content-box;
+  :hover {
+    background-color: rgba(#000, 0.5);
+  }
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

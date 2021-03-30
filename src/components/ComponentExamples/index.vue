@@ -13,11 +13,14 @@ import hljs_javascript from 'highlight.js/lib/languages/javascript'
 hljs.registerLanguage('xml', hljs_xml)
 hljs.registerLanguage('css', hljs_css)
 hljs.registerLanguage('javascript', hljs_javascript)
+const highlightHandle = function(el) {
+  el.classList.add('highlight-box')
+  const blocks = el.querySelectorAll('pre >code')
+  _.each(blocks, block => hljs.highlightBlock(block))
+}
 Vue.directive('highlight', {
-  bind(el) {
-    const blocks = el.querySelectorAll('pre >code')
-    _.each(blocks, block => hljs.highlightBlock(block))
-  },
+  bind: highlightHandle,
+  componentUpdated: highlightHandle,
 })
 
 // 全量导入组件库，方便所有 example 组件 (使用 CommonJS 方式可绕过 babel 的按需引入插件)
@@ -302,6 +305,14 @@ export default {
     body {
       overflow: hidden !important;
       height: 0 !important;
+      .highlight-box {
+        overflow: auto;
+        pre {
+          margin: 0;
+          min-width: 100%;
+          width: max-content;
+        }
+      }
     }
   }
 }
@@ -330,10 +341,10 @@ export default {
   font-weight: bold;
   font-size: 14px;
   &:hover {
-    background: fade(#000, 3%);
+    background: rgba(#000, 0.03);
   }
   &:global(.router-link-active) {
-    background: fade(#000, 5%);
+    background: rgba(#000, 0.05);
   }
 }
 .iframe {
@@ -354,7 +365,6 @@ export default {
     > code {
       overflow: visible;
       padding: 20px;
-      width: min-content;
     }
   }
 }

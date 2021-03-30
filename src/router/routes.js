@@ -29,7 +29,7 @@ export const routes = [
   },
 ]
 
-if (process.env.VUE_APP_ENV === 'dev') {
+if (process.env.VUE_APP_HAS_DOCS === 'true') {
   routes.unshift({
     path: '/component-examples',
     name: 'component-examples',
