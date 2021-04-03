@@ -95,6 +95,11 @@ export default {
       delete Vue.options.directives.highlight
     })
     this.targetScrollIntoView()
+    document.body.style.pointerEvents = 'none'
+    setTimeout(() => {
+      this.targetScrollIntoView()
+      document.body.style.pointerEvents = ''
+    }, 300)
   },
   beforeRouteUpdate(to, from, next) {
     next()
