@@ -81,8 +81,6 @@
     - `vue-devtools`
   - 推荐插件
     - `json-formatter`
-- 其它工具
-  - 推荐：`Postman` 或 `Postwoman`
 
 # 开发规范
 
