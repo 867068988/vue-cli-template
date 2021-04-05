@@ -152,7 +152,7 @@ if (env.NODE_ENV) {
     /^(dev|stage|prod)$/.test(env.VUE_APP_ENV) === false ||
     (env.NODE_ENV === 'development' && env.VUE_APP_ENV !== 'dev') ||
     (env.NODE_ENV === 'production' && env.VUE_APP_ENV === 'dev') ||
-    (env.NODE_ENV === 'production' && env.VUE_APP_HAS_DOCS === undefined) ||
+    (env.NODE_ENV === 'production' && env.VUE_APP_ENABLE_DOCS === undefined) ||
     (env.NODE_ENV === 'production' && env.VUE_APP_MOCK === undefined)
   ) {
     throw new Error('环境变量配置错误或不兼容或缺失')

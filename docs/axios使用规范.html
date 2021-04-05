@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
       
       
       
@@ -404,7 +404,7 @@ config<span class="token punctuation">.</span>headers<span class="token punctuat
           <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token boolean">false</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token keyword control-flow">catch</span><span class="token punctuation">(</span><span class="token parameter">error</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">$isCancel</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token boolean">true</span>
           <span class="token keyword control-flow">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF0C;&#x8BA9;&#x5168;&#x5C40;&#x7EDF;&#x4E00;&#x5904;&#x7406;</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token keyword control-flow">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
@@ -418,10 +418,12 @@ config<span class="token punctuation">.</span>headers<span class="token punctuat
       <span class="token keyword control-flow">return</span> <span class="token function">getXxx</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token method function property-access">then</span><span class="token punctuation">(</span>
         <span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span> exData<span class="token operator">:</span> data <span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
           <span class="token comment">// ...</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">loading</span> <span class="token operator">=</span> <span class="token boolean">false</span>
           <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token boolean">false</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
         <span class="token parameter">error</span> <span class="token arrow operator">=&gt;</span> <span class="token punctuation">{</span>
-          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">$isCancel</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">loading</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token boolean">true</span>
           <span class="token keyword control-flow">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF0C;&#x8BA9;&#x5168;&#x5C40;&#x7EDF;&#x4E00;&#x5904;&#x7406;</span>
         <span class="token punctuation">}</span><span class="token punctuation">,</span>
       <span class="token punctuation">)</span>
@@ -460,8 +462,10 @@ config<span class="token punctuation">.</span>headers<span class="token punctuat
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">loading</span> <span class="token operator">=</span> <span class="token boolean">false</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token boolean">false</span>
       <span class="token punctuation">}</span> <span class="token keyword control-flow">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">loading</span> <span class="token operator">=</span> <span class="token boolean">false</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">$isCancel</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+        <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">$isCancel</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token comment">/* &#x7ED3;&#x5408; exCancel */</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">loading</span> <span class="token operator">=</span> <span class="token boolean">false</span>
+          <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token boolean">true</span>
+        <span class="token punctuation">}</span>
         <span class="token keyword control-flow">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF0C;&#x8BA9;&#x5168;&#x5C40;&#x7EDF;&#x4E00;&#x5904;&#x7406;</span>
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -474,7 +478,7 @@ config<span class="token punctuation">.</span>headers<span class="token punctuat
         <span class="token comment">// ...</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token boolean">false</span>
       <span class="token punctuation">}</span> <span class="token keyword control-flow">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token method function property-access">$isCancel</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">isError</span> <span class="token operator">=</span> <span class="token boolean">true</span>
         <span class="token keyword control-flow">throw</span> error <span class="token comment">// &#x4E00;&#x5B9A;&#x8981;&#x629B;&#x51FA;&#x5F02;&#x5E38;&#xFF0C;&#x8BA9;&#x5168;&#x5C40;&#x7EDF;&#x4E00;&#x5904;&#x7406;</span>
       <span class="token punctuation">}</span> <span class="token keyword control-flow">finally</span> <span class="token punctuation">{</span>
         <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token property-access">loading</span> <span class="token operator">=</span> <span class="token boolean">false</span>

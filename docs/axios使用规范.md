@@ -162,7 +162,7 @@ export default {
           this.isError = false
         })
         .catch(error => {
-          this.isError = !this.$isCancel(error)
+          this.isError = true
           throw error // 一定要抛出异常，让全局统一处理
         })
         .finally(() => {
@@ -176,10 +176,12 @@ export default {
       return getXxx().then(
         ({ exData: data }) => {
           // ...
+          this.loading = false
           this.isError = false
         },
         error => {
-          this.isError = !this.$isCancel(error)
+          this.loading = false
+          this.isError = true
           throw error // 一定要抛出异常，让全局统一处理
         },
       )
@@ -221,8 +223,10 @@ export default {
         this.loading = false
         this.isError = false
       } catch (error) {
-        this.loading = false
-        this.isError = !this.$isCancel(error)
+        if (!this.$isCancel(error) /* 结合 exCancel */) {
+          this.loading = false
+          this.isError = true
+        }
         throw error // 一定要抛出异常，让全局统一处理
       }
     },
@@ -235,7 +239,7 @@ export default {
         // ...
         this.isError = false
       } catch (error) {
-        this.isError = !this.$isCancel(error)
+        this.isError = true
         throw error // 一定要抛出异常，让全局统一处理
       } finally {
         this.loading = false

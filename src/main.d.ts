@@ -9,7 +9,7 @@ declare namespace NodeJS {
     readonly BASE_URL: '' | '/**/'
     readonly VUE_APP_BASEURL_API: '/**/*' | 'http*(s)://**/*'
 
-    readonly VUE_APP_HAS_DOCS: 'true' | 'false'
+    readonly VUE_APP_ENABLE_DOCS: 'true' | 'false'
     readonly VUE_APP_MOCK: 'true' | 'false'
   }
 }
