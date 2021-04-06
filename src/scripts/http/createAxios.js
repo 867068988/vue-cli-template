@@ -38,12 +38,11 @@ const responseHandle = res => {
 
 /* 响应失败拦截 (全局) */
 const responseErrHandle = err => {
-  // 非 200 类有响应 (是否弹出错误消息，应由业务拦截器处理)
   if (err.response) {
     err.response.exData = _.get(err.response.data, 'data')
   }
-  // 非 200 类无响应 (弹出错误消息)
-  else {
+  // 非 200 类失败 (无响应 | 响应体解析后不是 json 对象)
+  if (!err.response || !_.isPlainObject(err.response.data)) {
     if (!_.get(err.config, 'exNoErrorMassage') && !axios.isCancel(err)) {
       window.console.error(err.message) // TODO: 使用其它组件弹出消息
     }

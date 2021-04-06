@@ -31,7 +31,7 @@ const responseHandle = res => {
   if (code === '0000' /* TODO: 结合具体项目 */) {
     return res
   }
-  // 200 类失败 (弹出错误消息)
+  // 200 类失败
   else {
     let message = `${msg || '系统错误'}`
     if (code) {
@@ -46,11 +46,11 @@ const responseHandle = res => {
 
 /* 响应失败拦截 */
 const responseErrHandle = err => {
-  // 非 200 类有响应 (弹出错误消息)
-  if (err.response) {
+  // 非 200 类失败 (有响应 & 响应体解析后是 json 对象)
+  if (err.response && _.isPlainObject(err.response.data)) {
     if (!_.get(err.config, 'exNoErrorMassage')) {
-      const code = _.get(err.response, 'data.code')
-      let message = _.get(err.response, 'data.msg') || '系统错误'
+      const code = _.get(err.response.data, 'code')
+      let message = _.get(err.response.data, 'msg') || '系统错误'
       if (code) {
         message = `${code} :: ${message}`
       }
