@@ -21,6 +21,7 @@ app.use(
   '/api',
   createProxyMiddleware({
     target: 'http://10.25.73.159:8081',
+    pathRewrite: { '^/api': '' },
   }),
 )
 

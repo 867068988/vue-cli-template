@@ -19,7 +19,7 @@ module.exports = () => ({
     /* 更详细的配置规则：https://webpack.docschina.org/configuration/dev-server/#devserver-proxy */
     proxy: {
       [env.VUE_APP_BASEURL_API]: {
-        pathRewrite: { '^/@API': '' },
+        pathRewrite: { '^/(api|@API)': '' },
         target: env.DEV_PROXY_TARGET_API,
       },
     },
