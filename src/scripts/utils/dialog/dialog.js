@@ -23,7 +23,7 @@ const DialogConstructor = Vue.extend(Dialog)
    const close = dialog({
       // el-dialog props ...
       title: row.title,
-      main: <Detail id={row.id} />
+      main: <Detail id={row.id} />,
       footer: <ElButton onClick={() => close()}>关闭</ElButton>,
    })
  */
@@ -41,7 +41,7 @@ export default function dialog(props) {
   const propsData = {
     ...attrs,
     visible: false, // 挂载后再显示才能触发入场动画
-    destroyOnClose: false, // 不能为 true，否则传入的 vNode 会实例化两次
+    destroyOnClose: false, // 不能为 true，否则传入的 vNode 会被实例化多次（官方 bug）
     appendToBody: false,
     modalAppendToBody: true,
   }

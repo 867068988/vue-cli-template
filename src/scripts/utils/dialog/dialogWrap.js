@@ -47,13 +47,22 @@ export default function dialogWrap(vNode) {
 
   // 显示
   document.body.appendChild(instance.$el)
-  const oldVisible = dialogInstance.$props.visible
-  setProps(dialogInstance, {
-    visible: true,
-    destroyOnClose: true,
-    appendToBody: true,
-    modalAppendToBody: true,
+  Object.defineProperties(dialogInstance, {
+    destroyOnClose: {
+      get: () => false, // 重写 props：不能为 true，否则 dialog 插槽会被实例化多次（官方 bug）
+      enumerable: true,
+    },
+    appendToBody: {
+      get: () => true, // 重写 props
+      enumerable: true,
+    },
+    modalAppendToBody: {
+      get: () => true, // 重写 props
+      enumerable: true,
+    },
   })
+  const oldVisible = dialogInstance.$props.visible
+  setProps(dialogInstance, { visible: true })
   oldVisible !== true && dialogInstance.$emit('update:visible', true)
 
   // 返回可关闭弹窗的方法
