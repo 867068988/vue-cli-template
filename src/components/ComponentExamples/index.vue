@@ -13,10 +13,12 @@ import hljs_javascript from 'highlight.js/lib/languages/javascript'
 hljs.registerLanguage('xml', hljs_xml)
 hljs.registerLanguage('css', hljs_css)
 hljs.registerLanguage('javascript', hljs_javascript)
-const highlightHandle = function(el) {
+const highlightHandle = function(el, { value, arg }) {
   el.classList.add('highlight-box')
-  const blocks = el.querySelectorAll('pre >code')
-  _.each(blocks, block => hljs.highlightBlock(block))
+  el.innerHTML = `<pre><code class="${arg}"></code></pre>`
+  const block = el.querySelector('code')
+  block.textContent = value
+  hljs.highlightBlock(block)
 }
 Vue.directive('highlight', {
   bind: highlightHandle,
@@ -266,10 +268,8 @@ export default {
                 <div
                   :class="$style.highlight_box"
                   v-if="!!compsRaw[`${compName}_popoverInited`]"
-                  v-highlight
-                >
-                  <pre><code class="xml">{{ compsRaw[compName] }}</code></pre>
-                </div>
+                  v-highlight:xml="compsRaw[compName]"
+                />
               </el-popover>
               &lt;{{ compName }}&gt;
               <el-tooltip placement="right">
@@ -365,12 +365,9 @@ export default {
   max-width: calc(100vw - 66px);
   max-height: calc(100vh - 66px);
   font-size: 14px;
-  > pre {
-    margin: 0;
-    > code {
-      overflow: visible;
-      padding: 20px;
-    }
+  code {
+    overflow: visible;
+    padding: 20px;
   }
 }
 </style>

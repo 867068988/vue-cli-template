@@ -7,11 +7,16 @@ export default { components: { HelloWorld } }
   <div :class="$style.box">
     <HelloWorld msg="HelloWorldExample" />
     <div :class="$style.right">
-      <div>可通过 require('!raw-loader!xxx.xxx').default 方式获取源码</div>
-      <div>再通过 v-highlight 指令高亮源码</div>
-      <div :class="$style.code" v-highlight>
-        <pre><code class="xml">{{ require('!raw-loader!@/components/HelloWorld.vue').default }}</code></pre>
+      <div>获取源码方式：require('!raw-loader!xxx.xxx').default</div>
+      <div>
+        高亮源码方式：v-highlight:xml="require('!raw-loader!xxx.xxx').default"
       </div>
+      <div
+        :class="$style.code"
+        v-highlight:xml="
+          require('!raw-loader!@/components/HelloWorld.vue').default
+        "
+      />
     </div>
   </div>
 </template>
@@ -30,8 +35,5 @@ export default { components: { HelloWorld } }
   margin-top: 0.5em;
   width: 100%;
   height: 25em;
-  > pre {
-    margin: 0;
-  }
 }
 </style>
