@@ -105,7 +105,9 @@ export default {
   },
   beforeRouteUpdate(to, from, next) {
     next()
-    !this.isRouteChangeFromMouseEnter_ && this.targetScrollIntoView()
+    if (!this.isRouteChangeFromMouseEnter_) {
+      this.$nextTick(this.targetScrollIntoView)
+    }
   },
   beforeRouteLeave(to, from, next) {
     next(false)
