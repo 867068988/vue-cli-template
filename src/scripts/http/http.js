@@ -40,7 +40,9 @@ const responseHandle = res => {
     if (!res.config.exNoErrorMassage) {
       window.console.error(message) // TODO: 使用其它组件弹出消息
     }
-    throw new Error(message)
+    const err = new Error(message)
+    err['exRes'] = res
+    throw err
   }
 }
 
