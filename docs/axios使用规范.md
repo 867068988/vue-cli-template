@@ -248,3 +248,13 @@ export default {
   },
 }
 ```
+
+#### 文件流下载
+
+```js
+import { download } from '@/scripts/utils'
+export const downloadXxx = async function(data) {
+  const res = await http.post('/xxx', data, { responseType: 'blob' })
+  return download(res)
+}
+```

@@ -3,7 +3,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.0/dist/katex.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.2/dist/katex.min.css">
       
       
       
@@ -485,6 +485,13 @@ config<span class="token punctuation">.</span>headers<span class="token punctuat
       <span class="token punctuation">}</span>
     <span class="token punctuation">}</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</pre><h4 class="mume-header" id="%E6%96%87%E4%BB%B6%E6%B5%81%E4%B8%8B%E8%BD%BD">&#x6587;&#x4EF6;&#x6D41;&#x4E0B;&#x8F7D;</h4>
+
+<pre data-role="codeBlock" data-info="js" class="language-javascript"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> download <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">&apos;@/scripts/utils&apos;</span>
+<span class="token keyword module">export</span> <span class="token keyword">const</span> <span class="token function-variable function">downloadXxx</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> res <span class="token operator">=</span> <span class="token keyword control-flow">await</span> http<span class="token punctuation">.</span><span class="token method function property-access">post</span><span class="token punctuation">(</span><span class="token string">&apos;/xxx&apos;</span><span class="token punctuation">,</span> data<span class="token punctuation">,</span> <span class="token punctuation">{</span> responseType<span class="token operator">:</span> <span class="token string">&apos;blob&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token keyword control-flow">return</span> <span class="token function">download</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 </pre>
       </div>

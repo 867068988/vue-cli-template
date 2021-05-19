@@ -18,8 +18,8 @@ const getDownloadjs = function() {
  *
  * download(url) // 相当于 a 标签的 href 属性（支持外链）
  *
- * download(axiosResponse)           // 请求时最好配上 responseType，响应头中的附件名规范：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition
- * download(axiosResponse, fileName) // 请求时最好配上 responseType
+ * download(axiosResponse)           // 请求时要配上 responseType，响应头中的附件名规范：https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Content-Disposition
+ * download(axiosResponse, fileName) // 请求时要配上 responseType
  *
  * download(file)
  * download(file, fileName)

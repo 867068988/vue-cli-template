@@ -28,7 +28,10 @@ const requestErrHandle = err => {
 const responseHandle = res => {
   const { code, msg } = res.data || {}
   // 200 类成功
-  if (code === '0000' /* TODO: 结合具体项目 */) {
+  if (
+    code === '0000' || // TODO: 结合具体项目
+    /^(arraybuffer|blob|stream)$/.test(_.get(res.request, 'responseType'))
+  ) {
     return res
   }
   // 200 类失败
