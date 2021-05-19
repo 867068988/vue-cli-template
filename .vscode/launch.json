@@ -4,7 +4,7 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "调试：正在运行的项目", // 参考：https://cn.vuejs.org/v2/cookbook/debugging-in-vscode.html
+      "name": "chrome: 已启动的项目", // 参考：https://cn.vuejs.org/v2/cookbook/debugging-in-vscode.html
       "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}/src",
       "breakOnLoad": true,
@@ -15,28 +15,28 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "调试：npm run serve",
+      "name": "node: npm run serve",
       "program": "${workspaceFolder}/node_modules/@vue/cli-service/bin/vue-cli-service.js",
       "args": ["serve"]
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "调试：npm run build:prod",
+      "name": "node: npm run build:prod",
       "program": "${workspaceFolder}/node_modules/@vue/cli-service/bin/vue-cli-service.js",
       "args": ["build", "--modern"]
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "调试：npm run test:unit",
+      "name": "node: npm run test:unit",
       "program": "${workspaceFolder}/node_modules/@vue/cli-service/bin/vue-cli-service.js",
       "args": ["test:unit"]
     },
     {
       "type": "node",
       "request": "launch",
-      "name": "调试：当前文件",
+      "name": "node: 当前文件",
       "program": "${file}"
     }
   ]

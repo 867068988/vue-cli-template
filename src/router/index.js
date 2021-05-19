@@ -57,7 +57,7 @@ registerInterceptor(router)
 /* 初始化公共路由 */
 resetRoutes(
   filterMapRoutes(meta => {
-    return meta.roles === undefined // 如何处理路由权限因项目而异...
+    return meta.roles == null // 如何处理路由权限因项目而异...
   }),
 )
 

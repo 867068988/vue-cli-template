@@ -17,7 +17,7 @@
     - [【组件中的 CSS】](#组件中的-css)
     - [【统一标签顺序】](#统一标签顺序)
     - [【其它注意事项】](#其它注意事项)
-    - [【 !!!其它则严格遵守 vue 官方风格指南】](#a-target_blank-hrefhttpscnvuejsorgv2style-guide其它则严格遵守-vue-官方风格指南a)
+    - [【 !!!其它则遵守 vue 官方风格指南】](#a-target_blank-hrefhttpscnvuejsorgv2style-guide其它则遵守-vue-官方风格指南a)
   - [vue-router](#vue-router)
   - [vuex](#vuex)
   - [模块复用](#模块复用)
@@ -34,15 +34,15 @@
 
 # 项目运行指南
 
-- 安装/更新依赖包：`npm install`
-  - 说明：正式开发前需提交 package-lock.json，正式开发后慎用 `npm update`
+- 安装依赖包：`npm install`
+  - 说明：正式开发前最好提交 package-lock.json，正式开发后慎用 `npm update`
 - 运行：
   - 启动为 dev 环境：`npm run serve` 或 `npm start`
   - 打包为 stage 环境：`npm run build:stage`
   - 打包为 prod 环境：`npm run build:prod`
   - 检查并修复源码：`npm run lint`
   - 运行单元测试：`npm run test:unit`
-  - 启用静态资源服务：`npm run dist`
+  - 启动静态资源服务：`npm run dist`
   - 版本号操作：`npm version major|minor|patch`
     - 版本号格式说明：major(主版本号).minor(次版本号).patch(修订号)
 
@@ -55,8 +55,9 @@
 
 # stage 测试环境
 
-- stage 环境客户端侧允许自定义接口前缀，方便调试，特别是后端开发，如：
+- stage 环境客户端侧允许自定义接口前缀，方便调试（特别是后端开发），可通过浏览器控制台输入，如：
   ```js
+  /* 需要接口支持 cors 跨域，或设置浏览器允许跨域 */
   localStorage.baseurl_api = 'http://127.0.0.1:8081'
   localStorage.baseurl_api = 'http://127.0.0.1:8081/api'
   // ...
@@ -79,8 +80,8 @@
 - Chrome 相关插件
   - 必要插件
     - `vue-devtools`
-  - 推荐插件
-    - `json-formatter`
+- 推荐插件
+  - `JSON Viewer` (直接在地址栏中发 get 请求时，方便查看 json 数据)
 
 # 开发规范
 
@@ -119,7 +120,7 @@
       - 通过命名空间控制范围（不同范围共享同一实例）
     - 事件名使用 kebab-case 命名法
     - 备注好使用说明（最好能维护到相关 md 文档，形成事件清单，方便索引/查阅/理解）
-  - 紧密耦合的隔代传递也可以用 provide/inject
+  - 紧密耦合的隔代传递也可以用 provide/inject（注意响应式问题）
     - 当需要进行反向传递时，可以通过回调方式（参考 React）
 
 ### 【慎用全局注册】
@@ -151,8 +152,7 @@
   ```
 
 - 使用前缀
-  - 非业务通用组件使用 Base 前缀
-  - <a href="#hash_Ex">扩展/包装第三方开源组件或内部公共库组件 (不建议使用高阶组件)</a> 使用 Ex 前缀
+  - <a href="#hash_Ex">扩展/包装第三方开源组件或内部公共库组件</a> 使用 Ex 前缀
   - 单例组件使用 The 前缀
 
 ### 【组件中的 CSS】
@@ -225,11 +225,9 @@
 
 - 慎用 `$refs`、`$parent`、`$root`、`provide/inject`
   - `$refs` 一般用于第三方开源组件或内部公共库组件或非常稳定的组件，以调用显式声明的方法
-  - 在万不得已情况下需要暴露方法给外部调用时最好加上 `pub_` 前缀，如：`this.$refs.xxx.pub_focus()`
-- 尽量不要在 watch 中直接变更数据（是不是考虑 computed），易造成死循环。数据变更应该交给用户交互事件或初始化的异步回调
 - 组件中的 data 及 vuex 中的 state 应该可序列化，即不要存 undefined、function 等
 
-### 【 <a target="_blank" href="https://cn.vuejs.org/v2/style-guide/">!!!其它则严格遵守 vue 官方风格指南</a>】
+### 【 <a target="_blank" href="https://cn.vuejs.org/v2/style-guide/">!!!其它则遵守 vue 官方风格指南</a>】
 
 ---
 
@@ -311,9 +309,9 @@
 - 避免重复造轮子，多使用成熟的现成工具/类库/组件，如：lodash、qs、url-parse、date-fns/format 等
 - 模块设计原则：
   - 高内聚低耦合、可扩展
-  - 不要去改变模块输入的数据 (引用类型)，如：函数参数、组件 prop
+  - 不要去改变模块的入参 (引用类型)，如：函数参数、组件 prop
   - …
-- 方法接口的设计
+- 方法入参设计
 
   ```js
   // 参数类型与个数要保持稳定
@@ -330,7 +328,10 @@
   }
   ```
 
-- <span id="hash_Ex">扩展/包装第三方开源组件或内部公共库组件 (不建议使用高阶组件)</span>
+- <span id="hash_Ex">扩展/包装第三方开源组件或内部公共库组件</span>
+  - 普通包装（会多出一层实例，导致 ref 丢失）
+    - 需手动透传 `$attrs`、`$listeners`，透传前可先操控
+    - ref 丢失解决方式：代理原组件的所有对外方法
   - 使用 extends 混入 (相关命名需要加 ex\_ 前缀，防止覆盖)
   - 使用<a target="_blank" href="https://cn.vuejs.org/v2/guide/render-function.html">函数式组件</a>包装
 
@@ -355,7 +356,7 @@
   this.uid_ = createId() // vue 实例属性不要使用 _ 前缀，推荐使用 _ 后缀进行标识
   ```
 
-- 导入模块时不要省略后缀（js 除外），利于 IDE 感知
+- 导入模块时不要省略后缀（js 除外），这样有利于 IDE 感知（特别是 .vue）
 - 导入当前目录以外的模块时，建议使用'@'别名
 
   ```js
@@ -526,7 +527,7 @@
 |-- .env.production-stage ------- stage 环境变量
 |-- .env.production ------------- prod 环境变量
 |-- .env.test
-|-- .vscode --------------------- 统一 VSCode 插件及配置
+|-- .vscode --------------------- 统一 VSCode 配置
 |-- static-server.js ------------ 静态资源服务 (node 运行)，通常用于预览/检查打包结果，或者临时给其他人员启用前端服务
 |-- docs ------------------------ 开发文档
 |   |-- README.html ------------- 由 ../README.md 手动生成 (使用 VSCode 插件 Markdown Preview Enhanced)
@@ -560,7 +561,7 @@
     |   |-- index.js
     |   |-- $xxx.js
     |   |-- v-xxx.js
-    |   |-- mixin_xxx.js
+    |   |-- mixin-xxx.js
     |   |-- xxx.js
     |-- element-ui
     |   |-- index.js
@@ -588,7 +589,6 @@
     |       |-- createMock.js
     |       |-- xxx.js
     |-- components
-    |   |-- BaseXxx.vue --------- 非业务通用组件
     |   |-- TheXxx.vue ---------- 单例组件
     |   |-- ExXxx.vue ----------- 扩展/包装第三方开源组件或内部公共库组件
     |   |-- XxxXxx.vue
@@ -622,7 +622,7 @@
 
 - history 模式<a target="_blank" href="https://router.vuejs.org/zh/guide/essentials/history-mode.html">路由处理</a>
 
-  - 如果 url 匹配的不是静态资源 (不带后缀的)，则返回 /index.html 页面
+  - 如果 url 匹配不到静态资源，则返回 /index.html 页面
 
 - 客户端缓存处理 (配置响应头)
 

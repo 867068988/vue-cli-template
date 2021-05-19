@@ -20,6 +20,7 @@ if (process.env.VUE_APP_ENV === 'dev' || process.env.VUE_APP_ENV === 'stage') {
 
 Vue.config.devtools =
   process.env.VUE_APP_ENV === 'dev' || process.env.VUE_APP_ENV === 'stage'
+Vue.config.silent = process.env.VUE_APP_ENV === 'prod'
 Vue.config.productionTip = false
 
 export default new Vue({

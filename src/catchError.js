@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import axios from 'axios'
 
 /**
  * 全局统一处理异常（隐藏、上报...）
@@ -17,16 +18,19 @@ window.addEventListener('unhandledrejection', function(event) {
   if (!isSystemError(reason)) {
     if (
       process.env.VUE_APP_ENV === 'prod' ||
-      (isError(reason) && reason.isAxiosError)
+      (isError(reason) && reason.isAxiosError) ||
+      axios.isCancel(reason)
     ) {
       event.preventDefault() // 隐藏
     }
   }
 })
 
-Vue.config.warnHandler = function(msg, vm, trace) {
-  if (/axios_requestConfig_exCancel/.test(msg)) return // axios 取消的请求
-  if (!Vue.config.silent) {
-    window.console.error('[Vue warn]: ' + msg + trace)
+/* 捕获 Vue 的异常 */
+Vue.config.errorHandler = function(err, vm, info) {
+  if (info.includes('Promise/async')) {
+    Promise.reject(err) // 抛给 unhandledrejection 捕获
+    return
   }
+  window.console.error(err)
 }
