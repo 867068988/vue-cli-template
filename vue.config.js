@@ -32,7 +32,16 @@ module.exports = () => ({
 
   css: {
     extract: false,
+    requireModuleExtension: true,
     loaderOptions: {
+      css: {
+        modules: {
+          localIdentName:
+            isDev || env.VUE_APP_ENV === 'stage'
+              ? '[path][name]__[local]__[hash:base64:5]'
+              : '[name]__[local]__[hash:base64:5]',
+        },
+      },
       less: {
         globalVars: {
           hack: `true; @import '${join(__dirname, './src/styles/vars.less')}'`,
